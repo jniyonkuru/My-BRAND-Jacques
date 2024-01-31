@@ -1,0 +1,106 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+:root{
+    --primary-color:#FF6000;
+    --navBackground-color:#3D3F3C;
+    --nav-color:#F5F5F5;
+}
+body{
+     font-family:'inria Sans',sans-serif;
+}
+ h2 span{
+    font-family: 'Irish Grover', system-ui;
+    color: var(--primary-color);
+ }
+ header nav{
+    display: flex;
+    justify-content: space-between;
+    padding: 0 30px;
+    align-items: center;
+    background: var(--navBackground-color);
+    color: var(--nav-color);
+    font-weight: 400;
+    font-size:1.2rem;
+   
+ }
+ header nav ul{
+    display: flex;
+    list-style-type: none;
+    gap: 30px;
+    height: 100%;
+ }
+ .logo{
+    width:60px;
+    height: auto;
+ }
+ 
+  .logo img{
+   max-width:100%;
+   height: auto;
+    fill: #FF6000;
+  }
+  header nav ul .active{
+    color: #FF6000;
+  }
+  main{
+     display: flex;
+     justify-content: space-between;
+     padding:0 50px;
+  }
+  main .right-container{
+    width: 50%;
+    padding: 50px;
+  }
+  main .right-container .home-img{
+    max-width:550px;
+    max-height:740px;
+    overflow: hidden;
+    padding: 10px;
+    border-bottom: solid #FF6000 3px;
+    border-radius: 20px;
+    transform: rotate(2deg);
+    
+  }
+
+  main .right-container .home-img img{
+    max-width:100%;
+    height: auto;
+    border-radius: inherit;
+  } 
+  main .left-container{
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+
+  }
+  main .left-container h2 {
+    font-size:3.5rem;
+  }
+ 
+  main .left-container h3{
+    font-size: 2.2rem;
+  }
+  .button{
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 1.5rem;
+    font-weight: 600;
+    background: var(--primary-color);
+    margin-right: 20px;
+    border-radius: 20px;
+    
+  }
+  .button--secondary{
+    color: var(--nav-color);
+  }
+  .button--primary{
+    background: var(--nav-color);
+    border: solid 2px var(--primary-color);
+    color: var(--primary-color);
+  }
