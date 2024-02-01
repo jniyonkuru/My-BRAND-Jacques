@@ -3,6 +3,11 @@
     padding: 0;
     box-sizing: border-box;
 }
+img{
+  vertical-align: center;
+  width: 100%;
+  height: auto;
+}
 :root{
     --primary-color:#FF6000;
     --navBackground-color:#3D3F3C;
@@ -10,6 +15,9 @@
 }
 body{
      font-family:'inria Sans',sans-serif;
+     font-size: 18px;
+     min-height: 100vh;
+     position: relative;
 }
  h2 span{
     font-family: 'Irish Grover', system-ui;
@@ -32,6 +40,14 @@ body{
     gap: 30px;
     height: 100%;
  }
+ header nav ul li a{
+    padding-left:5px;
+    border-left: solid 1px var(--nav-color);
+    color: var(--nav-color);
+    text-decoration: none;
+    transition:all ease-in .1sec;
+ }
+ 
  .logo{
     width:60px;
     height: auto;
@@ -40,7 +56,6 @@ body{
   .logo img{
    max-width:100%;
    height: auto;
-    fill: #FF6000;
   }
   header nav ul .active{
     color: #FF6000;
@@ -51,8 +66,8 @@ body{
      padding:0 50px;
   }
   main .right-container{
-    width: 50%;
-    padding: 50px;
+    padding: 50px 50px;
+    
   }
   main .right-container .home-img{
     max-width:550px;
@@ -61,7 +76,6 @@ body{
     padding: 10px;
     border-bottom: solid #FF6000 3px;
     border-radius: 20px;
-    transform: rotate(2deg);
     
   }
 
@@ -77,7 +91,6 @@ body{
     justify-content: center;
     align-items: center;
     width: 50%;
-
   }
   main .left-container h2 {
     font-size:3.5rem;
@@ -85,6 +98,9 @@ body{
  
   main .left-container h3{
     font-size: 2.2rem;
+  }
+  main .left-container a{
+    text-decoration: none;
   }
   .button{
     display: inline-block;
@@ -94,6 +110,7 @@ body{
     background: var(--primary-color);
     margin-right: 20px;
     border-radius: 20px;
+    cursor: pointer;
     
   }
   .button--secondary{
@@ -103,4 +120,49 @@ body{
     background: var(--nav-color);
     border: solid 2px var(--primary-color);
     color: var(--primary-color);
+  }
+
+  nav ul a:hover{
+    font-size: 1rem;
+  }
+  .footer{
+    background: var(--navBackground-color);
+    height:60px;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+  }
+
+  /* About page */
+  .left-container.about{
+    justify-content: flex-start;
+    gap: 40px;
+  }
+  .left-container.about h3{
+    margin-top: 15px;
+    color: var(--primary-color);
+  }
+
+  .skills-card{
+    display: flex;
+    flex-direction: column;
+    border: var(--primary-color) 1px solid;
+    padding: 10px 20px;
+    width:30%;
+    border-radius: 5px;
+    gap:10px;
+  }
+  .skills-card-container{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  .about-img{
+    overflow: hidden;
+
+  }
+  .about-img img{
+    max-width: 100%;
+    object-fit:cover;
+    height:auto;
   }
