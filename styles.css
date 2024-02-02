@@ -166,6 +166,26 @@ body{
   .skills-icon img{
     max-width: 100%;
     height: auto;
-  
 
+  }
+
+  /* blog  */
+
+  .blogs-container{
+    display: flex;
+    justify-content:flex-start;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 30px 0;
+  }
+  .blog-img{
+    width: 250px;
+    border-radius: 8px;
+    overflow: hidden;
+    
+  }
+  .blog-img img{
+    max-width: 100%;
+    height: auto;
+    border-radius: inherit;
   }
