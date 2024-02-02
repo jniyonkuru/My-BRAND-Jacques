@@ -259,3 +259,91 @@ body{
     border-radius: 8px;
     cursor: pointer;
   }
+
+
+
+  /* portfolio */
+  .portfolio-details{
+    display:flex;
+    flex-direction: column;
+  }
+  .my-work{
+     display: flex;
+     gap:20px;
+     padding:30px 0;
+      width:100vw;
+     overflow-x: scroll;
+  }
+.my-work .work-card{
+  min-width:300px;
+  border:solid var(--primary-color) 1px;
+  text-align: center;
+  padding:5px;
+  display: flex;
+  flex-direction: column;
+   justify-content:space-between;
+   border-radius: 8px;
+}
+.my-work-title{
+  color: var(--primary-color);
+  text-align: center;
+  margin-top: 20px;
+  font-size: 2rem;
+}
+.portfolio-forms{
+  display:flex;
+}
+.portfolio-forms form{
+  width:70%;
+}
+.portfolio-forms .register-form,.contact-form{
+  padding:30px 50px ;
+  width: 50%;
+}
+.portfolio-forms form label{
+display: block;
+}
+.portfolio-forms input{
+  width:100%;
+  height: 40px;
+  border: solid var(--primary-color) 1px;
+  border-radius: 8px;
+  padding-inline: 10px;
+}
+.portfolio-forms .input-control{
+  margin-top: 10px;
+
+}
+.portfolio-forms textarea{
+  width:100%;
+  border: solid var(--primary-color) 1px;
+  border-radius: 8px;
+}
+.portfolio-forms .btn{
+  width:100%;
+  border: 0;
+  outline:0;
+  background: var(--primary-color);
+  height: 40px;
+  border-radius: 8px;
+  margin-top: 10px;
+  color: var(--nav-color);
+  font-size: 20px;
+  font-weight: 600;
+}
+.or{
+  text-align:center;
+  font-size: 2rem;
+  color: #3D3F3C;
+  font-weight: bold;
+}
+.register-form span{
+  color: var(--primary-color);
+  font-weight: bold;
+  font-size:20px;
+}
+.portfolio-forms h3{
+margin-bottom: 20px;
+color: var(--primary-color);
+font-size: 24px;
+}
