@@ -1,48 +1,185 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./styles.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inria+Sans:wght@400;700&family=Inter:wght@300;700&family=Irish+Grover&family=Open+Sans:wght@400;700&family=UnifrakturMaguntia&display=swap" rel="stylesheet">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/styles.css" />
+    <link rel="stylesheet" href="./css/main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inria+Sans:wght@400;700&family=Inter:wght@300;700&family=Irish+Grover&family=Open+Sans:wght@400;700&family=UnifrakturMaguntia&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://kit.fontawesome.com/57f94116a4.js"
+      crossorigin="anonymous"
+    ></script>
+
     <title>My_Brand_Jacques</title>
-</head>
-<body>
+  </head>
+  <body>
     <header>
-        <nav>
-            <div class="logo">
-                <img src="./Icons_my_brand/log2.svg" alt="">
-            </div>
-            <ul>
-                <li ><a class="active" href="">Home</a></li>
-                <li><a href="">About</a></li>
-                <li><a href="">Blog</a></li>
-                <li><a href="">Portfolio</a></li>
-                <li><a href="">Contact Me</a></li>
-                <li><a href="">Login</a></li>
-            </ul>
-        </nav>
+      <nav>
+        <div class="logo">
+          <img src="./Icons_my_brand/log2.svg" alt="" />
+        </div>
+        <ul>
+          <li><a class="active" href="./index.html">Home</a></li>
+          <li><a href="./blog.html">Blog</a></li>
+          <li><a href="#portfolio">Portfolio</a></li>
+          <li><a href="#contact">Contact Me</a></li>
+          <li><a href="./login.html">Login</a></li>
+        </ul>
+      </nav>
+     
     </header>
     <main>
-        <section class="left-container">
-            <h2>I am <span>Jacques Niyonkuru</span></h2>
-            <h3>A Full stack software Engineer</h3>
-            <div>
-                <a href="#" class="button button--secondary">My Work</a>
-                <a href="#" class="button button--primary">Hire Me</a>
+      <i class="fa-solid fa-bars" ></i>
+      <section class="home-page">
+        
+        <div class="left-container">
+          <h2>I am <span>Jacques Niyonkuru</span></h2>
+          <h3>A Full stack software Engineer</h3>
+          <p>
+            Hello there! 👋 I'm a passionate Full Stack Software Engineer with a
+            relentless curiosity for crafting innovative solutions. My journey
+            in the realm of technology began with a deep-seated fascination for
+            coding and problem-solving, and it has evolved into a fulfilling
+            career that allows me to blend creativity with technical expertise.
+          </p>
+          <div>
+            <a href="#" class="button button--secondary">My Work</a>
+            <a href="#" class="button button--primary">Hire Me</a>
+          </div>
+          <div class="download-cv">
+            Get my Resume<i class="fa-solid fa-download"></i>
+          </div>
+        </div>
+        <div class="right-container">
+          <div class="home-img">
+            <img src="./Images_my_brand/me.jpg" alt="Jacques1" />
+          </div>
+        </div>
+      </section>
+      <section class="skills-page">
+        <div class="left-container">
+          <h3>Skills</h3>
+          <p>
+            Hello there! 👋 I'm a passionate 29-year-old Full Stack Software
+            Engineer with a relentless curiosity for crafting innovative
+            solutions. My journey in the realm of technology began with a
+            deep-seated fascination for coding and problem-solving, and it has
+            evolved into a fulfilling career that allows me to blend creativity
+            with technical expertise.
+          </p>
+        </div>
+        <div class="right-container">
+          <div class="skills-card">
+            <i class="fa-solid fa-laptop-code"></i>
+            <h4>Frontend</h4>
+            <p>
+              Building a custom tailored solution based on your technical
+              specification
+            </p>
+          </div>
+          <div class="skills-card">
+            <i class="fa-solid fa-database"></i>
+            <h4>Database Management</h4>
+            <p>
+              Building a custom tailored solution based on your technical
+              specification
+            </p>
+          </div>
+          <div class="skills-card">
+            <i class="fa-solid fa-rocket"></i>
+            <h4>SEO</h4>
+            <p>
+              Building a custom tailored solution based on your technical
+              specification
+            </p>
+          </div>
+          <div class="skills-card">
+            <i class="fa-solid fa-gear"></i>
+            <h4>Backend</h4>
+            <p>
+              Building a custom tailored solution based on your technical
+              specification
+            </p>
+          </div>
+        </div>
+      </section>
+      <section class="portfolio-page" id="portfolio">
+        <h3 class="work-title">Work</h3>
+        <div class="works-display">
+          <i class="fa-solid fa-chevron-left"></i>
+        <div class="work-card">
+            <div class="work-card-img">
+                <img src="./Images_my_brand/Etch-a-sketch.png" alt="">
             </div>
-        </section>
-         <section class="right-container">
-            <div class="home-img">
-                <img src="./Images_my_brand/me.jpg" alt="Jacques1">
+            <h4>Etch-a-sketch</h4>
+        </div>
+        <div class="work-card">
+            <div class="work-card-img">
+                <img src="./Images_my_brand/country-app-dark.png" alt="">
             </div>
-         </section>
+            <h4>Country App</h4>
+        </div>
+        <div class="work-card">
+            <div class="work-card-img">
+                <img src="./Images_my_brand/country-app-light.png" alt="">
+            </div>
+            <h4>Country App</h4>
+        </div>
+        <div class="work-card">
+            <div class="work-card-img">
+                <img src="./Images_my_brand/landing-page.png" alt="">
+            </div>
+            <h4>Landing page</h4>
+        </div>
+        <div class="work-card">
+            <div class="work-card-img">
+                <img src="./Images_my_brand/country-app-dark.png" alt="">
+            </div>
+            <h4>Country App</h4>
+        </div>
+        <div class="work-card">
+            <div class="work-card-img">
+                <img src="./Images_my_brand/country-app-light.png" alt="">
+            </div>
+            <h4>Country App</h4>
+        </div>
+        <div class="work-card">
+            <div class="work-card-img">
+                <img src="./Images_my_brand/landing-page.png" alt="">
+            </div>
+            <h4>landing-page</h4>
+        </div>
+        <i class="fa-solid fa-chevron-right"></i>
+        </div>
+      </section>
+      <section class="contact-page">
+        <div class="contact-addresses">
+          <h3 id="contact">Contact</h3>
+          <div><i class="fa-solid fa-envelope"></i><span>niyonkurujacques@gmail.com</span></div>
+          <div><i class="fa-solid fa-phone"></i><span>+250787643787</span></div>
+          <div><i class="fa-solid fa-location-dot"></i><span>Kigali,Rwanda</span></div>
+          </div>
+        <div class="contact-social">
+          <i class="fa-brands fa-github"></i>
+          <i class="fa-brands fa-linkedin"></i>
+          <i class="fa-brands fa-twitter"></i>
+          <i class="fa-brands fa-instagram"></i>
+          <i class="fa-solid fa-envelope"></i>
+          <i class="fa-solid fa-circle-user"></i>
+        </div>
+        
+      </section>
     </main>
     <footer>
-        <div class="footer">
-        </div>
+      <div class="footer">
+        <div>&copy Niyonkuru jacques 2024</div>
+      </div>
     </footer>
-</body>
+  </body>
 </html>

@@ -1,0 +1,83 @@
+@media screen and (max-width:1200px){
+    h2{
+        font-size: 2rem;
+    }
+    h3{
+        font-size: 1.5rem;
+    }
+}
+@media screen  and (max-width:932px){
+    h2{
+        font-size: 1.5rem;
+    }
+    h3{
+        font-size: 1.1rem;
+    }
+    
+}
+@media screen and (max-width:890px) {
+    .home-page{
+        flex-direction: column-reverse;
+        gap: 0;
+    }
+    .home-page .right-container{
+        align-self: center;
+        padding:20px ;
+    }
+    .home-page .left-container{
+        align-self: center;
+        padding: 20px;
+        margin-top: 0;
+        gap: 10px;
+    }
+    .home-page .right-container .home-img{
+        width: 300px;
+        
+    }
+    
+}
+@media screen  and (max-width:550px){
+    header nav{
+        display: none;
+    }
+    main{
+        padding-inline: 30px;
+    }
+   .left-container{
+    width: 100%;
+    }
+    .fa-bars{
+        display: block;
+    }
+    .button{
+        display: block;
+        padding-inline: 35px;
+        font-size: 16px;
+        margin:20px;
+    }
+    .download-cv{
+        align-self: center;
+    }
+    .skills-page{
+        flex-direction: column;
+        align-items: center;
+        gap:20px;
+    }
+    .skills-page .left-container,.right-container{
+        width: 100%;
+    }
+    .contact-page{
+    flex-direction: column;
+    }
+    .contact-page .contact-social{
+        flex-direction: row-reverse;
+        margin-top: 20px;
+    }
+    h3{
+        text-align: center;
+    }
+    .skills-card{
+        width: 550px;
+    }
+
+}
