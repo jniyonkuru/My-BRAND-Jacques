@@ -138,7 +138,7 @@ main{
     font-weight: 600;
     background: var(--primary-color);
     margin-right: 20px;
-    border-radius: 20px;
+    border-radius: 5px;
     cursor: pointer;
     
   }
@@ -147,7 +147,7 @@ main{
   }
   .button--primary{
     background: var(--nav-color);
-    border: solid 2px var(--primary-color);
+    border: solid 1px var(--primary-color);
     color: var(--primary-color);
   }
 
@@ -218,6 +218,12 @@ main{
     overflow-x: scroll;
     gap:20px;
   }
+
+.works-display::-webkit-scrollbar{
+  width:10px;
+}
+
+
   .portfolio-page i{
     display: block;
     display: flex;
@@ -251,20 +257,18 @@ main{
   }
   .contact-page .contact-social i{
     display: block;
-    font-size:2rem;
+    font-size:1.7rem;
     color: var(--primary-color);
     margin-bottom: 10px;
-    visibility: hidden;
-    
-
   }
     .contact-page .contact-social :last-child{
       visibility: visible;
+      cursor: pointer;
 
     }
     .contact-page .contact-addresses i{
    color: var(--primary-color);
-   font-size: 2rem;
+   font-size: 1.7rem;
    margin-right: 10px;
     }
     .contact-addresses{
@@ -279,7 +283,7 @@ main{
       color: var(--primary-color);
     }
 footer{
-  height: 70px;
+  height: 50px;
   background:var(--navBackground-color);
   display: flex;
   align-items: center;
@@ -291,49 +295,33 @@ footer div{
   font-size:1.5rem;
   color:var(--primary-color);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+.visible{
+  visibility: hidden;
+}
 
 
   /* blog  */
 
   .blogs-container{
-    display: flex;
-    justify-content:flex-start;
-    flex-wrap: wrap;
-    gap: 20px;
+    display:grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr;
     padding: 30px 0;
     margin-top: 70px;
   }
   .blog-img{
-    width: 250px;
-    border-radius: 8px;
+    max-width: 350px;
+    border-radius: 5px;
     overflow: hidden;
+    margin-bottom: 10px;
     
   }
   .blog-img img{
     max-width: 100%;
     height: auto;
     border-radius: inherit;
-
+    object-fit:cover;
+  
   }
   .blogs-container .auth{
     width: 30px;
@@ -356,6 +344,37 @@ footer div{
    top:0;
     
   }
+  .blog{
+   max-width:350px;
+    display:flex;
+    flex-direction: column;
+    grid-column: 1fr;
+    place-self: center;
+    margin-bottom: 20px;
+    border: 1px solid rgba(157, 158, 157,0.3);
+    padding:20px 30px;
+    border-radius: 5px;
+    
+
+  }
+  .blog h4>a{
+    margin-bottom: 20px;
+    color: black;
+    
+  }
+  .blog h4{
+    margin-bottom: 10px;
+    
+  }
+  .readmore{
+    padding:8px 12px;
+    background: var(--primary-color);
+    width: fit-content;
+    color: var(--nav-color);
+    margin-top:10px;
+    
+  }
+  
 
 
   /* blog details */
@@ -513,7 +532,7 @@ font-size: 24px;
   margin-inline: auto;
   margin-top: 80px;
   place-self: center;
-  border: solid 2px var(--primary-color);
+  border: solid 1px var(--primary-color);
   padding: 30px 50px;
   border-radius:12px;
   grid-column: 2fr;
@@ -533,7 +552,7 @@ font-size: 24px;
 .login-form input{
   width: 100%;
   height: 50px;
-  border: var(--primary-color) 2px solid;
+  border: var(--primary-color) 1px solid;
   border-radius: 8px;
 
 }
@@ -575,3 +594,69 @@ a{
   margin-left:10px;
   font-size:25px;
 } 
+
+
+/* Sign up  page*/
+
+.signup{
+  display:grid;
+  grid-template-columns: 1fr 2fr;
+}
+.signup-form{
+  width: 60%;
+  margin-inline: auto;
+  margin-top: 50px;
+  place-self: center;
+  border: solid 1px var(--primary-color);
+  padding: 30px 50px;
+  border-radius:12px;
+  grid-column: 2fr;
+  
+}
+.signup-note{
+  grid-column: 1fr;
+  place-self: center;
+}
+.signup-form label{
+  display: block;
+  margin-top: 10px;
+  font-size:20px ;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+.signup-form input{
+  width: 100%;
+  height: 40px;
+  border: var(--primary-color) 1px solid;
+  border-radius: 8px;
+
+}
+.signup .btn{
+  width: 100%;
+  height: 40px;
+  font-size: 24px;
+  font-weight: 600;
+  background: var(--primary-color);
+  color:var(--nav-color);
+  outline:none;
+  border:0;
+  margin-top:30px;
+  border-radius: 8px;
+}
+.signup h3{
+  
+  font-size: 32px;
+  margin-bottom: 20px;
+  color: var(--primary-color);
+}
+.signup .text-note{
+  margin-top: 20px;
+  width: fit-content;
+  margin-inline: auto;
+}
+.signup-form .text-note a{
+  font-size: 20px;
+  color: var(--primary-color);
+  text-decoration: none;
+}
+

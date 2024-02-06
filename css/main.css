@@ -6,12 +6,17 @@
         font-size: 1.5rem;
     }
 }
+
+/* tablet view */
 @media screen  and (max-width:932px){
     h2{
         font-size: 1.5rem;
     }
     h3{
         font-size: 1.1rem;
+    }
+    .login-form{
+        width: 80%;
     }
     
 }
@@ -34,6 +39,9 @@
         width: 300px;
         
     }
+    .login-form{
+        width: 80%;
+    }
     
 }
 @media screen  and (max-width:550px){
@@ -48,6 +56,9 @@
     }
     .fa-bars{
         display: block;
+        position: relative;
+    
+
     }
     .button{
         display: block;
@@ -79,5 +90,10 @@
     .skills-card{
         width: 550px;
     }
-
+    .login{
+        grid-template-columns: 1fr;
+    }
+   .login-form{
+    width: 100%;
+   }
 }
