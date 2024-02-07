@@ -31,6 +31,22 @@ crossorigin="anonymous"
     </header>
     <main>
      <i class="fa-solid fa-bars"></i>
+     <div class="search-bar">
+        <div class="search-control">
+            <input type="text" placeholder="What is your search...">
+            <i class="fa-solid fa-magnifying-glass"></i>
+        </div>
+        <div class="sort-control">
+            <span>Sort by</span>
+            <select name="sortBy" id="">
+               <option value=""></option>
+               <option value="recent">Recently Added</option>
+               <option value="javascript">javascript</option>
+               <option value="css">Css</option>
+               <option value="html">Html</option>
+            </select>
+        </div>
+     </div>
       <div class="blogs-container">
         <div class="blog">
             <div class="blog-img">
@@ -60,10 +76,12 @@ crossorigin="anonymous"
             <div class="blog-img">
             <img src="./Images_my_brand/blog3.jpg" alt="">
             </div>
-            <div class="auth">
-            <img src="./Images_my_brand/me.jpg" alt="jacques">
+            <div class="auth-card">
+                <div class="auth">
+                <img src="./Images_my_brand/me.jpg" alt="jacques">
+                </div>
+                <span><span class="date">February ,04 ,2024</span><span class="auth-name">, Niyonkuru jacques</span></span>
             </div>
-            <span><span class="date">February ,04 ,2024</span><span class="auth-name">, Niyonkuru jacques</span></span>
             <h4><a href="./blog-details.html">Css postions explained</a></h4>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum, ducimus.</p>
             <a href="./blog-details.html" class="readmore">Read more</a>

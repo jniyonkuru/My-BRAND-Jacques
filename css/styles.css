@@ -342,7 +342,7 @@ footer div{
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr;
     padding: 30px 0;
-    margin-top: 70px;
+    margin-top:30px;
   }
   .blog-img{
     max-width: 350px;
@@ -434,53 +434,56 @@ footer div{
     padding:70px 180px;
     line-height: 1.5;
   }
-  .blog-detailed .comment-form{
-    display: flex;
-    justify-content: center;
-    padding-top: 50px;
-  }
-  .blog-detailed .comment-form label{
-    display:block;
-    font-weight: 600;
-    margin-bottom: 5px;
-
-  }
-  .blog-detailed .comment-form form{
-  width:70%;
-  padding: 20px 30px;
-
-  }
-  .blog-detailed .input-control input{
-    height: 40px;
-    width: 100%;
-    outline: none;
-    border: solid var(--primary-color) 1px;
-    border-radius: 8px;
-    font-size: 20px;
-    padding-left: 10px;
-  }
+  
+  
   .blog-detailed  textarea{
     border: solid var(--primary-color) 1px;
-    font-size: 20px;
-    width: 100%;
-    border-radius: 8px;
+    border-radius:var(--border-radius-size);
+    font-size: 1.2rem;
     padding: 10px;
+    width: 50%;
+    height:120px;
   }
-  .blog-detailed .input-control{
-    margin-bottom:20px;
-  }
+ 
   .blog-detailed .comment-form button{
     height: 40px;
-    width: 100%;
-    margin-top: 20px;
-    font-size: 24px;
+    margin-top: 10px;
+    font-size: 1.2rem;
+    padding: 10px 30px;
     background: var(--primary-color);
     outline:0;
     border: 0;
     color: var(--nav-color);
-    border-radius: 8px;
+    border-radius:var(--border-radius-size);
     cursor: pointer;
   }
+  #comments{
+    color: var(--primary-color);
+    margin-top: 30px;
+    margin-bottom: 10px;
+  }
+  .blog-detailed .auth{
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    position: relative;
+    overflow: hidden;
+    display: inline;
+  }
+  .blog-detailed .auth-card{
+    display:flex;
+    align-items: center;
+  }
+  .blog-detailed .auth img{
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+.blog-detailed .auth-card .date, .auth-name{
+  color: #9d9e9d;
+  font-size: 1rem;
+}
 
 
 
@@ -655,3 +658,49 @@ a{
   text-decoration: none;
 }
 
+
+
+/* Search-bar */
+.search-bar{
+  margin-top: 80px;
+  width: 100%;
+  display:grid;
+  grid-template-columns:7fr 3fr;
+  grid-template-rows: 1fr;
+  padding-left:30px;
+}
+.search-bar  input, select{
+  height: 50px;
+  border: 1px  solid #9d9e9d;
+  border-radius: var(--border-radius-size);
+  outline:0;
+}
+.search-bar .search-control input{
+  width: 100%;
+  padding-left:20px;
+  font-size: 1.2rem;
+
+}
+.search-bar .search-control{
+  position: relative;
+  grid-column: 7fr;
+}
+.search-bar .search-control i{
+  position: absolute;
+  align-self: center;
+  right:20px;
+ top:20px;
+color:#9d9e9d;
+font-size: 15px;
+}
+.search-bar .sort-control{
+grid-column: 3fr;
+display: flex;
+justify-content: center;
+align-items: center;
+gap: 10px;
+}
+.search-bar .sort-control span{
+  font-size: 1.2rem;
+  color: #9d9e9d;
+}
