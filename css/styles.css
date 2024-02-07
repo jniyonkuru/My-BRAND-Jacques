@@ -12,6 +12,7 @@ img{
     --primary-color:#FF6000;
     --navBackground-color:#3D3F3C;
     --nav-color:#F5F5F5;
+    --border-radius-size:5px;
 }
 body{
      font-family:'inria Sans',sans-serif;
@@ -243,52 +244,86 @@ main{
      border-radius: 8px;
   }
 
+   /* contact me */
 
   .contact-page{
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+    width: 60%;
+    margin-inline: auto;
     margin-top: 30px;
+    height: fit-content;
+   border-radius: var(--border-radius-size);
+   border: 1px solid var(--primary-color);
 
   }
-  .contact-page .contact-social{
+  .contact-page .contact-addresses{
     display: flex;
     flex-direction: column;
+    background: var(--primary-color);
+    color: #ffff;
+    gap:40px;
+    grid-column: 1fr;
+    padding: 20px 30px 0 30px;
+  }
   
-    justify-content: flex-end;
-  }
-  .contact-page .contact-social i{
-    display: block;
-    font-size:1.7rem;
-    color: var(--primary-color);
-    margin-bottom: 10px;
-  }
-    .contact-page .contact-social :last-child{
-      visibility: visible;
-      cursor: pointer;
 
-    }
-    .contact-page .contact-addresses i{
-   color: var(--primary-color);
-   font-size: 1.7rem;
-   margin-right: 10px;
-    }
-    .contact-addresses{
-      display: flex;
-      flex-direction: column;
-      gap: 30px;
-      justify-content: flex-end;
-      flex: 2;
+  .contact-page .contact-addresses .social-icons{
+    width: fit-content;
+    align-self: center;
+    font-size: 2rem;
+
+  }
+  .contact-page .contact-addresses .social-icons i{
+    margin-right: 10px;
+  }
+  .contact-page .contact-form{
+    grid-column: 1fr;
+    padding: 20px 30px;
+    
+ 
+  }
+  .contact-page .contact-form form{
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .contact-page .contact-form form .input-control input, textarea{
+    width: 100%;
+    outline: none;
+    border: 1px solid  var(--primary-color);
+    min-height:40px;
+    border-radius: var(--border-radius-size);
+    padding:10px 20px;
+  }
+  .contact-page .contact-form .btn{
+    width: fit-content;
+    padding: 12px 8px;
+    background-color: var(--primary-color);
+    color: var(--nav-color);
+    border: 0;
+    outline: none;
+    border-radius: var(--border-radius-size);
+    font-size: 1.2rem;
+  }
+  .contact-page h4{
+    font-size: 28px;
+  }
+  .contact-page .contact-form h4{
+    color: var(--primary-color);
+    margin-bottom: 20px;
+  }
   
-    }
-    .contact-addresses h3{
-      color: var(--primary-color);
-    }
-footer{
+ .footer{
   height: 50px;
   background:var(--navBackground-color);
   display: flex;
   align-items: center;
   justify-content: center;
   margin-top: 30px;
+  width: 100%;
 }
 footer div{
   width: fit-content;
@@ -468,47 +503,7 @@ footer div{
   margin-top: 20px;
   font-size: 2rem;
 }
-.portfolio-forms{
-  display:flex;
-}
-.portfolio-forms form{
-  width:70%;
-}
-.portfolio-forms .register-form,.contact-form{
-  padding:30px 50px ;
-  width: 50%;
-}
-.portfolio-forms form label{
-display: block;
-}
-.portfolio-forms input{
-  width:100%;
-  height: 40px;
-  border: solid var(--primary-color) 1px;
-  border-radius: 8px;
-  padding-inline: 10px;
-}
-.portfolio-forms .input-control{
-  margin-top: 10px;
 
-}
-.portfolio-forms textarea{
-  width:100%;
-  border: solid var(--primary-color) 1px;
-  border-radius: 8px;
-}
-.portfolio-forms .btn{
-  width:100%;
-  border: 0;
-  outline:0;
-  background: var(--primary-color);
-  height: 40px;
-  border-radius: 8px;
-  margin-top: 10px;
-  color: var(--nav-color);
-  font-size: 20px;
-  font-weight: 600;
-}
 
 .register-form span{
   color: var(--primary-color);
