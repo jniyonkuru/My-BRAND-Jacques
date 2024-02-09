@@ -18,7 +18,15 @@
     .login-form{
         width: 80%;
     }
-    
+    .search-bar .search-control{
+        grid-row: 1fr;
+        margin-bottom: 30px;
+        grid-column: 1fr;
+      }
+      .search-bar .sort-control{
+        grid-row: 1fr;
+        grid-column: 1fr;
+      }
 }
 @media screen and (max-width:890px) {
     .home-page{
@@ -42,6 +50,28 @@
     .login-form{
         width: 80%;
     }
+    .contact-page{
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr;
+        gap:20px
+      }
+      .contact-page .contact-addresses{
+        grid-row: 1fr;
+      }
+      .contact-page .contact-form{
+          grid-row: 1fr;
+      }
+      .blogs-container{
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+       }
+       .search-bar .search-control{
+        grid-row: 1fr;
+        margin-bottom: 30px;
+      }
+      .search-bar .sort-control{
+        grid-row: 1fr;
+      }
     
 }
 @media screen  and (max-width:550px){
@@ -78,11 +108,15 @@
         width: 100%;
     }
     .contact-page{
-    flex-direction: column;
+      grid-template-columns: 1fr;
+      grid-template-rows: 1fr 1fr;
+      gap:20px
     }
-    .contact-page .contact-social{
-        flex-direction: row-reverse;
-        margin-top: 20px;
+    .contact-page .contact-addresses{
+      grid-row: 1fr;
+    }
+    .contact-page .contact-form{
+        grid-row: 1fr;
     }
     h3{
         text-align: center;
@@ -96,4 +130,21 @@
    .login-form{
     width: 100%;
    }
+   .blogs-container{
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+   }
+   .search-bar{
+    margin-top: 50px;
+    grid-template-columns:1fr;
+    grid-template-rows: 1fr 1fr;
+  }
+  .search-bar .search-control{
+    grid-row: 1fr;
+    margin-bottom: 30px;
+  }
+  .search-bar .sort-control{
+    grid-row: 1fr;
+  }
+
 }

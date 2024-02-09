@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inria+Sans:wght@400;700&family=Inter:wght@300;700&family=Irish+Grover&family=Open+Sans:wght@400;700&family=UnifrakturMaguntia&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../css/dashboard.css" />
+    <script
+      src="https://kit.fontawesome.com/57f94116a4.js"
+      crossorigin="anonymous"
+    ></script>
+    <title>Admin-dashboard</title>
+  </head>
+  <body>
+    <div class="nav-bar">
+      <div class="logo">
+        <img src="../../Icons_my_brand/logo3.svg" alt="logo" />
+      </div>
+      <ul class="nav-bar-items">
+        <li class="nav-bar-item " >
+          <a href="#section1"><i class="fa-solid fa-qrcode"></i>Dashboard</a>
+        </li>
+        <li class="nav-bar-item" id="section2-blog">
+          <a href="#section2"> <i class="fa-solid fa-book"></i>Blogs</a>
+          <div class="message-notifications">15</div>
+        </li>
+        <li class="nav-bar-item">
+          <a href="#section3"><i class="fa-solid fa-user-group"></i>Users</a>
+        </li>
+        <li class="nav-bar-item" id="section4-message">
+          <a href="#section4"><i class="fa-solid fa-message"></i>Messages</a>
+          <div class="message-notifications">15</div>
+        </li>
+        <li class="nav-bar-item">
+          <a href="#section5"><i class="fa-solid fa-gear"></i>Accounts</a>
+        </li>
+      </ul>
+    </div>
+    <main class="dashboard-main-container">
+      <section id="section1">
+        <header>
+            <div class="search-bar">
+              <div class="search-bar-input">
+                <input type="text">
+                <i class="fa-solid fa-magnifying-glass"></i>
+              </div>
+              <div class="notification-bell">
+                <i class="fa-regular fa-bell"></i>
+                <span class="notification-badge">30</span>
+              </div>
+              <div class="current-user">
+                <i class="fa-solid fa-circle-user"></i>
+                <span>Niyonkuru Jacques</span>
+              </div>
+              <a href="" class="search-bar-btn">Sign out</a>
+            </div>
+        </header>
+        <div class="dashboard-cards">
+          <div class="dashboard-card">
+            <div class="dashboard-card-title">
+            <span>1.5k</span><i class="fa-solid fa-eye"></i>
+            </div>
+            <div class="dashboard-card-subtitle">
+              Article Views
+            </div>
+          </div>
+
+          <div class="dashboard-card">
+          <div class="dashboard-card-title">
+          <span>300 </span><i class="fa-regular fa-thumbs-up"></i>
+          </div>
+          <div class="dashboard-card-subtitle">
+            Likes
+          </div>
+        </div>
+        <div class="dashboard-card">
+          <div class="dashboard-card-title">
+          <span>76 </span><i class="fa-solid fa-message"></i>
+          </div>
+          <div class="dashboard-card-subtitle">
+            Comments
+          </div>
+        </div>
+        <div class="dashboard-card">
+          <div class="dashboard-card-title">
+          <span>15</span><i class="fa-solid fa-file"></i>
+          </div>
+          <div class="dashboard-card-subtitle">
+          Posts
+          </div>
+        </div>
+        </div>
+      </section>
+      <section id="section2">
+        <div class="dashboard-blogs">
+          <h3>Recent Blogs</h3>
+          <div class="dashboard-blog-item">
+            <div class="dashboard-blog-img">
+            <img src="../../Images_my_brand/blog3.jpg" alt="">
+            </div>
+            <div class="dashboard-blog-description">
+              <h4>Blog Title</h4>
+              <div class="dashboard-blog-description-foot">
+                <div class="dashboard-blog-description-foot-item"><i class="fa-regular fa-comment"></i><span class="comments-count">5</span><span>Comments</span></div>
+                <div class="dashboard-blog-description-foot-item">
+                  <i class="fa-regular fa-eye"></i><span class="views-count">5</span><span>Views</span>
+                </div>
+                <div class="dashboard-blog-description-foot-item">
+                  <span class="likes-count">5</span><span>Likes</span> 
+                </div>
+                <div class="dashboard-blog-description-foot-item">
+                  <i class="fa-solid fa-pen"></i><span>Edit</span>
+                </div>
+                <div class="dashboard-blog-description-foot-item">
+                  <i class="fa-solid fa-trash"></i><span>Delete</span>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+          <div class="dashboard-blog-item">
+            <div class="dashboard-blog-img">
+            <img src="../../Images_my_brand/blog3.jpg" alt="">
+            </div>
+            <div class="dashboard-blog-description">
+              <h4>Blog Title</h4>
+              <div class="dashboard-blog-description-foot">
+                <div class="dashboard-blog-description-foot-item"><i class="fa-regular fa-comment"></i><span class="comments-count">5</span><span>Comments</span></div>
+                <div class="dashboard-blog-description-foot-item">
+                  <i class="fa-regular fa-eye"></i><span class="views-count">5</span><span>Views</span>
+                </div>
+                <div class="dashboard-blog-description-foot-item">
+                  <span class="likes-count">5</span><span>Likes</span> 
+                </div>
+                <div class="dashboard-blog-description-foot-item">
+                  <i class="fa-solid fa-pen"></i><span>Edit</span>
+                </div>
+                <div class="dashboard-blog-description-foot-item">
+                  <i class="fa-solid fa-trash"></i><span>Delete</span>
+                </div>
+
+              </div>
+            </div>
+          </div>
+          <div class="dashboard-blog-item">
+            <div class="dashboard-blog-img">
+            <img src="../../Images_my_brand/blog3.jpg" alt="">
+            </div>
+            <div class="dashboard-blog-description">
+              <h4>Blog Title</h4>
+              <div class="dashboard-blog-description-foot">
+                <div class="dashboard-blog-description-foot-item"><i class="fa-regular fa-comment"></i><span class="comments-count">5</span><span>Comments</span></div>
+                <div class="dashboard-blog-description-foot-item">
+                  <i class="fa-regular fa-eye"></i><span class="views-count">5</span><span>Views</span>
+                </div>
+                <div class="dashboard-blog-description-foot-item">
+                  <span class="likes-count">5</span><span>Likes</span> 
+                </div>
+                <div class="dashboard-blog-description-foot-item">
+                  <i class="fa-solid fa-pen"></i><span>Edit</span>
+                </div>
+                <div class="dashboard-blog-description-foot-item">
+                  <i class="fa-solid fa-trash"></i><span>Delete</span>
+                </div>
+
+              </div>
+            </div>
+          </div>
+          <div class="dashboard-blog-item">
+            <div class="dashboard-blog-img">
+            <img src="../../Images_my_brand/blog3.jpg" alt="">
+            </div>
+            <div class="dashboard-blog-description">
+              <h4>Blog Title</h4>
+              <div class="dashboard-blog-description-foot">
+                <div class="dashboard-blog-description-foot-item"><i class="fa-regular fa-comment"></i><span class="comments-count">5</span><span>Comments</span></div>
+                <div class="dashboard-blog-description-foot-item">
+                  <i class="fa-regular fa-eye"></i><span class="views-count">5</span><span>Views</span>
+                </div>
+                <div class="dashboard-blog-description-foot-item">
+                  <span class="likes-count">5</span><span>Likes</span> 
+                </div>
+                <div class="dashboard-blog-description-foot-item">
+                  <i class="fa-solid fa-pen"></i><span>Edit</span>
+                </div>
+                <div class="dashboard-blog-description-foot-item">
+                  <i class="fa-solid fa-trash"></i><span>Delete</span>
+                </div>
+
+              </div>
+            </div>
+          </div>
+          <div class="dashboard-blog-item">
+            <div class="dashboard-blog-img">
+            <img src="../../Images_my_brand/blog3.jpg" alt="">
+            </div>
+            <div class="dashboard-blog-description">
+              <h4>Blog Title</h4>
+              <div class="dashboard-blog-description-foot">
+                <div class="dashboard-blog-description-foot-item"><i class="fa-regular fa-comment"></i><span class="comments-count">5</span><span>Comments</span></div>
+                <div class="dashboard-blog-description-foot-item">
+                  <i class="fa-regular fa-eye"></i><span class="views-count">5</span><span>Views</span>
+                </div>
+                <div class="dashboard-blog-description-foot-item">
+                  <span class="likes-count">5</span><span>Likes</span> 
+                </div>
+                <div class="dashboard-blog-description-foot-item">
+                  <i class="fa-solid fa-pen"></i><span>Edit</span>
+                </div>
+                <div class="dashboard-blog-description-foot-item">
+                  <i class="fa-solid fa-trash"></i><span>Delete</span>
+                </div>
+
+              </div>
+            </div>
+          </div>
+          
+          
+        </div>
+    
+      </section>
+      <section id="section3">
+        <H3>Users</H3>
+        <div class="dashboard-users">
+          <div class="dashboard-user-item">
+            <i class="fa-solid fa-circle-user"></i>
+            <p><span>Name:</span>Niyonkuru Jacques</p>
+            <p><span>Email:</span>niyonkurujacques@gmail.con</p>
+            <p><span>IsAdmin:</span>true</p>
+            <p><span>Status:</span><span class="colored">Active</span></p>
+          </div>
+          <div class="dashboard-user-item">
+            <i class="fa-solid fa-circle-user"></i>
+            <p><span>Name:</span>Niyonkuru Jacques</p>
+            <p><span>Email:</span>niyonkurujacques@gmail.con</p>
+            <p><span>IsAdmin:</span>true</p>
+            <p><span>Status:</span><span class="colored">Active</span></p>
+          </div>
+          <div class="dashboard-user-item">
+            <i class="fa-solid fa-circle-user"></i>
+            <p><span>Name:</span>Niyonkuru Jacques</p>
+            <p><span>Email:</span>niyonkurujacques@gmail.con</p>
+            <p><span>IsAdmin:</span>true</p>
+            <p><span>Status:</span><span class="colored">Active</span></p>
+          </div>
+          <div class="dashboard-user-item">
+            <i class="fa-solid fa-circle-user"></i>
+            <p><span>Name:</span>Niyonkuru Jacques</p>
+            <p><span>Email:</span>niyonkurujacques@gmail.con</p>
+            <p><span>IsAdmin:</span>true</p>
+            <p><span>Status:</span><span class="colored">Active</span></p>
+          </div>
+          <div class="dashboard-user-item">
+            <i class="fa-solid fa-circle-user"></i>
+            <p><span>Name:</span>Niyonkuru Jacques</p>
+            <p><span>Email:</span>niyonkurujacques@gmail.con</p>
+            <p><span>IsAdmin:</span>true</p>
+            <p><span>Status:</span><span class="colored">Active</span></p>
+          </div>
+          <div class="dashboard-user-item">
+            <i class="fa-solid fa-circle-user"></i>
+            <p><span>Name:</span>Niyonkuru Jacques</p>
+            <p><span>Email:</span>niyonkurujacques@gmail.con</p>
+            <p><span>IsAdmin:</span>true</p>
+            <p><span>Status:</span><span class="colored">Active</span></p>
+          </div>
+        </div>
+      </section>
+      <section id="section4">
+        <div class="dashboard-messages">
+          <h3>Messages</h3>
+          <div class="dashboard-message-item">
+            <h4>Niyonkuru Jacques</h4>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eum quas dolore accusantium ex quos,dolorum! quia beatae ....</p>
+            <span class="dashboard-message-item-date">February ,8 ,2024</span>
+          </div>
+          <div class="dashboard-message-item">
+            <h4>Niyonkuru Jacques</h4>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eum quas dolore accusantium ex quos,dolorum! quia beatae ....</p>
+            <span class="dashboard-message-item-date">February ,8 ,2024</span>
+          </div>
+          <div class="dashboard-message-item">
+            <h4>Niyonkuru Jacques</h4>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eum quas dolore accusantium ex quos,dolorum! quia beatae ....</p>
+            <span class="dashboard-message-item-date">February ,8 ,2024</span>
+          </div>
+          <div class="dashboard-message-item">
+            <h4>Niyonkuru Jacques</h4>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eum quas dolore accusantium ex quos,dolorum! quia beatae ....</p>
+            <span class="dashboard-message-item-date">February ,8 ,2024</span>
+          </div>
+          <div class="dashboard-message-item">
+            <h4>Niyonkuru Jacques</h4>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eum quas dolore accusantium ex quos,dolorum! quia beatae ....</p>
+            <span class="dashboard-message-item-date">February ,8 ,2024</span>
+          </div>
+          <div class="dashboard-message-item">
+            <h4>Niyonkuru Jacques</h4>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eum quas dolore accusantium ex quos,dolorum! quia beatae ....</p>
+            <span class="dashboard-message-item-date">February ,8 ,2024</span>
+          </div>
+          <div class="dashboard-message-item">
+            <h4>Niyonkuru Jacques</h4>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eum quas dolore accusantium ex quos,dolorum! quia beatae ....</p>
+            <span class="dashboard-message-item-date">February ,8 ,2024</span>
+          </div>
+        </div>
+      </section>
+      <section id="section5"></section>
+    </main>
+    <script src="../js/dashboard.js"></script>
+  </body>
+</html>

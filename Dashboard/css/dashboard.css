@@ -1,0 +1,331 @@
+
+
+*,*::after,*::before{
+box-sizing: border-box;
+margin:0;
+padding: 0;
+text-decoration:none;
+list-style: none;
+}
+
+:root{
+    --primary-color:#FF6000;
+    --navBackground-color:#3D3F3C;
+    --nav-color:#d9d9d9;
+    --border-radius-size:5px;
+
+}
+body{
+    font-family:'inria Sans',sans-serif;
+}
+
+
+.logo{
+width: 100px;
+height: 100px;
+overflow: hidden;
+position: relative;
+}
+.logo img{
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    object-fit: cover;
+    height: auto;
+}
+
+
+.nav-bar{
+    position: fixed;
+    left: 0;
+    width: 250px;
+    height:100% ;
+    background: var(--navBackground-color);
+}
+.nav-bar ul a{
+    display: block;
+    height: 100%;
+    width: 100%;
+    line-height: 65px;
+    font-size: 20px;
+    padding-left: 40px;
+    transition:.4sec  ;
+    color:var(--nav-color)
+}
+/* ul li:hover a{
+    padding-left: 50px;
+} */
+.nav-bar li i{
+    margin-right: 16px;
+}
+
+
+ section{
+  margin-bottom: 100px;
+ }
+
+ ul li a.active{
+    color:var(--primary-color)
+ }
+ .dashboard-main-container{
+    width: calc(100vw-250px);
+    margin-left: 250px;
+ }
+ .logo{
+    margin-inline: auto;
+ }
+
+ .message-notifications{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: var(--primary-color);
+    color:var(--nav-color);
+    justify-content: center;
+    align-items: center;
+    display: flex;
+   position:absolute;
+   right: 20px;
+   top:22px;
+   font-size: 12;
+ }
+ #section4-message{
+    position: relative;
+ }
+
+ #section2-blog{
+    position:relative ;
+ }
+
+
+ .notification-bell {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .notification-badge {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background-color: red;
+    color: white;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px;
+    
+  }
+  
+  .fa-bell {
+    font-size: 30px;
+    color:var(--navBackground-color)
+  }
+
+
+  header .search-bar{
+    display:flex;
+    height: 70px;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 30px;
+  }
+  header .search-bar .search-bar-input{
+    width: 40%;
+  }
+
+  header .search-bar .current-user{
+    width:20%;
+    font-size: 20px;
+  }
+  header .search-bar .current-user i{
+    font-size: 40px;
+      margin-right: 10px;
+  }
+  header .search-bar .search-bar-input{
+    height:50px;
+    position: relative;
+  }
+  header .search-bar .search-bar-input input{
+    height: 100%;
+    width: 100%;
+    border-radius:var(--border-radius-size);
+    outline: none;
+    border: 2px solid var(--navBackground-color);
+
+  }
+  header .search-bar .search-bar-input i{
+    position: absolute;
+    right:10px ;
+    top:10px;
+    font-size: 25px;
+    color: var(--navBackground-color);
+  }
+  header .search-bar .search-bar-btn{
+    padding: 8px 16px;
+    width: fit-content;
+    color:#d9d9d9;
+    font-size: 20px;
+    font-weight:600;
+    background-color: var(--primary-color);
+    border-radius: var(--border-radius-size);
+  }
+  header .search-bar .current-user{
+    width: fit-content;
+    height:100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  header .search-bar .current-user i{
+    color: var(--navBackground-color);
+  }
+  
+  
+  .dashboard-cards .dashboard-card{
+    width: 300px;
+    padding: 30px 20px;
+    color: #d9d9d9;
+    background: var(--navBackground-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border-radius: var(--border-radius-size);
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
+  }
+  .dashboard-cards .dashboard-card .dashboard-card-title{
+    color:#ffff;
+    font-weight: bold;
+    font-size: 40px;
+    line-height: 70px;
+    height: 100%;
+  }
+  .dashboard-cards{
+    display:flex;
+     width: 60%;
+     margin-left: 20px;
+     flex-wrap: wrap;
+     gap:40px;
+     margin-top:50px;
+  }
+  .dashboard-cards .dashboard-card i{
+    margin-left: 20px;
+  }
+  .dashboard-cards .dashboard-card .dashboard-card-subtitle{
+    font-size: 24px;
+    font-weight: 600;
+  }
+  .dashboard-blog-item .dashboard-blog-img{
+    width: 200px;
+    overflow: hidden;
+    position: relative;
+  }
+.dashboard-blog-item .dashboard-blog-img img{
+  width: 100%;
+  object-fit: cover;
+  height: auto;
+}
+.dashboard-blog-item {
+  display: flex;
+  padding: 20px 20px;
+  margin-inline: 30px;
+  border-bottom: 2px solid #d9d9d9;
+}
+.dashboard-blog-item:hover{
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.dashboard-blog-item .dashboard-blog-description{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding:0 30px;
+  flex: 1;
+}
+.dashboard-blog-item .dashboard-blog-description h4{
+  font-size: 24px;
+  
+}
+.dashboard-blog-item .dashboard-blog-description .dashboard-blog-description-foot{
+  display:flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.dashboard-blogs h3{
+  margin-left: 30px;
+  font-size: 32px;
+  margin-bottom: 20px;
+}
+
+.dashboard-blog-description-foot .dashboard-blog-description-foot-item i{
+  margin-right:15px;
+}
+.dashboard-users .dashboard-user-item{
+ max-width: 300px;
+  width: fit-content;
+  padding: 10px 20px 30px 20px;
+  border: 1px solid #d9d9d9;
+  border-radius: 20px;
+  display:flex;
+  flex-direction: column;
+  gap: 10px;
+  background: #f0f1ef;
+  box-shadow: rgba(0, 0, 0, 0.1);
+}
+.dashboard-users .dashboard-user-item i{
+  font-size: 60px;
+  color: #3D3F3C;
+  align-self: center;
+}
+
+.dashboard-users .dashboard-user-item p span{
+  font-weight: bold;
+  margin-right: 5px;
+}
+.dashboard-users .dashboard-user-item p .colored{
+  color:green;
+  font-weight: normal;
+}
+.dashboard-users{
+  margin-inline: 30px;
+  display: flex;
+  flex-wrap: wrap;
+  gap:40px;
+  margin-top: 50px;
+
+}
+#section3 h3{
+  margin-left: 30px;
+  font-size: 32px;
+}
+.dashboard-messages{
+  margin-left: 30px;
+}
+.dashboard-messages h3{
+  font-size: 32px;
+  margin-bottom: 30px;
+}
+.dashboard-messages .dashboard-message-item{
+  padding: 20px 20px;
+  border-bottom: 2px solid #d9d9d9;
+  margin-inline: 40px;
+  position: relative;
+}
+.dashboard-messages .dashboard-message-item h4{
+  margin-bottom: 10px;
+}
+.dashboard-messages .dashboard-message-item .dashboard-message-item-date{
+  font-weight:bold;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
+.dashboard-messages .dashboard-message-item:hover{
+  background: #f0f1ef;
+  cursor: pointer;
+}
