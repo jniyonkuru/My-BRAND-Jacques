@@ -8,6 +8,24 @@
 }
 
 /* tablet view */
+@media screen  and (max-width:980px){
+    .blogs-container{
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr;
+       }
+       
+      .search-bar{
+        margin-top: 50px;
+       flex-direction: column;
+      }
+      .search-bar .search-control{
+        width: 100%;
+      }
+      .search-bar .sort-control{
+        margin-top:30px;
+        align-self: flex-end;
+      }
+}
 @media screen  and (max-width:932px){
     h2{
         font-size: 1.5rem;
@@ -63,20 +81,28 @@
       }
       .blogs-container{
         grid-template-columns: 1fr;
-        grid-template-rows: auto;
+        grid-template-rows: 1fr;
        }
-       .search-bar .search-control{
-        grid-row: 1fr;
-        margin-bottom: 30px;
-      }
-      .search-bar .sort-control{
-        grid-row: 1fr;
-      }
+      
     
 }
 @media screen  and (max-width:550px){
     header nav{
-        display: none;
+        flex-wrap: wrap;
+    }
+    header nav ul{
+        display:block;
+        width: 100%;
+    }
+    header nav ul li{
+  border-bottom: 1px solid #d9d9d9;
+    }
+
+
+    header nav ul li>a{
+        line-height: 40px;
+        height: 100%;
+        border-left: none; 
     }
     main{
         padding-inline: 30px;
@@ -84,12 +110,14 @@
    .left-container{
     width: 100%;
     }
-    .fa-bars{
-        display: block;
-        position: relative;
-    
+   .menu-burger{
+    display: block;
+    fill:azure;
 
-    }
+   }
+   header nav{
+  position: relative;
+   }
     .button{
         display: block;
         padding-inline: 35px;
@@ -109,11 +137,11 @@
     }
     .contact-page{
       grid-template-columns: 1fr;
-      grid-template-rows: 1fr 1fr;
-      gap:20px
+      gap:20px;
+      width:100%;
     }
     .contact-page .contact-addresses{
-      grid-row: 1fr;
+      height: 450px;
     }
     .contact-page .contact-form{
         grid-row: 1fr;
@@ -132,19 +160,36 @@
    }
    .blogs-container{
     grid-template-columns: 1fr;
-    grid-template-rows: auto;
+    grid-template-rows: 1fr;
    }
    .search-bar{
     margin-top: 50px;
-    grid-template-columns:1fr;
-    grid-template-rows: 1fr 1fr;
+   flex-direction: column;
   }
   .search-bar .search-control{
-    grid-row: 1fr;
-    margin-bottom: 30px;
+    width: 100%;
   }
   .search-bar .sort-control{
-    grid-row: 1fr;
+   
+  }
+  .home-page .right-container .home-img{
+    margin-inline: auto;
+  }
+  .signup{
+    display: grid;
+    grid-template-columns: 1fr;
+
+  }
+  .signup-form{
+    width:100%;
+    grid-column: 1fr;
+    margin-top: 0;
+    padding: 10px 20px;
+    margin-top: 40px;
+  }
+  .signup-note{
+    grid-column:1fr;
+    /* grid-row:1fr;  */
   }
 
 }

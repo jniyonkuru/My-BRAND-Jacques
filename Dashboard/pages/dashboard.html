@@ -19,28 +19,28 @@
       <div class="logo">
         <img src="../../Icons_my_brand/logo3.svg" alt="logo" />
       </div>
+      <i class="fa-solid fa-chevron-left toggle-bar"></i>
       <ul class="nav-bar-items">
         <li class="nav-bar-item " >
-          <a href="#section1"><i class="fa-solid fa-qrcode"></i>Dashboard</a>
+          <a href="#section1"><i class="fa-solid fa-qrcode"></i><span class="nav-bar-item-text">Dashboard</span></a>
         </li>
         <li class="nav-bar-item" id="section2-blog">
-          <a href="#section2"> <i class="fa-solid fa-book"></i>Blogs</a>
-          <div class="message-notifications">15</div>
+          <a href="#section2"> <i class="fa-solid fa-book"></i><span class="nav-bar-item-text">Blogs</span></a>
+          <div class="message-notifications nav-bar-item-text">15</div>
         </li>
         <li class="nav-bar-item">
-          <a href="#section3"><i class="fa-solid fa-user-group"></i>Users</a>
+          <a href="#section3"><i class="fa-solid fa-user-group"></i><span class="nav-bar-item-text">Users</span></a>
         </li>
         <li class="nav-bar-item" id="section4-message">
-          <a href="#section4"><i class="fa-solid fa-message"></i>Messages</a>
-          <div class="message-notifications">15</div>
+          <a href="#section4"><i class="fa-solid fa-message"></i><span class="nav-bar-item-text">Message</span></a>
+          <div class="message-notifications nav-bar-item-text">15</div>
         </li>
         <li class="nav-bar-item">
-          <a href="#section5"><i class="fa-solid fa-gear"></i>Accounts</a>
+          <a href="#section5"><i class="fa-solid fa-gear"></i></i><span class="nav-bar-item-text">Account</span></a>
         </li>
       </ul>
     </div>
     <main class="dashboard-main-container">
-      <section id="section1">
         <header>
             <div class="search-bar">
               <div class="search-bar-input">
@@ -58,6 +58,7 @@
               <a href="" class="search-bar-btn">Sign out</a>
             </div>
         </header>
+        <section id="section1">
         <div class="dashboard-cards">
           <div class="dashboard-card">
             <div class="dashboard-card-title">
@@ -67,7 +68,6 @@
               Article Views
             </div>
           </div>
-
           <div class="dashboard-card">
           <div class="dashboard-card-title">
           <span>300 </span><i class="fa-regular fa-thumbs-up"></i>
@@ -96,179 +96,74 @@
       </section>
       <section id="section2">
         <div class="dashboard-blogs">
-          <h3>Recent Blogs</h3>
-          <div class="dashboard-blog-item">
-            <div class="dashboard-blog-img">
-            <img src="../../Images_my_brand/blog3.jpg" alt="">
-            </div>
-            <div class="dashboard-blog-description">
-              <h4>Blog Title</h4>
-              <div class="dashboard-blog-description-foot">
-                <div class="dashboard-blog-description-foot-item"><i class="fa-regular fa-comment"></i><span class="comments-count">5</span><span>Comments</span></div>
-                <div class="dashboard-blog-description-foot-item">
-                  <i class="fa-regular fa-eye"></i><span class="views-count">5</span><span>Views</span>
-                </div>
-                <div class="dashboard-blog-description-foot-item">
-                  <span class="likes-count">5</span><span>Likes</span> 
-                </div>
-                <div class="dashboard-blog-description-foot-item">
-                  <i class="fa-solid fa-pen"></i><span>Edit</span>
-                </div>
-                <div class="dashboard-blog-description-foot-item">
-                  <i class="fa-solid fa-trash"></i><span>Delete</span>
-                </div>
+          <h3>Recent Blogs</h3> <a href="./blog-edit.html" class="btn btn-blog">+Add New</a>
+          <div class="dashboard-blogList">
+            
 
-              </div>
-            </div>
           </div>
-
-          <div class="dashboard-blog-item">
-            <div class="dashboard-blog-img">
-            <img src="../../Images_my_brand/blog3.jpg" alt="">
-            </div>
-            <div class="dashboard-blog-description">
-              <h4>Blog Title</h4>
-              <div class="dashboard-blog-description-foot">
-                <div class="dashboard-blog-description-foot-item"><i class="fa-regular fa-comment"></i><span class="comments-count">5</span><span>Comments</span></div>
-                <div class="dashboard-blog-description-foot-item">
-                  <i class="fa-regular fa-eye"></i><span class="views-count">5</span><span>Views</span>
-                </div>
-                <div class="dashboard-blog-description-foot-item">
-                  <span class="likes-count">5</span><span>Likes</span> 
-                </div>
-                <div class="dashboard-blog-description-foot-item">
-                  <i class="fa-solid fa-pen"></i><span>Edit</span>
-                </div>
-                <div class="dashboard-blog-description-foot-item">
-                  <i class="fa-solid fa-trash"></i><span>Delete</span>
-                </div>
-
-              </div>
-            </div>
-          </div>
-          <div class="dashboard-blog-item">
-            <div class="dashboard-blog-img">
-            <img src="../../Images_my_brand/blog3.jpg" alt="">
-            </div>
-            <div class="dashboard-blog-description">
-              <h4>Blog Title</h4>
-              <div class="dashboard-blog-description-foot">
-                <div class="dashboard-blog-description-foot-item"><i class="fa-regular fa-comment"></i><span class="comments-count">5</span><span>Comments</span></div>
-                <div class="dashboard-blog-description-foot-item">
-                  <i class="fa-regular fa-eye"></i><span class="views-count">5</span><span>Views</span>
-                </div>
-                <div class="dashboard-blog-description-foot-item">
-                  <span class="likes-count">5</span><span>Likes</span> 
-                </div>
-                <div class="dashboard-blog-description-foot-item">
-                  <i class="fa-solid fa-pen"></i><span>Edit</span>
-                </div>
-                <div class="dashboard-blog-description-foot-item">
-                  <i class="fa-solid fa-trash"></i><span>Delete</span>
-                </div>
-
-              </div>
-            </div>
-          </div>
-          <div class="dashboard-blog-item">
-            <div class="dashboard-blog-img">
-            <img src="../../Images_my_brand/blog3.jpg" alt="">
-            </div>
-            <div class="dashboard-blog-description">
-              <h4>Blog Title</h4>
-              <div class="dashboard-blog-description-foot">
-                <div class="dashboard-blog-description-foot-item"><i class="fa-regular fa-comment"></i><span class="comments-count">5</span><span>Comments</span></div>
-                <div class="dashboard-blog-description-foot-item">
-                  <i class="fa-regular fa-eye"></i><span class="views-count">5</span><span>Views</span>
-                </div>
-                <div class="dashboard-blog-description-foot-item">
-                  <span class="likes-count">5</span><span>Likes</span> 
-                </div>
-                <div class="dashboard-blog-description-foot-item">
-                  <i class="fa-solid fa-pen"></i><span>Edit</span>
-                </div>
-                <div class="dashboard-blog-description-foot-item">
-                  <i class="fa-solid fa-trash"></i><span>Delete</span>
-                </div>
-
-              </div>
-            </div>
-          </div>
-          <div class="dashboard-blog-item">
-            <div class="dashboard-blog-img">
-            <img src="../../Images_my_brand/blog3.jpg" alt="">
-            </div>
-            <div class="dashboard-blog-description">
-              <h4>Blog Title</h4>
-              <div class="dashboard-blog-description-foot">
-                <div class="dashboard-blog-description-foot-item"><i class="fa-regular fa-comment"></i><span class="comments-count">5</span><span>Comments</span></div>
-                <div class="dashboard-blog-description-foot-item">
-                  <i class="fa-regular fa-eye"></i><span class="views-count">5</span><span>Views</span>
-                </div>
-                <div class="dashboard-blog-description-foot-item">
-                  <span class="likes-count">5</span><span>Likes</span> 
-                </div>
-                <div class="dashboard-blog-description-foot-item">
-                  <i class="fa-solid fa-pen"></i><span>Edit</span>
-                </div>
-                <div class="dashboard-blog-description-foot-item">
-                  <i class="fa-solid fa-trash"></i><span>Delete</span>
-                </div>
-
-              </div>
-            </div>
-          </div>
-          
-          
         </div>
-    
       </section>
       <section id="section3">
-        <H3>Users</H3>
-        <div class="dashboard-users">
-          <div class="dashboard-user-item">
-            <i class="fa-solid fa-circle-user"></i>
-            <p><span>Name:</span>Niyonkuru Jacques</p>
-            <p><span>Email:</span>niyonkurujacques@gmail.con</p>
-            <p><span>IsAdmin:</span>true</p>
-            <p><span>Status:</span><span class="colored">Active</span></p>
-          </div>
-          <div class="dashboard-user-item">
-            <i class="fa-solid fa-circle-user"></i>
-            <p><span>Name:</span>Niyonkuru Jacques</p>
-            <p><span>Email:</span>niyonkurujacques@gmail.con</p>
-            <p><span>IsAdmin:</span>true</p>
-            <p><span>Status:</span><span class="colored">Active</span></p>
-          </div>
-          <div class="dashboard-user-item">
-            <i class="fa-solid fa-circle-user"></i>
-            <p><span>Name:</span>Niyonkuru Jacques</p>
-            <p><span>Email:</span>niyonkurujacques@gmail.con</p>
-            <p><span>IsAdmin:</span>true</p>
-            <p><span>Status:</span><span class="colored">Active</span></p>
-          </div>
-          <div class="dashboard-user-item">
-            <i class="fa-solid fa-circle-user"></i>
-            <p><span>Name:</span>Niyonkuru Jacques</p>
-            <p><span>Email:</span>niyonkurujacques@gmail.con</p>
-            <p><span>IsAdmin:</span>true</p>
-            <p><span>Status:</span><span class="colored">Active</span></p>
-          </div>
-          <div class="dashboard-user-item">
-            <i class="fa-solid fa-circle-user"></i>
-            <p><span>Name:</span>Niyonkuru Jacques</p>
-            <p><span>Email:</span>niyonkurujacques@gmail.con</p>
-            <p><span>IsAdmin:</span>true</p>
-            <p><span>Status:</span><span class="colored">Active</span></p>
-          </div>
-          <div class="dashboard-user-item">
-            <i class="fa-solid fa-circle-user"></i>
-            <p><span>Name:</span>Niyonkuru Jacques</p>
-            <p><span>Email:</span>niyonkurujacques@gmail.con</p>
-            <p><span>IsAdmin:</span>true</p>
-            <p><span>Status:</span><span class="colored">Active</span></p>
-          </div>
-        </div>
+        <H3>Members</H3>
+        <table class="users-table">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Role</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Niyonkuru jacques</td>
+              <td>niyonkurujacques@gmail.com</td>
+              <td>admin</td>
+              <td>active</td>
+            </tr>
+            <tr>
+              <td>Niyonkuru jacques</td>
+              <td>niyonkurujacques@gmail.com</td>
+              <td>admin</td>
+              <td>active</td>
+            </tr>
+            <tr>
+              <td>Niyonkuru jacques</td>
+              <td>niyonkurujacques@gmail.com</td>
+              <td>admin</td>
+              <td>active</td>
+            </tr><tr>
+              <td>Niyonkuru jacques</td>
+              <td>niyonkurujacques@gmail.com</td>
+              <td>admin</td>
+              <td>active</td>
+            </tr>
+            <tr>
+              <td>Niyonkuru jacques</td>
+              <td>niyonkurujacques@gmail.com</td>
+              <td>admin</td>
+              <td>active</td>
+            </tr>
+            <tr>
+              <td>Niyonkuru jacques</td>
+              <td>niyonkurujacques@gmail.com</td>
+              <td>admin</td>
+              <td>active</td>
+            </tr>
+            <tr>
+              <td>Niyonkuru jacques</td>
+              <td>niyonkurujacques@gmail.com</td>
+              <td>admin</td>
+              <td>active</td>
+            </tr>
+            <tr>
+              <td>Niyonkuru jacques</td>
+              <td>niyonkurujacques@gmail.com</td>
+              <td>admin</td>
+              <td>active</td>
+            </tr>
+          </tbody>
+        </table> 
       </section>
       <section id="section4">
         <div class="dashboard-messages">
@@ -295,18 +190,17 @@
           </div>
           <div class="dashboard-message-item">
             <h4>Niyonkuru Jacques</h4>
+           
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eum quas dolore accusantium ex quos,dolorum! quia beatae ....</p>
             <span class="dashboard-message-item-date">February ,8 ,2024</span>
           </div>
+
           <div class="dashboard-message-item">
             <h4>Niyonkuru Jacques</h4>
+            
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eum quas dolore accusantium ex quos,dolorum! quia beatae ....</p>
             <span class="dashboard-message-item-date">February ,8 ,2024</span>
-          </div>
-          <div class="dashboard-message-item">
-            <h4>Niyonkuru Jacques</h4>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eum quas dolore accusantium ex quos,dolorum! quia beatae ....</p>
-            <span class="dashboard-message-item-date">February ,8 ,2024</span>
+            </div>
           </div>
         </div>
       </section>
