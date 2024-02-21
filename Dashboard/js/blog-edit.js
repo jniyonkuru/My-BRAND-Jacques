@@ -6,6 +6,7 @@ const inputFile=document.getElementById('input-file');
 const blogTitle=document.getElementById('blog-title');
 const blogBody=document.getElementById('mytextarea');
 let base64String='';
+let imgcontainer=document.getElementById('img-preview');
 let AllBlogs=[];
 
 function getURLParameter(name) {
@@ -20,6 +21,10 @@ if(editId){
     let itemIndex=blogs.findIndex(item=>item.id===editId);
     blogBody.value=item.body;
     blogTitle.value=item.tilte;
+    imgcontainer.style.display='inline';
+    imgcontainer.innerHTML=`
+    <img src=${item.imgurl}>
+    `
 update.addEventListener('click',(e)=>{
     e.preventDefault();
     updateBlog(itemIndex,item,blogs);
@@ -37,6 +42,10 @@ const fileImage=inputFile.files[0];
 const reader=new FileReader();
  reader.onload=function(){
    base64String=reader.result;
+   imgcontainer.style.display="inline"
+  imgcontainer.innerHTML=`
+   <img src=${base64String}>
+   `
  }
 reader.readAsDataURL(fileImage);
 
@@ -66,6 +75,7 @@ publish.addEventListener('click',(e)=>{
      inputFile.value='';
      blogTitle.value='';
      blogBody.value=''
+     imgcontainer.style.display='none';
     }else{
         return;
     }

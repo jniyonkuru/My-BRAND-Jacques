@@ -1,73 +1,72 @@
-*,*::after,*::before{
-    box-sizing: border-box;
-    margin:0;
-    padding: 0;
-    text-decoration:none;
-    list-style: none;
-   
-    }
-.blog-edit{
-    display:flex;
-    flex-direction:column;
-    width:80%;
-    height:800px;
-    max-height:100vh;
-    justify-content:center;
-    padding:50px 80px;
-    position: relative;
-    gap:20px;
-
-}    
-
-.blog-edit input{
-    width:300px;
-    height:40px;
-    border-radius:8px;
-    border:2px solid #9d9e9d;
-    padding-left:10px;
-    font-size:14px;
-
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  list-style: none;
 }
-.blog-edit textarea{
-    width:600px;
-border-radius:8px;
-border:2px solid #9d9e9d;
-}
-.up-btns a{
-    border:1px solid #FF6000;
-    color:#ff6000;
-    padding:4px 8px;
-    border-radius:5px;
-    margin-left:10px;
-
-}
-.up-btns{
-align-self:center;
+.blog-edit {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  height: 800px;
+  max-height: 100vh;
+  justify-content: center;
+  padding: 50px 80px;
+  position: relative;
+  gap: 20px;
 }
 
-.blog-edit > a i{
-    color:#ff6000;
-    font-size:32px;
-    margin-right:10px;
+.blog-edit input {
+  width: 300px;
+  height: 40px;
+  border-radius: 8px;
+  border: 2px solid #9d9e9d;
+  padding-left: 10px;
+  font-size: 14px;
 }
-.blog-edit > a{
-    color:#000;
-    font-weight:600;
+.blog-edit textarea {
+  width: 600px;
+  border-radius: 8px;
+  border: 2px solid #9d9e9d;
 }
-.blog-edit h3{
-    font-size:32px;
+.up-btns a {
+  border: 1px solid #ff6000;
+  color: #ff6000;
+  padding: 4px 8px;
+  border-radius: 5px;
+  margin-left: 10px;
 }
-.img-preview-container{
-    width:200px;
-    height:200px;
-    overflow:hidden;
-    position: relative;
+.up-btns {
+  align-self: center;
 }
-#img-preview{
-width:100%;
-height:100%;
-position:absolute;
-top:0;
-right:0;
-object-fit:cover;
+
+.blog-edit > a i {
+  color: #ff6000;
+  font-size: 32px;
+  margin-right: 10px;
+}
+.blog-edit > a {
+  color: #000;
+  font-weight: 600;
+}
+.blog-edit h3 {
+  font-size: 32px;
+}
+#img-preview {
+  width: 200px;
+  height: 200px;
+  position: relative;
+  overflow: hidden;
+  display: none;
+}
+#img-preview img {
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: auto;
 }
