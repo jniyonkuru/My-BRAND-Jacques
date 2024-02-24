@@ -32,6 +32,7 @@
         <li><a href="./blog.html">Blog</a></li>
         <li><a href="./index.html#portfolio">Portfolio</a></li>
         <li><a href="./index.html#contact">Contact Me</a></li>
+        <li id="Admin-only"><a href="./Dashboard/pages/dashboard.html">Admin-Dashboard</a></li>
         <li><a href="./login.html" class="active">Login</a></li>
       </ul>
     </nav>
@@ -47,17 +48,20 @@
         <h3 class="form-title">Login</h3>
         <form action="">
             <div class="input-control">
-            <label for="name">UserName or Email</label>
-            <input id="name" type="text"></div>
+            <label for="loginemail">Email</label>
+            <input id="loginemail" type="text"></div>
             <div class="input-control">
-                <label for="name">Password</label>
-                <input id="name" type="password"></div>
-                <button class="btn">Login</button>
+                <label for="loginpassword">Password</label>
+                <input id="loginpassword" type="password" autocomplete="confirm-password">
+              </div>
+              <p></p>
+                <button class="btn" type="submit">Login</button>
         </form>
-        <div class="text-note"><a href="./signup.html">SignUp</a>,if you don't have an account .</div>
+        <div class="text-note"><a href="./signup.html">SignUp</a>, if you don't have an account .</div>
       </div>
     </main>
    <script src="./js/blog.js"></script>
+   <script src="./js/login.js"></script>
     
 </body>
 </html>

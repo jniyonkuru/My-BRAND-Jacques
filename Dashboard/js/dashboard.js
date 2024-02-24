@@ -3,7 +3,11 @@ const navLinks = document.querySelectorAll(".nav-bar ul li a");
 const chevronToggler = document.querySelector(".toggle-bar");
 const blogsContainer = document.querySelector(".dashboard-blogs");
 const blogsList = document.querySelector(".dashboard-blogList");
+const userTableBody=document.querySelector('.users-table tbody');
+const dashboardMessages=document.querySelector('.dashboard-messages');
 let AllBlogs = [];
+let AllUsers=[];
+let AllMessages=[];
 
 // ++++++++ update and nav bar++++++++
 
@@ -17,6 +21,10 @@ chevronToggler.addEventListener("click", (e) => {
 window.addEventListener("DOMContentLoaded", (e) => {
   AllBlogs = JSON.parse(localStorage.getItem("AllBlogs")) || [];
   displayBlogs(AllBlogs);
+  AllUsers=JSON.parse(localStorage.getItem('AllUsers'))||[];
+  displayUsers(AllUsers);
+  AllMessages=JSON.parse(localStorage.getItem('userMessages'))||[];
+  displayMessages(AllMessages);
 });
 blogsList.addEventListener("click", (e) => {
   let id = e.target.closest(".fa-trash-can").getAttribute("key");
@@ -37,7 +45,7 @@ function displayBlogs(blogs) {
         </div>
         <div class="dashboard-blog-description">
           <h4>${blog.tilte}</h4>
-          <p>${blog.body}</P>
+          <p>${blog.body.substring(0,100)+"...."}</P>
           <div class="dashboard-blog-description-foot">
           <div class="dashboard-blog-description-foot-item">
           <span>Comments</span>
@@ -62,6 +70,36 @@ function displayBlogs(blogs) {
   for (let blog of mappedBlogs) {
     blogsList.innerHTML += blog;
   }
+}
+function displayUsers(users){
+   let mappedUsers=users.map(u=>{
+    return`
+      <tr>
+      <td>${u.name}</td>
+      <td>${u.email}</td>
+      <td>${u.isAdmin}</td>
+      <td>${u.active}</td>
+      
+      </tr>
+    `
+  })
+  mappedUsers.forEach(user=>userTableBody.innerHTML+=user);
+  
+}
+
+function displayMessages(messages){
+  let mappedMessages=messages.map(m=>{
+    return`
+    <div class="dashboard-message-item">
+    <h4>${m.name}</h4>
+    <p>${m.message}</p>
+    <span class="dashboard-message-item-date">${m.date}</span>
+  </div>
+    `
+  })
+  mappedMessages.forEach(m=>{
+    dashboardMessages.innerHTML+=m;
+  })
 }
 
 function removeBlog(id) {

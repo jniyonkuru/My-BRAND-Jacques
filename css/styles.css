@@ -35,6 +35,45 @@ main{
  header{
   display: flex;
  }
+ #logout{
+  align-items:center;
+  gap:10px;
+  width:fit-content;
+  position: relative;
+}
+#logout i,span{
+  display: block;
+}
+#logout i{
+  font-size:26px;
+}
+ #dropDownbtnNav{
+  width:fit-content;
+  background:#d9d9d9;
+  box-shadow:0 0 5px 2px rgba(0,0,0,0.5);
+  border-radius:10px;
+  position:absolute;
+  bottom:-40px;
+  right:0;
+  z-index: 1000;
+  display:none;
+}
+#dropDownbtnNav button{
+  padding:8px 16px;
+  border:0;
+  outline:none;
+  background:var(--primary-color);
+  color:white;
+  border-radius:inherit;
+  font-size:16px;
+  cursor: pointer;
+  transition:all ease-in .3sec;
+}
+#dropDownbtnNav button:hover{
+  transform:scale(1.1);
+}
+
+
  header nav{
     display: flex;
     justify-content: space-between;
@@ -49,6 +88,7 @@ main{
     z-index: 1111;
    
  }
+
  
     .menu-burger{
       width:40px;
@@ -136,7 +176,6 @@ main{
     justify-content:center;
     align-items: center;
     padding:50px 0;
-   /* max-width: 50%; */
     position: relative;
     margin-top: 50px;
   }
@@ -261,8 +300,7 @@ main{
    /* contact me */
    #editor{
     width:100%;
-    height: 200px;
-
+    height: 150px;
    }
 
   .contact-page{
@@ -274,8 +312,8 @@ main{
     margin-top: 30px;
     height: fit-content;
    border-radius: var(--border-radius-size);
-   border: 1px solid var(--primary-color);
-   box-shadow: 2px 2px 4px rgba(0,0, 0, 0.1);
+  
+   box-shadow: 0 0 10px rgba(0,0, 0, 0.5);
 
   }
   .contact-page .contact-addresses{
@@ -303,12 +341,13 @@ main{
     padding: 20px 30px;
   
   }
+
   .contact-page .contact-form form{
     max-width: 100%;
     display: flex;
     flex-direction: column;
+    background: #d9d9d9;  
     gap: 10px;
-    background: #d9d9d9;
     border-radius:8px;
     padding:10px 20px;
   }
@@ -356,6 +395,7 @@ main{
  .error-messages{
   font-size:12px;
   color:red;
+  margin-top:5px;
  }
 
 
@@ -573,10 +613,12 @@ font-size: 24px;
   margin-inline: auto;
   margin-top: 80px;
   place-self: center;
-  border: solid 1px var(--primary-color);
   padding: 30px 50px;
   border-radius:12px;
   grid-column: 2fr;
+  background: #d9d9d9;
+  box-shadow: 0 0 5px 5px rgba(0,0,0,0.2);
+
   
 }
 .login-note{
@@ -586,21 +628,22 @@ font-size: 24px;
 .login-form label{
   display: block;
   margin-top: 30px;
-  font-size:20px ;
+  font-size:16px ;
   font-weight: 600;
   margin-bottom: 10px;
 }
 .login-form input{
   width: 100%;
   height: 50px;
-  border: var(--primary-color) 1px solid;
+  border:0;
+  outline:none;
   border-radius: 8px;
 
 }
 .login-form .btn{
   width: 100%;
   height: 50px;
-  font-size: 24px;
+  font-size: 18px;
   font-weight: 600;
   background: var(--primary-color);
   color:var(--nav-color);
@@ -611,7 +654,7 @@ font-size: 24px;
 }
 .login h3{
   
-  font-size: 32px;
+  font-size: 26px;
   margin-bottom: 20px;
   color: var(--primary-color);
 }
@@ -646,12 +689,13 @@ a{
 .signup-form{
   width: 60%;
   margin-inline: auto;
-  margin-top: 50px;
+  margin-top: 70px;
   place-self: center;
-  border: solid 1px var(--primary-color);
-  padding: 30px 50px;
+  padding: 20px 50px;
   border-radius:12px;
   grid-column: 2fr;
+  background: #d9d9d9;
+  box-shadow: 0 0 5px 5px rgba(0,0,0,0.2);
   
 }
 .signup-note{
@@ -661,21 +705,22 @@ a{
 .signup-form label{
   display: block;
   margin-top: 10px;
-  font-size:20px ;
+  font-size:16px ;
   font-weight: 600;
   margin-bottom: 10px;
 }
 .signup-form input{
   width: 100%;
   height: 40px;
-  border: var(--primary-color) 1px solid;
+  border:0;
+  outline:none;
   border-radius: 8px;
 
 }
 .signup .btn{
   width: 100%;
   height: 40px;
-  font-size: 24px;
+  font-size: 18px;
   font-weight: 600;
   background: var(--primary-color);
   color:var(--nav-color);
@@ -686,7 +731,7 @@ a{
 }
 .signup h3{
   
-  font-size: 32px;
+  font-size: 24px;
   margin-bottom: 20px;
   color: var(--primary-color);
 }
@@ -747,11 +792,9 @@ gap: 10px;
   font-size: 1.2rem;
   color: #9d9e9d;
 }
-.tox-tinymce {
-  border: 1px solid red;
-  border-radius: 5px;
-}
+
 
 .collapsible{
   display: none;
 }
+

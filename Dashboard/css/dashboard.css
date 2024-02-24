@@ -243,6 +243,7 @@ position: relative;
   }
   .dashboard-blog-item .dashboard-blog-img{
     width: 200px;
+    height:100px;
     overflow: hidden;
     position: relative;
   }
@@ -255,7 +256,8 @@ position: relative;
   display: flex;
   margin-inline:30px;
   border-bottom: 1px solid #d9d9d9;
-  width:60%;
+  width:80%;
+  margin-bottom:10px;
 }
 .dashboard-blog-item:hover{
   background-color: rgba(0, 0, 0, 0.1);
@@ -287,6 +289,7 @@ position: relative;
 
 .dashboard-blog-description-foot .dashboard-blog-description-foot-item i{
   margin-right:5px;
+  cursor: pointer;
 }
 .dashboard-blog-description-foot .dashboard-blog-description-foot-item a{
   color:#3D3F3C;
@@ -322,6 +325,9 @@ position: relative;
 #section3 h3{
   margin-left: 30px;
   font-size: 32px;
+}
+.dashboard-messages{
+  width:80%;
 }
 
 .dashboard-messages h3{

@@ -20,6 +20,7 @@ if(editId){
     if(item){
     let itemIndex=blogs.findIndex(item=>item.id===editId);
     blogBody.value=item.body;
+    base64String=item.imgurl;
     blogTitle.value=item.tilte;
     imgcontainer.style.display='inline';
     imgcontainer.innerHTML=`
@@ -52,9 +53,12 @@ reader.readAsDataURL(fileImage);
 });
 
  function updateBlog(index,item,blogs){
-   item={...item,body:blogBody.value,tilte:blogTitle.value};
+   item={...item,body:blogBody.value,tilte:blogTitle.value,imgurl:base64String};
    blogs[index]=item;
    localStorage.setItem('AllBlogs',JSON.stringify(blogs));
+   blogBody.value='';
+   blogTitle.value='';
+   imgcontainer.style.display='none';
  }
 
 publish.addEventListener('click',(e)=>{
