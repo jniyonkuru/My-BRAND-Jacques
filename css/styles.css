@@ -89,7 +89,6 @@ main{
    
  }
 
- 
     .menu-burger{
       width:40px;
       height: 40px;
@@ -141,8 +140,6 @@ main{
     display:flex;
     padding:20px 0;
     gap:50px;
-    
-    
   }
 
   .home-page .right-container{
@@ -179,9 +176,6 @@ main{
     position: relative;
     margin-top: 50px;
   }
-  
- 
-  
   .home-page .left-container a{
     text-decoration: none;
   }
@@ -246,21 +240,15 @@ main{
     width: 250px;
     gap:10px;
   }
-
-
-
   .skills-card i{
     font-size: 40px;
     color: #FF6000;
   }
-
   .portfolio-page{
     display: flex;
   flex-direction: column;
   margin-top: 50px;
-  background: rgba(0, 0, 0, 0.01)
-
-
+  background: rgba(0, 0, 0, 0.01);
   }
   .portfolio-page .work-title{
     font-size: 2.2rem;
@@ -276,7 +264,6 @@ main{
 .works-display::-webkit-scrollbar{
   width:10px;
 }
-
 
   .portfolio-page i{
     display: block;
@@ -346,7 +333,7 @@ main{
     max-width: 100%;
     display: flex;
     flex-direction: column;
-    background: #d9d9d9;  
+    background: #eee;  
     gap: 10px;
     border-radius:8px;
     padding:10px 20px;
@@ -398,9 +385,7 @@ main{
   margin-top:5px;
  }
 
-
   /* footer */
-  
  .footer{
   height: 50px;
   background:var(--navBackground-color);
@@ -416,10 +401,7 @@ footer div{
   color:var(--primary-color);
 }
 
-
-
   /* blog  */
-
   .blogs-container{
     display:grid;
     grid-template-columns: 1fr 1fr 1fr;
@@ -471,8 +453,7 @@ footer div{
     margin-bottom: 20px;
     border: 1px solid rgba(157, 158, 157,0.3);
     padding:20px 30px;
-    border-radius: 5px;
-    
+    border-radius: 5px; 
 
   }
   .blog h4>a{
@@ -493,7 +474,6 @@ footer div{
     
   }
   
-
 
   /* blog details */
   .blog-details{
@@ -517,7 +497,6 @@ footer div{
     padding:70px 180px;
     line-height: 1.5;
   }
-  
   
   .blog-detailed  textarea{
     border: solid var(--primary-color) 1px;
@@ -568,8 +547,6 @@ footer div{
   font-size: 1rem;
 }
 
-
-
   /* portfolio */
   .portfolio-details{
     display:flex;
@@ -589,7 +566,6 @@ footer div{
   margin-top: 20px;
   font-size: 2rem;
 }
-
 
 .register-form span{
   color: var(--primary-color);
@@ -616,10 +592,9 @@ font-size: 24px;
   padding: 30px 50px;
   border-radius:12px;
   grid-column: 2fr;
-  background: #d9d9d9;
+  background: #eee;
   box-shadow: 0 0 5px 5px rgba(0,0,0,0.2);
 
-  
 }
 .login-note{
   grid-column: 1fr;
@@ -694,7 +669,7 @@ a{
   padding: 20px 50px;
   border-radius:12px;
   grid-column: 2fr;
-  background: #d9d9d9;
+  background:#eee;
   box-shadow: 0 0 5px 5px rgba(0,0,0,0.2);
   
 }

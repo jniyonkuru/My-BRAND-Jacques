@@ -49,7 +49,6 @@ window.addEventListener('DOMContentLoaded',(e)=>{
  }
 })
 
-
 //  handle submit event of the form
 
  messageForm.addEventListener('submit',(e)=>{
@@ -62,7 +61,11 @@ window.addEventListener('DOMContentLoaded',(e)=>{
   const month=new Date().getMonth()+1;
   const day=new Date().getDate();
   const year=new Date().getFullYear();
+  const hour=new Date().getHours();
+  const min=new Date().getMinutes();
   userMessage.date=`${month}-${day}-${year}`;
+  userMessage.id=new Date();
+  userMessage.time=`${hour}:${min}`;
   userMessage.email=emailField.value;
   userMessage.name=nameField.value;
   userMessage.title=subjectField.value;
@@ -92,8 +95,6 @@ subjectField.addEventListener('input',(e)=>{
 textField.addEventListener('input',(e)=>{
     validateText(textField,3);
 })
-
-
  document.querySelectorAll('input').forEach((inputfield,index)=>inputfield.addEventListener('blur',(e)=>{
     errorMessagesContainers[index].innerHTML='';
     
