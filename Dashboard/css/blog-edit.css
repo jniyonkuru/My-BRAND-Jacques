@@ -8,19 +8,26 @@
   list-style: none;
 }
 .blog-edit {
-  display: flex;
   flex-direction: column;
-  width: 80%;
-  height: 800px;
+  width: 70%;
+  height: 600px;
   max-height: 100vh;
   justify-content: center;
   padding: 50px 80px;
-  position: relative;
+  position:absolute;
   gap: 20px;
+  align-items: center;
+  z-index: 100;
+  background:#eff5f7;
+  margin-left:10%;
+  box-shadow: 0 0 400px 50px rgba(0, 0, 0, 1);
+  border-radius: 12px;
+  display: none;
 }
 
 .blog-edit input {
-  width: 300px;
+  width:100%;
+ max-width: 300px;
   height: 40px;
   border-radius: 8px;
   border: 2px solid #9d9e9d;
@@ -28,7 +35,8 @@
   font-size: 14px;
 }
 .blog-edit textarea {
-  width: 600px;
+  width: 100%;
+  max-width:600px;
   border-radius: 8px;
   border: 2px solid #9d9e9d;
   padding:10px 20px;
@@ -71,3 +79,11 @@
   width: 100%;
   height: auto;
 }
+.btn-cancel{
+  border:1px solid var(--primary-color);
+  padding:8px 16px;
+  border-radius: 6px;
+  color:#ff6000;
+  font-size: 18px;
+}
+

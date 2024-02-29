@@ -1,5 +1,4 @@
 
-
 *,*::after,*::before{
 box-sizing: border-box;
 margin:0;
@@ -7,7 +6,6 @@ padding: 0;
 text-decoration:none;
 list-style: none;
 }
-
 
 :root{
     --primary-color:#FF6000;
@@ -35,8 +33,6 @@ position: relative;
     object-fit: cover;
     height: auto;
 }
-
-
 .nav-bar{
     position: fixed;
     left: 0;
@@ -72,7 +68,6 @@ position: relative;
 }
 .nav-bar-small{
   width:70px;
-  /* margin-right:1300px; */
 }
 .flip{
   transform:scaleX(-1)
@@ -82,22 +77,16 @@ position: relative;
 }
 
  section{
-  /* min-height:100vh; */
   margin-bottom: 100px;
  }
 
  ul li a.active{
     color:var(--primary-color)
  }
- .dashboard-main-container{
-    /* width: calc(100vw-200px); */
-    /* padding-left: 70px; */
- }
- 
+
  .logo{
     margin-inline: auto;
  }
-
  .message-notifications{
     width: 30px;
     height: 30px;
@@ -116,11 +105,11 @@ position: relative;
     position: relative;
  }
 
- #section2-blog{
+ #section2{
     position:relative ;
+    width: 100%;
  }
-
-
+ 
  .notification-bell {
     position: relative;
     display: inline-block;
@@ -138,21 +127,16 @@ position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 12px;
-    
+    font-size: 12px; 
   }
-  
   .fa-bell {
     font-size: 30px;
     color:var(--navBackground-color)
   }
-
-
   header .search-bar{
     display:flex;
     height: 70px;
     justify-content:space-between;
-    /* gap:50px; */
     align-items: center;
     padding-left:20px;
     width:100%;
@@ -207,10 +191,9 @@ position: relative;
   header .search-bar .current-user i{
     color: var(--navBackground-color);
   }
-  
-  
   .dashboard-cards .dashboard-card{
     width: 200px;
+    height: 150px;
     padding: 5px 10px;
     color: #d9d9d9;
     background: var(--navBackground-color);
@@ -417,6 +400,9 @@ border-radius: 5px;
 z-index: 10;
 
 }
+
+
+
 /* btn */
  #section2{
   position: relative;
@@ -435,7 +421,12 @@ z-index: 10;
   display: flex;
 
 }
-.recent-messages h3{
+.recent-messages-list{
+border-radius: 6px;
+overflow: hidden;
+margin-top: 20px;
+}
+.recent-messages-list h3{
   background:var(--navBackground-color);
   color:#fff;
   width:100%;
@@ -444,7 +435,76 @@ z-index: 10;
   padding-top:10px;
 }
 .recent-messages{
-  width:50%;
+  max-width:100%;
+  background-color: #fff;
+  border: 1px solid #b3b5b7;
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 0 40px 4px rgba(0,0,0,0.2);
+  overflow-y: scroll;
+  width: 500px;
 }
 
+.recent-messages .message-title{
+ display:flex;
+ align-items: center;
+ gap:10px;
+ margin-bottom: 5px;
+}
+
+.recent-messages .message-item{
+  padding: 10px 20px;
+  border-bottom: 1px solid #b3b5b7;
+}
+
+/* create contact */
+
+.edit-contacts{
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+}
+.edit-contacts form{
+  margin-left:20px;
+  place-self: center;
+  padding: 20px 80px;
+  border-radius:12px;
+  grid-column: 1fr;
+  background: #dedfe0;
+  box-shadow: 0 0 5px 5px rgba(0,0,0,0.2);
+  
+}
+
+.add-contact form label{
+  display: block;
+  margin-top: 10px;
+  font-size:16px ;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+.add-contact form input{
+  width: 100%;
+  height: 40px;
+  border:0;
+  outline:none;
+  border-radius: 8px;
+
+}
+.add-contact .create-user{
+  height: 40px;
+  font-size: 18px;
+  font-weight: 600;
+  background: var(--primary-color);
+  color:var(--nav-color);
+  outline:none;
+  border:0;
+  margin-top:30px;
+  border-radius: 8px;
+  padding: 8px 16px;
+}
+.add-contact h3{
+  font-size: 24px;
+  margin-bottom: 20px;
+  text-align: center;
+}
 

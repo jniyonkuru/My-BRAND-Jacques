@@ -149,9 +149,9 @@ main{
   .home-page .right-container .home-img{
     width:400px;
     overflow: hidden;
-    padding: 10px 0;
     border-bottom: solid #FF6000 3px;
     border-radius: 20px;
+    box-shadow: 0 0 20px 2px rgba(0,0,0,0.2);
     
   }
   .download-cv{

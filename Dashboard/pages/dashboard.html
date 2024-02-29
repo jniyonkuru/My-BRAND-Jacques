@@ -8,6 +8,8 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="../css/dashboard.css" />
+    <link rel="stylesheet" href="../css/blog-edit.css">
+
     <script
       src="https://kit.fontawesome.com/57f94116a4.js"
       crossorigin="anonymous"
@@ -92,13 +94,29 @@
           </div>
         </div>
         </div>
-        <div class="recent-messages">
+        <div class="recent-messages-list">
           <H3>Recent Messages</H3>
+          <div class="recent-messages">
+          </div>
         </div>
+    
       </section>
       <section id="section2">
+        <section class="blog-edit">
+          <h3>Blog Title</h3>
+          <div class="up-btns">
+              <a href=""id='update'><i class="fa-solid fa-floppy-disk"></i>Update</a>
+              <a href="" id="publish"><i class="fa-solid fa-arrows-rotate"></i>Publish</a>
+          </div>
+          <input type="text" name="" id="blog-title" placeholder="Blog Title">
+          <a href="" id="upload-link"><i class="fa-solid fa-cloud-arrow-up"></i>Upload a picture</a>
+          <input type="file" name="" id="input-file" style="display: none;"><span id="img-preview"></span>
+          <textarea name=""  cols="30" rows="10" placeholder="blog body..." id="mytextarea"></textarea>
+          <button class="btn-cancel">Cancel</button>
+        </section>
+
         <div class="dashboard-blogs">
-          <h3>Recent Blogs</h3> <a href="./blog-edit.html" class="btn btn-blog">+Add New</a>
+          <h3>Recent Blogs</h3> <a href="" class="btn btn-blog">+Add New</a>
           <div class="dashboard-blogList">
             
           </div>
@@ -126,8 +144,36 @@
           </div>
         </div>
       </section>
-      <section id="section5"></section>
+      <section id="section5">
+        <h3>Accounts</h3>
+        <div class="edit-contacts">
+        <div class="add-contact">
+          <h3>Create user</h3>
+          <form action="">
+            <div class="input-control">
+            <label for="name">Name</label>
+            <input id="name" type="text"></div>
+            <div class="input-control">
+              <p class="error-messages"></p>
+                <label for="email">Email</label>
+                <input id="email" type="email"></div>
+                <p class="error-messages"></p>
+                <div class="input-control">
+                    <label for="password">Password</label>
+                    <input id="password" type="password" autocomplete="">
+                  </div>
+                  <p class="error-messages"></p>
+            <div class="input-control">
+                <label for="password-confirm">Confirm Password</label>
+                <input id="password-confirm" type="password" autocomplete="confirm-password">
+              </div>
+              <p class="error-messages"></p>
+                <button class="create-user" type="submit">Create user</button>
+              </form>
+        </div>
+        </div>
+      </section>
     </main>
-    <script src="../js/dashboard.js"></script>
+    <script src="../js/dashboard.js" type="module"></script>
   </body>
 </html>
