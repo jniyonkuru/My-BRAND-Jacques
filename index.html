@@ -4,18 +4,53 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./css/styles.css" />
-    <link rel="stylesheet" href="./css/main.css">
+    <link rel="stylesheet" href="./css/main.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Inria+Sans:wght@400;700&family=Inter:wght@300;700&family=Irish+Grover&family=Open+Sans:wght@400;700&family=UnifrakturMaguntia&display=swap"
       rel="stylesheet"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
     <script
       src="https://kit.fontawesome.com/57f94116a4.js"
       crossorigin="anonymous"
     ></script>
-    <script src="./node_modules/tinymce/tinymce.min.js" referrerpolicy="origin"></script>
+    <style>
+      html,
+      body {
+        position: relative;
+        height: 100%;
+      }
+      .swiper {
+        width: 100%;
+        height: 400px;
+      }
+
+      .swiper-slide {
+        text-align: center;
+        font-size: 18px;
+        background: #fff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+      }
+
+      .swiper-slide img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .swiper-slide a {
+        align-self: flex-end;
+        position: absolute;
+      }
+    </style>
 
     <title>My_Brand_Jacques</title>
   </head>
@@ -28,7 +63,7 @@
           </div>
         </a>
         <div class="menu-burger">
-          <img src="./Icons_my_brand/icons8-menu.svg" alt="">
+          <img src="./Icons_my_brand/icons8-menu.svg" alt="" />
         </div>
 
         <ul>
@@ -36,17 +71,16 @@
           <li><a href="./blog.html">Blog</a></li>
           <li><a href="#portfolio">Portfolio</a></li>
           <li><a href="#contact">Contact Me</a></li>
-          <li id="Admin-only" style="display: none;"><a href="./Dashboard/pages/dashboard.html">Admin-Dashboard</a></li>
+          <li id="Admin-only" style="display: none">
+            <a href="./Dashboard/pages/dashboard.html">Admin-Dashboard</a>
+          </li>
           <li id="login"><a href="./login.html">Login</a></li>
-          <li id="logout" style="display: none;"></li>
+          <li id="logout" style="display: none"></li>
         </ul>
       </nav>
-     
     </header>
     <main>
-      
       <section class="home-page">
-        
         <div class="left-container">
           <h2>I am <span>Jacques Niyonkuru</span></h2>
           <h3>A Full stack software Engineer</h3>
@@ -77,12 +111,11 @@
         <div class="left-container">
           <h3>Skills</h3>
           <p>
-            Hello there! 👋 I'm a passionate  Full Stack Software
-            Engineer with a relentless curiosity for crafting innovative
-            solutions. My journey in the realm of technology began with a
-            deep-seated fascination for coding and problem-solving, and it has
-            evolved into a fulfilling career that allows me to blend creativity
-            with technical expertise.
+            Hello there! 👋 I'm a passionate Full Stack Software Engineer with a
+            relentless curiosity for crafting innovative solutions. My journey
+            in the realm of technology began with a deep-seated fascination for
+            coding and problem-solving, and it has evolved into a fulfilling
+            career that allows me to blend creativity with technical expertise.
           </p>
         </div>
         <div class="right-container">
@@ -122,57 +155,53 @@
       </section>
       <section class="portfolio-page" id="portfolio">
         <h3 class="work-title">Work</h3>
-        <div class="works-display">
-          <i class="fa-solid fa-chevron-left"></i>
-        <div class="work-card">
-            <div class="work-card-img">
-                <img src="./Images_my_brand/Etch-a-sketch.png" alt="">
+        <div class="swiper mySwiper">
+          <div class="swiper-wrapper">
+            <div data-history="1" class="swiper-slide">
+              <img src="./Images_my_brand/Etch-a-sketch.png" alt="" />
+              <a href="https://jniyonkuru.github.io/Etch-a-Sketch/"
+                ><h4>Etch-a-sketch</h4></a
+              >
             </div>
-            <a href="https://jniyonkuru.github.io/Etch-a-Sketch/"><h4>Etch-a-sketch</h4></a>
-        </div>
-        <div class="work-card">
-            <div class="work-card-img">
-                <img src="./Images_my_brand/country-app-dark.png" alt="">
+            <div data-history="Slide 2" class="swiper-slide">
+              <img src="./Images_my_brand/country-app-dark.png" alt="" />
+              <a href="https://jniyonkuru.github.io/countryApp/"
+                ><h4>Country App</h4></a
+              >
             </div>
-            <a href="https://jniyonkuru.github.io/countryApp/"><h4>Country App</h4></a>
-        </div>
-        <div class="work-card">
-            <div class="work-card-img">
-                <img src="./Images_my_brand/country-app-light.png" alt="">
+
+            <div data-history="3" class="swiper-slide">
+              <img src="./Images_my_brand/country-app-light.png" alt="" />
+              <a href="https://jniyonkuru.github.io/countryApp/"
+                ><h4>Country App</h4></a
+              >
             </div>
-            <h4>Country App</h4>
-        </div>
-        <div class="work-card">
-            <div class="work-card-img">
-                <img src="./Images_my_brand/landing-page.png" alt="">
+            <div data-history="Slide 4" class="swiper-slide">
+              <img src="./Images_my_brand/landing-page.png" alt="" />
             </div>
-            <h4>Landing page</h4>
-        </div>
-        <div class="work-card">
-            <div class="work-card-img">
-                <img src="./Images_my_brand/country-app-dark.png" alt="">
+            <div data-history="5" class="swiper-slide">
+              <img src="./Images_my_brand/country-app-dark.png" alt="" />
             </div>
-            <h4>Country App</h4>
-        </div>
-        <div class="work-card">
-            <div class="work-card-img">
-                <img src="./Images_my_brand/country-app-light.png" alt="">
+            <div data-history="Slide 6" class="swiper-slide">
+              <img src="./Images_my_brand/country-app-dark.png" alt="" />
             </div>
-            <h4>Country App</h4>
-        </div>
-        <div class="work-card">
-            <div class="work-card-img">
-                <img src="./Images_my_brand/landing-page.png" alt="">
+            <div data-history="7" class="swiper-slide">
+              <img src="./Images_my_brand/country-app-dark.png" alt="" />
             </div>
-            <a href="https://jniyonkuru.github.io/moshify/"><h4>landing-page</h4></a>
-            
-        </div>
-        <i class="fa-solid fa-chevron-right"></i>
+            <div data-history="Slide 8" class="swiper-slide">
+              <img src="./Images_my_brand/country-app-dark.png" alt="" />
+            </div>
+            <div data-history="9" class="swiper-slide">
+              <img src="./Images_my_brand/country-app-dark.png" alt="" />
+            </div>
+          </div>
+          <div class="swiper-button-next"></div>
+          <div class="swiper-button-prev"></div>
+          <div class="swiper-pagination"></div>
         </div>
       </section>
-  
+
       <section class="contact-page" id="contact">
-       
         <div class="contact-addresses">
           <h4>Contact us</h4>
           <p>We are open to any suggestion or just have a chat</p>
@@ -194,31 +223,36 @@
           </div>
         </div>
         <div class="contact-form">
-          <h4>Send us  a message</h4>
+          <h4>Send us a message</h4>
           <form action="">
             <div class="input-control">
               <label for="name">Name</label>
-              <input type="text" id="name">
+              <input type="text" id="name" />
               <p class="error-messages"></p>
             </div>
             <div class="input-control">
               <label for="email">Email</label>
-              <input type="email" id="email">
+              <input type="email" id="email" />
               <p class="error-messages"></p>
             </div>
             <div class="input-control">
               <label for="subject">Subject</label>
-              <input type="text" id="subject">
+              <input type="text" id="subject" />
               <p class="error-messages"></p>
             </div>
             <div class="input-control">
-              <textarea name="" id="editor" cols="30" rows="4"
-              placeholder="Type your message" ></textarea>
+              <textarea
+                name=""
+                id="editor"
+                cols="30"
+                rows="4"
+                placeholder="Type your message"
+              ></textarea>
               <p class="error-messages"></p>
             </div>
             <button class="btn" type="submit">Send</button>
           </form>
-        </div> 
+        </div>
       </section>
     </main>
     <footer>
@@ -226,7 +260,23 @@
         <div>&copy Niyonkuru jacques 2024</div>
       </div>
     </footer>
-    <script src="./js/scroll.js"></script>
-
+    <script src="./js/scroll.js" type="module"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+      var swiper = new Swiper(".mySwiper", {
+        spaceBetween: 10,
+        slidesPerView: 4,
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        },
+        pagination: {
+          el: ".swiper-pagination",
+        },
+        history: {
+          key: "slide",
+        },
+      });
+    </script>
   </body>
 </html>

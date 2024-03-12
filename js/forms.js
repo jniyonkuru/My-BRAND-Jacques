@@ -14,12 +14,16 @@ window.addEventListener("DOMContentLoaded", (e) => {
   AllUsers = JSON.parse(localStorage.getItem("AllUsers")) || [];
 });
 
-
 form.addEventListener("submit", (e) => {
   e.preventDefault();
-  validateName(signupName, 0);
-  validateMail(signupEmail, 1);
-  validatePassword(signUpPassword, 2);
+ let errorName= validateName(signupName, 0);
+  errorName?errorMessages[0].innerHTML=errorName.join(','):errorMessages[0].innerHTML='';
+  let errorMail=validateMail(signupEmail, 1);
+  errorMail?errorMessages[1].innerHTML=errorMail.join(','):'';
+ let errorPassword= validatePassword(signUpPassword, 2);
+ errorPassword?errorMessages[2].innerHTML=errorPassword.join(','):'';
+ let errorConfirmPassword=confirmPassword(signUpPassword,signUpConfirmPassword,3);
+ errorConfirmPassword?errorMessages[3].innerHTML=errorPassword.join(','):'';
   let newUser = {
     name: signupName.value,
     email: signupEmail.value,
@@ -64,10 +68,6 @@ signupEmail.addEventListener("input", (e) => {
   e.preventDefault();
   validateMail(e.target, 1);
 });
-
-
-
-
 
 signUpConfirmPassword.addEventListener("input", (e) => {
   confirmPassword(e.target, signUpPassword);

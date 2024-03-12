@@ -1,4 +1,4 @@
- export let validateName = function (field, errorMessages,serial) {
+ export let validateName = function (field,serial) {
   let errorMessage = [];
   if (field.value === null || field.value === "") {
     errorMessage.push("Name field should no be empty");
@@ -7,11 +7,11 @@
   } else {
     errorMessage = [];
   }
-  errorMessages[serial].innerHTML = errorMessage.join(",");
+  return errorMessage;
 };
 
 
-export let validateMail = function (field, errorMessages,serial) {
+export let validateMail = function (field,serial) {
   let errorMessage = [];
   const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   if (field.value === "" || field.value === null) {
@@ -21,52 +21,46 @@ export let validateMail = function (field, errorMessages,serial) {
   } else {
     errorMessage = [];
   }
-  errorMessages[serial].innerHTML = errorMessage.join(",");
+  return errorMessage;
 };
 
 
- export let validatePassword = function (field, errorMessages,serial) {
-  let erroMessage = [];
+ export let validatePassword = function (field,serial) {
+  let errorMessage = [];
   let assertNumber = /[0-9]+/;
   let assertSpecialCharacters = /[!@#$%^&*]+/;
-  let asertUpperCase = /[A-Z]+/;
+  let assertUpperCase = /[A-Z]+/;
   let assertLowerCase = /[a-z]+/;
   let assertLength = /^.{5,16}$/;
 
   if (field.value === "") {
-    erroMessage.push("password field should not be empty");
-    errorMessages[serial].innerHTML = erroMessage.join("");
+    errorMessage.push("password field should not be empty");
   } else if (!assertNumber.test(field.value)) {
-    erroMessage.push("password should contain at least one number");
-    errorMessages[serial].innerHTML = erroMessage.join("");
+    errorMessage.push("password should contain at least one number");
   } else if (!assertLength.test(field.value)) {
-    erroMessage.push(
+    errorMessage.push(
       "password length should be at let 6 characters and max 16"
     );
-    errorMessages[serial].innerHTML = erroMessage.join("");
   } else if (!assertSpecialCharacters.test(field.value)) {
-    erroMessage.push("password should contain  special character");
-    errorMessages[serial].innerHTML = erroMessage.join("");
-  } else if (!asertUpperCase.test(field.value)) {
-    erroMessage.push("password should contain uppercase character");
-    errorMessages[serial].innerHTML = erroMessage.join("");
+    errorMessage.push("password should contain  special character");
+  } else if (!assertUpperCase.test(field.value)) {
+    errorMessage.push("password should contain uppercase character");
+
   } else if (!assertLowerCase.test(field.value)) {
-    erroMessage.push("password should contain  lowercase character");
-    errorMessages[serial].innerHTML = erroMessage.join("");
+    errorMessage.push("password should contain  lowercase character");
   } else {
-    erroMessage = [];
-    errorMessages[serial].innerHTML = "";
+    errorMessage = [];
   }
+  return errorMessage;
 };
 
- export let confirmPassword = function (field1, errorMessages,field2, serial = 3) {
-  let erroMessage = [];
+ export let confirmPassword = function (field1,field2, serial = 3) {
+  let errorMessage = [];
   if (field1.value !== field2.value) {
-    erroMessage.push("password does not match");
-    errorMessages[serial].innerHTML = erroMessage.join("");
+    errorMessage.push("password does not match");
   } else {
-    erroMessage = [];
-    errorMessages[serial].innerHTML = "";
+    errorMessage = [];
   }
+  return errorMessage;
 };
 
