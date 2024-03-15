@@ -21,19 +21,24 @@
 <body>
   <header>
     <nav>
-      <div class="logo">
-        <img src="./Icons_my_brand/log2.svg" alt="" />
-      </div>
+      <a href="#">
+        <div class="logo">
+          <img src="./Icons_my_brand/log2.svg" alt="" />
+        </div>
+      </a>
       <div class="menu-burger">
-        <img src="./Icons_my_brand/icons8-menu.svg" alt="">
+        <img src="./Icons_my_brand/icons8-menu.svg" alt="" />
       </div>
       <ul>
-        <li><a href="./index.html">Home</a></li>
-        <li><a href="./blog.html">Blog</a></li>
+        <li><a  href="./index.html">Home</a></li>
+        <li><a  href="./blog.html">Blog</a></li>
         <li><a href="./index.html#portfolio">Portfolio</a></li>
         <li><a href="./index.html#contact">Contact Me</a></li>
-        <li id="Admin-only"><a href="./Dashboard/pages/dashboard.html">Admin-Dashboard</a></li>
-        <li><a href="./login.html" class="active">Login</a></li>
+        <li id="Admin-only" style="display: none">
+        <a href="./Dashboard/pages/dashboard.html">Admin-Dashboard</a>
+        </li>
+        <li  id="login"><a class="active" href="./login.html">Login</a></li>
+        <li id="logout" style="display: none"></li>
       </ul>
     </nav>
   </header>

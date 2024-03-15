@@ -1,4 +1,4 @@
-import { validateMail } from "../../js/util/validation.js";
+import { validateMail,validateName,validatePassword,confirmPassword } from "../../js/util/validation.js";
 
 const sections = document.querySelectorAll("section");
 const navbar = document.querySelector(".nav-bar");
@@ -15,7 +15,19 @@ const recentMessages = document.querySelector(".recent-messages");
 const addBlog = document.querySelector(".btn.btn-blog");
 const blogEdit = document.querySelector(".blog-edit");
 
-let AllBlogs = [];
+
+// create user
+const userName = document.querySelector(".add-contact #name");
+const userEmail = document.querySelector(".add-contact #email");
+const userPassword = document.querySelector(".add-contact #password");
+const userConfirmPassword = document.querySelector("#password-confirm");
+const createUserForm = document.querySelector(".add-contact form");
+const errorMessages = document.querySelectorAll(".error-messages");
+const isAdminCheck=document.querySelector('#isadmin');
+const registerUserForm=document.querySelector('.add-contact form')
+console.log(userConfirmPassword)
+
+let blogList = [];
 let AllUsers = [];
 let AllMessages = [];
 
@@ -29,11 +41,18 @@ chevronToggler.addEventListener("click", (e) => {
 // ==============Get blogs======================
 
 window.addEventListener("DOMContentLoaded", (e) => {
-  AllBlogs = JSON.parse(localStorage.getItem("AllBlogs")) || [];
-  displayBlogs(AllBlogs);
-  AllUsers = JSON.parse(localStorage.getItem("AllUsers")) || [];
+let token=localStorage.getItem('token');
+const [header, payload, signature] = token.split('.');
+const decodedPayload = atob(payload);
+const payloadObj = JSON.parse(decodedPayload);
+if(payloadObj){
+  currentUser.innerHTML=payloadObj.userName;
+}
+  fetchBlogs()
+  displayBlogs(blogList);
+  fetchUsers();
+  fetchMessages();
   displayUsers(AllUsers);
-  AllMessages = JSON.parse(localStorage.getItem("userMessages")) || [];
   displayMessages(AllMessages);
   if (loggedInUser) {
     currentUser.innerHTML = loggedInUser.name;
@@ -45,12 +64,39 @@ window.addEventListener("DOMContentLoaded", (e) => {
     document.querySelector(".dashboard-main-container").style.marginLeft =
       "100px";
   }
+  blogsList.addEventListener("click", (e) => {
+    let id = e.target.closest(".fa-trash-can").getAttribute("key");
+    removeBlog(id,token);
+  });
+  dashboardMessages.addEventListener("click", (e) => {
+    e.preventDefault();
+    let id = e.target.closest(".fa-trash-can").getAttribute("key");
+    deleteMessage(id,token);
+  });
   displayRecentMessages(AllMessages);
+
+  registerUserForm.addEventListener('submit',(e)=>{
+    let errorName= validateName(userName, 0);
+    errorName?errorMessages[0].innerHTML=errorName.join(','):errorMessages[0].innerHTML='';
+    let errorMail=validateMail(userEmail, 1);
+    errorMail?errorMessages[1].innerHTML=errorMail.join(','):'';
+   let errorPassword= validatePassword(userPassword, 2);
+   errorPassword?errorMessages[2].innerHTML=errorPassword.join(','):'';
+   let errorConfirmPassword=confirmPassword(userPassword,userConfirmPassword,3);
+   errorConfirmPassword?errorMessages[3].innerHTML=errorPassword.join(','):'';
+   let newUser = {
+    name: userName.value.trim(),
+    email: userEmail.value.trim(),
+    password: userPassword.value.trim(),
+    confirmPassword: userConfirmPassword.value.trim(),
+    isAdmin:isAdminCheck.checked,
+
+  };
+  console.log(newUser)
+  createUser(newUser)
+  })
 });
-blogsList.addEventListener("click", (e) => {
-  let id = e.target.closest(".fa-trash-can").getAttribute("key");
-  removeBlog(id);
-});
+
 blogsList.addEventListener("click", (e) => {
   let id = e.target.closest(".fa-pen").getAttribute("key");
   console.log(id);
@@ -71,11 +117,7 @@ blogsList.addEventListener("click", (e) => {
   }
 });
 
-dashboardMessages.addEventListener("click", (e) => {
-  e.preventDefault();
-  let id = e.target.closest(".fa-trash-can").getAttribute("key");
-  deleteMessage(id);
-});
+
 dashboardMessages.addEventListener("click", (e) => {
   e.preventDefault();
   let id = e.target.closest(".fa-reply").getAttribute("key");
@@ -97,25 +139,25 @@ function displayBlogs(blogs) {
     return `
         <div class="dashboard-blog-item">
         <div class="dashboard-blog-img">
-        <img src=${blog.imgurl}>
+        <img src=${blog.image}>
         </div>
         <div class="dashboard-blog-description">
-          <h4>${blog.tilte}</h4>
-          <p>${blog.body.substring(0, 100) + "...."}</P>
+          <h4>${blog.blogTitle}</h4>
+          <p>${blog.blogBody.substring(0, 100) + "...."}</P>
           <div class="dashboard-blog-description-foot">
           <div class="dashboard-blog-description-foot-item">
           <span>Comments</span>
-              <i class="fa-solid fa-comment key=${blog.id}"></i>
+              <i class="fa-solid fa-comment key=${blog._id}"></i>
          </div>
          <div class="dashboard-blog-description-foot-item">
          <span>5</span></i><span>Likes</span> 
 
          </div>
          <div class="dashboard-blog-description-foot-item">
-              <i class="fa-solid fa-pen" key=${blog.id}></i><span>Edit</span> 
+              <i class="fa-solid fa-pen" key=${blog._id}></i><span>Edit</span> 
          </div>
          <div class="dashboard-blog-description-foot-item">
-         <i class="fa-solid fa-trash-can" key=${blog.id}></i><span>delete</span>
+         <i class="fa-solid fa-trash-can" key=${blog._id}></i><span>delete</span>
          </div>
               </div>
               </div>
@@ -134,7 +176,7 @@ function displayUsers(users) {
       <td>${u.name}</td>
       <td>${u.email}</td>
       <td>${u.isAdmin}</td>
-      <td>${u.active}</td>
+      <td>active</td>
       </tr>
     `;
   });
@@ -147,11 +189,11 @@ function displayMessages(messages) {
     <div class="dashboard-message-item">
     <div class="message-title"><i class="fa fa-user-circle fa-lg"></i>
     <h4>${m.name}</h4></div>
-    <p>${m.message}</p>
-    <span class="messages-options"><i class="fa-solid fa-trash-can" key=${m.id}></i>
-    <i class="fa-solid fa-reply" key=${m.id}></i>
+    <p>${m.messageBody}</p>
+    <span class="messages-options"><i class="fa-solid fa-trash-can" key=${m._id}></i>
+    <i class="fa-solid fa-reply" key=${m._id}></i>
     </span>
-    <span class="dashboard-message-item-date">${m.date} ,\n\n${m.time}</span>
+    <span class="dashboard-message-item-date">${m.date.substring(0,10)} ,\n\n${m.date}</span>
   </div>
     `;
   });
@@ -160,10 +202,25 @@ function displayMessages(messages) {
   });
 }
 
-function removeBlog(id) {
-  AllBlogs = AllBlogs.filter((item) => item.id !== id);
-  localStorage.setItem("AllBlogs", JSON.stringify(AllBlogs));
-  blogsList.innerHTML = "";
+ async function removeBlog(id,token) {
+
+    try {
+        const response = await fetch(`http://localhost:3008/api/blogs/${id}`, {
+            method: 'DELETE',
+            headers: {
+                'Authorization':`Bearer ${token}`,
+                'Content-Type': 'application/json'
+            }
+        });
+
+        if (!response.ok) {
+            throw new Error('Failed to delete resource');
+        }
+        const data = await response.json();
+        console.log('Resource deleted:', data);
+    } catch (error) {
+        console.error('Error deleting resource:', error);
+    }
   displayBlogs(AllBlogs);
 }
 
@@ -199,15 +256,29 @@ function toggleNavBar() {
   }
 }
 
-function deleteMessage(id) {
-  AllMessages = AllMessages.filter((m) => m.id !== id);
-  dashboardMessages.innerHTML = "";
-  localStorage.setItem("userMessages", JSON.stringify(AllMessages));
+async function deleteMessage(id,token){
+  try {
+    const response = await fetch(`http://localhost:3008/api/messages/${id}`, {
+        method: 'DELETE',
+        headers: {
+            'Authorization':`Bearer ${token}`,
+            'Content-Type': 'application/json'
+        }
+    });
+
+    if (!response.ok) {
+        throw new Error('Failed to delete resource');
+    }
+    const data = await response.json();
+    console.log('Resource deleted:', data);
+} catch (error) {
+    console.error('Error deleting resource:', error);
+}
+   
   displayMessages(AllMessages);
 }
 function replyMessage(id) {
-  let email = AllMessages.filter((user) => user.id === id)[0].email;
-  console.log(email);
+  let email = AllMessages.filter((user) => user.id === id)[0].email
   window.location.href = `mailto:${email}`;
 }
 
@@ -217,11 +288,12 @@ function displayRecentMessages(messages) {
 <div class="message-item">
 <div class="message-title"><i class="fa fa-user-circle fa-lg"></i>
     <h4>${m.name}</h4></div>
-    <p>${m.message}</p>
+    <p>${m.messageBody}</p>
 </div>
 `;
   });
-  for (let i = 0; i < mappedMessages.length; i++) {
+  recentMessages.innerHTML="";
+  for (let i = 0; i <4; i++) {
     recentMessages.innerHTML += mappedMessages[i];
   }
 }
@@ -331,12 +403,84 @@ cancelBtn.addEventListener("click", (e) => {
   imgcontainer.style.display = "none";
   blogEdit.style.display = "none";
 });
-// create user
-const userName = document.querySelector(".add-contact #name");
-const userEmail = document.querySelector(".add-contact #email");
-const userPassword = document.querySelector(".add-contact #password");
-const userConfirmPassword = document.querySelector(
-  ".add-contact #confirm-password"
-);
-const createUserForm = document.querySelector(".add-contact form");
-const errorMessages = document.querySelector(".add-contact .errorMessages");
+
+
+
+const fetchBlogs=async function(){
+  try {
+   const response= await fetch('http://localhost:3008/api/blogs');
+
+   if(!response.ok){
+       throw new Error('failed to fetch blogs')
+   return;
+   }
+   const result=await response.json();
+  //  const authorPromises = result.data.map(blog => fetchAuthor(blog.author));
+  //  const authors = await Promise.all(authorPromises)
+
+   blogList=result.data;
+  //  blogList=blogList.map((blog,index)=>{
+  //      return{...blog,author:authors[index]}
+  //  })
+   displayBlogs(blogList);
+   
+  } catch (error) {
+     console.error('error while fetching blogs:',error)
+  }
+
+}
+const fetchUsers= async function(){
+
+try{
+  const response =await fetch('http://localhost:3008/api/users');
+  if(!response.ok){
+  throw new Error('failed to fetch users');
+  }
+  const result= await response.json();
+AllUsers=result.data;
+displayUsers(AllUsers)
+}catch(error){
+console.error('error while fetching users',error)
+
+}
+
+}
+
+const fetchMessages=async function(){
+  try {
+    const response =await fetch('http://localhost:3008/api/messages');
+    if(!response.ok){
+    throw new Error('failed to fetch messages');
+    }
+    const result= await response.json();
+  AllMessages=result.data;
+ displayMessages(AllMessages)
+ displayRecentMessages(AllMessages)
+  } catch (error) {
+    console.error('error while fetching users',error)
+  }
+}
+
+// function to create a user
+
+const createUser = async (user) => {
+
+  try {
+      const response = await fetch('http://localhost:3008/api/users', {
+          method: 'POST',
+          headers: {
+              'Content-Type':'application/json'
+          },
+          body: JSON.stringify(user)
+      });
+
+      if (!response.ok) {
+          throw new Error('failed to create user');
+      }
+
+      const data = await response.json();
+      console.log('User created:', data);
+  } catch (error) {
+      console.error('Error creating user:', error);
+  }
+};

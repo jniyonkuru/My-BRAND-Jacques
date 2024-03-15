@@ -482,7 +482,7 @@ margin-top: 20px;
   font-weight: 600;
   margin-bottom: 10px;
 }
-.add-contact form input{
+.add-contact .input-control input{
   width: 100%;
   height: 40px;
   border:0;

@@ -6,27 +6,30 @@ document.querySelector('header nav .menu-burger').addEventListener('click',(e)=>
 // ++++++++ contact-form-validation++++++f
  
 let  userMessages=[];
-let loggedin='';
+let portfolio=[]
+const swiperWrapper=document.querySelector('.swiper-wrapper')
  const messageForm=document.querySelector('.contact-form form');
  const nameField=document.querySelector('#name');
  const emailField=document.querySelector('#email');
  const errorMessagesContainers=document.querySelectorAll('.error-messages');
- const subjectField=document.querySelector('#subject');
  const textField=document.querySelector('#editor');
  const isAdmin=document.querySelector('#Admin-only');
  const login=document.querySelector('#login');
  const logout=document.querySelector('#logout');
-
  const dropDownbtnNav=document.querySelector("#dropDownbtnNav");
+ const responseMessage=document.querySelector('.contact-page .contact-form .success-message');
+ const errorResponse=document.querySelector('.contact-page .contact-form .fail-message');
 
 //  handle page loading
 window.addEventListener('DOMContentLoaded',(e)=>{
-    userMessages=JSON.parse(localStorage.getItem('userMessages'))||[];
-   let currentUser=JSON.parse(sessionStorage.getItem('currentUser'));
- if(currentUser&&currentUser.isAdmin){
-    isAdmin.style.display='inline';
+    fetchPortfolio();
+let token=localStorage.getItem('token');
+const [header, payload, signature] = token.split('.');
+const decodedPayload = atob(payload);
+const payloadObj = JSON.parse(decodedPayload);
+   if(token){
     logout.style.display='flex';
-    logout.innerHTML=`<i class="fa-solid fa-circle-user"></i>\n\n<span>${currentUser.name}</span><i id='2'class="fa-solid fa-circle-chevron-down"></i>
+    logout.innerHTML=`<i class="fa-solid fa-circle-user"></i>\n\n<span>${payloadObj.userName}</span><i id='2'class="fa-solid fa-circle-chevron-down"></i>
     <span id="dropDownbtnNav"><button>log out</button></span>
     `;
     login.style.display='none';
@@ -42,10 +45,13 @@ window.addEventListener('DOMContentLoaded',(e)=>{
     })
     signoutbtn.addEventListener('click',(e)=>{
         e.preventDefault()
-        sessionStorage.removeItem('currentUser');
+        localStorage.removeItem('token');
     window.location.href="../index.html";
 
     })
+    if(payloadObj.isAdmin){
+        isAdmin.style.display='inline'
+    }
  }
 })
 
@@ -55,27 +61,18 @@ window.addEventListener('DOMContentLoaded',(e)=>{
     e.preventDefault();
     validateName(nameField,0);
     validateMail(emailField,1);
-    validateSubject(subjectField,2)
-    validateText(textField,3);
-  let userMessage={};
-  const month=new Date().getMonth()+1;
-  const day=new Date().getDate();
-  const year=new Date().getFullYear();
-  const hour=new Date().getHours();
-  const min=new Date().getMinutes();
-  userMessage.date=`${month}-${day}-${year}`;
-  userMessage.id=new Date();
-  userMessage.time=`${hour}:${min}`;
-  userMessage.email=emailField.value;
-  userMessage.name=nameField.value;
-  userMessage.title=subjectField.value;
-  userMessage.message=textField.value;
- if(userMessage.date&&userMessage.email&&userMessage.name&&userMessage.title&&userMessage.message){
+    validateText(textField,2);
+    let userMessage={};
+ 
+  userMessage.email=emailField.value.trim();
+  userMessage.name=nameField.value.trim();
+  userMessage.messageBody=textField.value.trim();
+ if(userMessage.email&&userMessage.name&&userMessage.messageBody){
      userMessages.push(userMessage);
-     localStorage.setItem('userMessages',JSON.stringify(userMessages));
+
+    writeMessage(userMessage);
      nameField.value='';
      emailField.value='';
-     subjectField.value='';
      textField.value='';
  }else{
     return;
@@ -89,11 +86,9 @@ nameField.addEventListener('input',(e)=>{
 emailField.addEventListener('input',(e)=>{
     validateMail(emailField,1);
 })
-subjectField.addEventListener('input',(e)=>{
-    validateSubject(subjectField,2)
-})
+
 textField.addEventListener('input',(e)=>{
-    validateText(textField,3);
+    validateText(textField,2);
 })
  document.querySelectorAll('input').forEach((inputfield,index)=>inputfield.addEventListener('blur',(e)=>{
     errorMessagesContainers[index].innerHTML='';
@@ -101,7 +96,7 @@ textField.addEventListener('input',(e)=>{
  }))
 
   textField.addEventListener('input',(e)=>{
-          errorMessagesContainers[3].innerHTML='';
+          errorMessagesContainers[2].innerHTML='';
 
   })
  
@@ -151,8 +146,56 @@ let validateSubject=function(field ,serial){
       }
       errorMessagesContainers[serial].innerHTML=errorMessage.join(',');
 
+};
+
+let fetchPortfolio=async function(){
+    const response= await fetch('http://localhost:3008/api/portfolio');
+    const result=await response.json();
+    portfolio=result.data
+    displayPOrtfolio(portfolio);
+    
+}
+let displayPOrtfolio= function(data){
+    
+  let mappedPortfolio=data.map((item,index)=>{
+    return `<div class="swiper-slide">
+      <img src=${item.image} alt="">
+      <a href=${item.workUrl}>${item.workTitle}</a>
+    </div>`
+  })
+swiperWrapper.innerHTML=mappedPortfolio.join();
 }
 
+const writeMessage=async function(message){
+
+    try {
+        const response= await fetch('http://localhost:3008/api/messages',{
+        method:'POST',
+        headers:{
+        'content-type':'application/json'
+        },
+        body:JSON.stringify(message)
+        
+    })
+    if(!response.ok){
+        const errorData= await response.json()
+        throw  new Error(errorData.message||'error happened')
+    }
+    showResponse('Message sent successfully')
+    } catch (error){
+        showError('Message not sent'||error.message)
+        
+    }
+}
+const showResponse=function(message){
+responseMessage.textContent=message;
+responseMessage.style.display='block';
+}
+ const showError=function(error){
+  errorResponse.textContent=error;
+  errorResponse.style.display='block';
+
+ }
 
 
 

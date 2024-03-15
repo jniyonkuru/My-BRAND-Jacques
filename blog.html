@@ -17,21 +17,26 @@ crossorigin="anonymous"
 <body>
     <header>
         <nav>
-            <div class="logo">
-                <img src="./Icons_my_brand/log2.svg" alt="">
-            </div>
-            <div class="menu-burger">
-                <img src="./Icons_my_brand/icons8-menu.svg" alt="">
+            <a href="#">
+              <div class="logo">
+                <img src="./Icons_my_brand/log2.svg" alt="" />
               </div>
+            </a>
+            <div class="menu-burger">
+              <img src="./Icons_my_brand/icons8-menu.svg" alt="" />
+            </div>
             <ul>
-                <li ><a href="./index.html">Home</a></li>
-                <li><a class="active"  href="">Blog</a></li>
-                <li><a href="./index.html#portfolio">Portfolio</a></li>
-                <li><a href="./index.html#contact">Contact Me</a></li>
-                <li id="Admin-only"><a href="./Dashboard/pages/dashboard.html">Admin-Dashboard</a></li>
-                <li><a href="./login.html">Login</a></li>
+              <li><a  href="./index.html">Home</a></li>
+              <li><a class="active" href="./blog.html">Blog</a></li>
+              <li><a href="./index.html#portfolio">Portfolio</a></li>
+              <li><a href="./index.html#contact">Contact Me</a></li>
+              <li id="Admin-only" style="display: none">
+                <a href="./Dashboard/pages/dashboard.html">Admin-Dashboard</a>
+              </li>
+              <li id="login"><a href="./login.html">Login</a></li>
+              <li id="logout" style="display: none"></li>
             </ul>
-        </nav>
+          </nav>
     </header>
     <main>
     
@@ -49,56 +54,7 @@ crossorigin="anonymous"
         </div>
      </div>
       <div class="blogs-container">
-        <div class="blog">
-            <div class="blog-img">
-            <img src="./Images_my_brand/blog3.jpg" alt="">
-            </div>
-            <div class="auth">
-            <img src="./Images_my_brand/me.jpg" alt="jacques">
-            </div>
-            <span><span class="date">February ,04 ,2024</span><span class="auth-name">, Niyonkuru jacques</span></span>
-            <h4><a href="./blog-details.html">Css postions explained</a></h4>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum, ducimus.</p>
-            <a href="./blog-details.html" class="readmore">Read more</a>
-        </div>
-        <div class="blog">
-            <div class="blog-img">
-            <img src="./Images_my_brand/blog3.jpg" alt="">
-            </div>
-            <div class="auth">
-            <img src="./Images_my_brand/me.jpg" alt="jacques">
-            </div>
-            <span><span class="date">February ,04 ,2024</span><span class="auth-name">, Niyonkuru jacques</span></span>
-            <h4><a href="./blog-details.html">Css postions explained</a></h4>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum, ducimus.</p>
-            <a href="./blog-details.html" class="readmore">Read more</a>
-        </div>
-        <div class="blog">
-            <div class="blog-img">
-            <img src="./Images_my_brand/blog3.jpg" alt="">
-            </div>
-            <div class="auth-card">
-                <div class="auth">
-                <img src="./Images_my_brand/me.jpg" alt="jacques">
-                </div>
-                <span><span class="date">February ,04 ,2024</span><span class="auth-name">, Niyonkuru jacques</span></span>
-            </div>
-            <h4><a href="./blog-details.html">Css postions explained</a></h4>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum, ducimus.</p>
-            <a href="./blog-details.html" class="readmore">Read more</a>
-        </div>
-        <div class="blog">
-            <div class="blog-img">
-            <img src="./Images_my_brand/blog3.jpg" alt="">
-            </div>
-            <div class="auth">
-            <img src="./Images_my_brand/me.jpg" alt="jacques">
-            </div>
-            <span><span class="date">February ,04 ,2024</span><span class="auth-name">, Niyonkuru jacques</span></span>
-            <h4><a href="./blog-details.html">Css postions explained</a></h4>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum, ducimus.</p>
-            <a href="./blog-details.html" class="readmore">Read more</a>
-        </div>
+       
       </div>
     </main>
     <script src="./js/blog.js"></script>

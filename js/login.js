@@ -1,26 +1,82 @@
+let errorMessage=document.querySelector('.login-form form p');
+  window.addEventListener('DOMContentLoaded',(e)=>{
 
+
+    let token=localStorage.getItem('token');
+
+    
+       if(token){
+        const [header, payload, signature] = token.split('.');
+        const decodedPayload = atob(payload);
+        const payloadObj = JSON.parse(decodedPayload)
+        logout.style.display='flex';
+        logout.innerHTML=`<i class="fa-solid fa-circle-user"></i>\n\n<span>${payloadObj.userName}</span><i id='2'class="fa-solid fa-circle-chevron-down"></i>
+        <span id="dropDownbtnNav"><button>log out</button></span>
+        `;
+        login.style.display='none';
+        const dropdwonchevron=document.getElementById("2");
+        const dropDownbtnNav=document.querySelector("#dropDownbtnNav");
+        const signoutbtn=document.querySelector('#dropDownbtnNav button');
+        dropdwonchevron.addEventListener('mouseenter',(e)=>{
+            dropDownbtnNav.style.display="block";
+        })
+        dropDownbtnNav.addEventListener('mouseleave',(e)=>{
+            dropDownbtnNav.style.display="none";
+            e.target.style.background='var(--primary-color)';
+        })
+        signoutbtn.addEventListener('click',(e)=>{
+            e.preventDefault()
+            localStorage.removeItem('token');
+        window.location.href="../index.html";
+    
+        })
+        if(payloadObj.isAdmin){
+            isAdmin.style.display='inline'
+        }
+     }
+
+
+  const loginForm=document.querySelector('.login-form form');
+  
   const loginEmail=document.querySelector('.login-form form #loginemail');
   const loginPassword=document.querySelector('.login-form form #loginpassword');
-  const loginForm=document.querySelector('.login-form form');
-  let errorMessage=document.querySelector('.login-form form p');
 
-  let AllUsers=[];
-
-    window.addEventListener('DOMContentLoaded',(e)=>{
-  AllUsers=JSON.parse(localStorage.getItem('AllUsers'))||[];
-  loginForm.addEventListener('submit',(e)=>{
+  loginForm.addEventListener('submit',async(e)=>{
     e.preventDefault();
-    Autherisation(loginEmail.value);
-  })
-})
+    const email=loginEmail.value.trim();
+    const password= loginPassword.value.trim();
+    try {
+      const response = await fetch('http://localhost:3008/api/users/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({email,password })
+      });
 
-  let Autherisation= function(email){
-     let exist=AllUsers.find(u=>u.email=email);
-     if(exist &&exist.password===loginPassword.value){
-      sessionStorage.setItem('currentUser',JSON.stringify(exist));
-      window.location.href='./index.html';
-     }else{
-        errorMessage.innerHTML='wrong username or password';
-     }
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.message || 'Failed to login');
+        
+      }
+
+      // Extract the JWT token from the response
+      const { token } = await response.json();
+
+      // Store the token in localStorage
+      localStorage.setItem('token', token);
+
+      // Redirect to home page upon successful login
+      window.location.href = './index.html';
+    } catch (error) {
+      console.error('Error during login:', error);
+      showError(error.message || 'Failed to login. Please try again.');
+    }
+  });
+  })
+
+
+  function showError(message){
+    errorMessage.style.color='red';
+    errorMessage.innerHTML=message
   }
-  

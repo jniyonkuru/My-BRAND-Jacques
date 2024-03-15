@@ -384,6 +384,22 @@ main{
   color:red;
   margin-top:5px;
  }
+ .contact-page .contact-form .success-message{
+  width:fit-content;
+  padding: 5px 6px;
+  background-color: green;
+  color: #ffff;
+  display: none;
+  border-radius: 5px;
+ }
+ .contact-page .contact-form .fail-message{
+  width:fit-content;
+  padding: 5px 6px;
+  background-color:red;
+  color: #ffff;
+  display: none;
+  border-radius: 5px
+ }
 
   /* footer */
  .footer{
@@ -423,14 +439,9 @@ footer div{
     object-fit:cover;
   
   }
-  .blogs-container .auth{
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    overflow: hidden;
-    position: relative;
-    display: inline-block;
-
+  .blogs-container .auth i{
+    
+  font-size:20px;
   }
   .blogs-container .date,.auth-name{
     color:#9d9e9d;
@@ -471,7 +482,8 @@ footer div{
     width: fit-content;
     color: var(--nav-color);
     margin-top:10px;
-    
+    border-radius: 5px;
+    cursor: pointer;   
   }
   
 
@@ -524,24 +536,15 @@ footer div{
     margin-top: 30px;
     margin-bottom: 10px;
   }
-  .blog-detailed .auth{
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    position: relative;
-    overflow: hidden;
-    display: inline;
+  .blog-detailed .auth-card i{
+    font-size: 40px;
+    margin-right: 5px;
   }
   .blog-detailed .auth-card{
     display:flex;
     align-items: center;
   }
-  .blog-detailed .auth img{
-    object-fit: cover;
-    position: absolute;
-    top: 0;
-    left: 0;
-  }
+  
 .blog-detailed .auth-card .date, .auth-name{
   color: #9d9e9d;
   font-size: 1rem;
@@ -774,6 +777,5 @@ gap: 10px;
 }
 
 
-/* swipper js */
 
 

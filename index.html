@@ -19,37 +19,70 @@
       src="https://kit.fontawesome.com/57f94116a4.js"
       crossorigin="anonymous"
     ></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <style>
       html,
-      body {
-        position: relative;
-        height: 100%;
-      }
-      .swiper {
-        width: 100%;
-        height: 400px;
-      }
+    body {
+      position: relative;
+      height: 100%;
+    }
 
-      .swiper-slide {
-        text-align: center;
-        font-size: 18px;
-        background: #fff;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        position: relative;
-      }
+    body {
+      background: #eee;
+      font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+      font-size: 14px;
+      color: #000;
+      margin: 0;
+      padding: 0;
+    }
 
-      .swiper-slide img {
-        display: block;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-      }
-      .swiper-slide a {
-        align-self: flex-end;
-        position: absolute;
-      }
+    .swiper {
+      width: 60%;
+      height: 400px;
+      box-shadow: 0 0 10px rgba(0,0, 0, 0.5);
+      border-radius:6px;
+
+    }
+
+    .swiper-slide {
+      text-align: center;
+      font-size: 18px;
+      background: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+    .swiper-slide a{
+      color:#FF6000
+
+    }
+
+    .swiper-slide img {
+      display: block;
+      width:500px;
+      height:300px;
+      object-fit: cover;
+      justify-self: flex-start;
+      border-radius: inherit;
+    }
+
+    .swiper-pagination-bullet {
+      width: 20px;
+      height: 20px;
+      text-align: center;
+      line-height: 20px;
+      font-size: 12px;
+      color: #000;
+      opacity: 1;
+      background: rgba(0, 0, 0, 0.2);
+    }
+
+    .swiper-pagination-bullet-active {
+      color: #fff;
+      background:#FF6000;
+    }
+  </style>
     </style>
 
     <title>My_Brand_Jacques</title>
@@ -157,46 +190,12 @@
         <h3 class="work-title">Work</h3>
         <div class="swiper mySwiper">
           <div class="swiper-wrapper">
-            <div data-history="1" class="swiper-slide">
-              <img src="./Images_my_brand/Etch-a-sketch.png" alt="" />
-              <a href="https://jniyonkuru.github.io/Etch-a-Sketch/"
-                ><h4>Etch-a-sketch</h4></a
-              >
-            </div>
-            <div data-history="Slide 2" class="swiper-slide">
-              <img src="./Images_my_brand/country-app-dark.png" alt="" />
-              <a href="https://jniyonkuru.github.io/countryApp/"
-                ><h4>Country App</h4></a
-              >
-            </div>
-
-            <div data-history="3" class="swiper-slide">
-              <img src="./Images_my_brand/country-app-light.png" alt="" />
-              <a href="https://jniyonkuru.github.io/countryApp/"
-                ><h4>Country App</h4></a
-              >
-            </div>
-            <div data-history="Slide 4" class="swiper-slide">
-              <img src="./Images_my_brand/landing-page.png" alt="" />
-            </div>
-            <div data-history="5" class="swiper-slide">
-              <img src="./Images_my_brand/country-app-dark.png" alt="" />
-            </div>
-            <div data-history="Slide 6" class="swiper-slide">
-              <img src="./Images_my_brand/country-app-dark.png" alt="" />
-            </div>
-            <div data-history="7" class="swiper-slide">
-              <img src="./Images_my_brand/country-app-dark.png" alt="" />
-            </div>
-            <div data-history="Slide 8" class="swiper-slide">
-              <img src="./Images_my_brand/country-app-dark.png" alt="" />
-            </div>
-            <div data-history="9" class="swiper-slide">
-              <img src="./Images_my_brand/country-app-dark.png" alt="" />
-            </div>
+            <div class="swiper-slide">Slide 1</div>
+            <div class="swiper-slide">Slide 2</div>
+            <div class="swiper-slide">Slide 3</div>
+            <div class="swiper-slide">Slide 4</div>
+            <div class="swiper-slide">Slide 5</div>
           </div>
-          <div class="swiper-button-next"></div>
-          <div class="swiper-button-prev"></div>
           <div class="swiper-pagination"></div>
         </div>
       </section>
@@ -223,6 +222,8 @@
           </div>
         </div>
         <div class="contact-form">
+          <p class="success-message"></p>
+          <p class="fail-message"></p>
           <h4>Send us a message</h4>
           <form action="">
             <div class="input-control">
@@ -233,11 +234,6 @@
             <div class="input-control">
               <label for="email">Email</label>
               <input type="email" id="email" />
-              <p class="error-messages"></p>
-            </div>
-            <div class="input-control">
-              <label for="subject">Subject</label>
-              <input type="text" id="subject" />
               <p class="error-messages"></p>
             </div>
             <div class="input-control">
@@ -261,22 +257,17 @@
       </div>
     </footer>
     <script src="./js/scroll.js" type="module"></script>
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script>
       var swiper = new Swiper(".mySwiper", {
-        spaceBetween: 10,
-        slidesPerView: 4,
-        navigation: {
-          nextEl: ".swiper-button-next",
-          prevEl: ".swiper-button-prev",
-        },
         pagination: {
-          el: ".swiper-pagination",
+        el: ".swiper-pagination",
+        clickable: true,
+        renderBullet: function (index, className) {
+          return '<span class="' + className + '">' + (index + 1) + "</span>";
         },
-        history: {
-          key: "slide",
-        },
-      });
+      },
+    });
+      
     </script>
   </body>
 </html>

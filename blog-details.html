@@ -11,96 +11,41 @@
       href="https://fonts.googleapis.com/css2?family=Inria+Sans:wght@400;700&family=Inter:wght@300;700&family=Irish+Grover&family=Open+Sans:wght@400;700&family=UnifrakturMaguntia&display=swap"
       rel="stylesheet"
     />
+    <script
+      src="https://kit.fontawesome.com/57f94116a4.js"
+      crossorigin="anonymous"
+    ></script>
     <title>Blog</title>
   </head>
   <body>
     <header>
       <nav>
-        <div class="logo">
-          <img src="./Icons_my_brand/log2.svg" alt="" />
+        <a href="#">
+          <div class="logo">
+            <img src="./Icons_my_brand/log2.svg" alt="" />
+          </div>
+        </a>
+        <div class="menu-burger">
+          <img src="./Icons_my_brand/icons8-menu.svg" alt="" />
         </div>
+
         <ul>
-          <li><a href="./index.html">Home</a></li>
-          <li><a class="active">Blog</a></li>
-          <li><a href="./index.html#portfolio">Portfolio</a></li>
-          <li><a href="./index.html#contact">Contact Me</a></li>
-          <li id="Admin-only"><a href="./Dashboard/pages/dashboard.html">Admin-Dashboard</a></li>
-          <li><a href="./login.html">Login</a></li>
+          <li><a class="active" href="./index.html">Home</a></li>
+          <li><a href="./blog.html">Blog</a></li>
+          <li><a href="#portfolio">Portfolio</a></li>
+          <li><a href="#contact">Contact Me</a></li>
+          <li id="Admin-only" style="display: none">
+            <a href="./Dashboard/pages/dashboard.html">Admin-Dashboard</a>
+          </li>
+          <li id="login"><a href="./login.html">Login</a></li>
+          <li id="logout" style="display: none"></li>
         </ul>
       </nav>
       <i class="fa-solid fa-bars"></i>
     </header>
     
     <main class="blog-detailed">
-      <div class="auth-card">
-        <div class="auth">
-          <img src="./Images_my_brand/me.jpg" alt="jacques">
-          </div>
-          <span><span class="date">February ,04 ,2024</span><span class="auth-name">.  Niyonkuru Jacques</span></span>
-      </div>
       <div class="blog-details">
-        <div class="blog-details-img">
-          <img src="./Images_my_brand/CSS-Position.jpg" alt="css positions" />
-        </div>
-        <h3>Understanding CSS Positioning: A Comprehensive Guide</h3>
-        <p>
-          Understanding CSS Positioning: A Comprehensive Guide CSS positioning
-          is a crucial aspect of web development, providing developers with the
-          ability to control the layout and placement of elements on a webpage.
-          In this guide, we will explore the various values of the position
-          property in CSS and how they impact the positioning of HTML elements.
-          Table of Contents Introduction Static Positioning Relative Positioning
-          Absolute Positioning Fixed Positioning Sticky Positioning Conclusion
-          Introduction CSS positioning allows developers to specify how elements
-          should be positioned within the document flow or relative to other
-          elements. The position property is the key player in this process, and
-          it can take various values. Static Positioning The default value for
-          the position property is static. In this mode, elements are positioned
-          according to the normal flow of the document. The top, right, bottom,
-          and left properties have no effect when position: static; is set.
-          cssCopy code .element { position: static; } Relative Positioning When
-          position: relative; is used, elements are positioned relative to their
-          normal position in the document flow. The top, right, bottom, and left
-          properties can then be used to move the element from its normal
-          position. cssCopy code .element { position: relative; top: 10px; left:
-          20px; } Absolute Positioning Setting position: absolute; positions an
-          element relative to the nearest positioned ancestor. If there is no
-          positioned ancestor, it is positioned relative to the initial
-          containing block. cssCopy code .element { position: absolute; top:
-          30px; left: 40px; } Fixed Positioning With position: fixed;, elements
-          are positioned relative to the browser window or viewport. The element
-          remains fixed in its position even when the page is scrolled. cssCopy
-          code .element { position: fixed; top: 50px; right: 20px; } Sticky
-          Positioning position: sticky; is a hybrid of relative and fixed
-          positioning. The element is treated as relatively positioned until it
-          crosses a specified point during scrolling, after which it becomes
-          fixed. cssCopy code .element { position: sticky; top: 0; } Conclusion
-          Understanding CSS positioning is crucial for creating well-structured
-          and visually appealing web layouts. By leveraging the various values
-          of the position property, developers can exert precise control over
-          the positioning of elements, contributing to a seamless user
-          experience. Experiment with these positioning values in your projects
-          to gain hands-on experience and achieve the desired layouts for your
-          web pages. Happy coding! standing CSS Positioning: A Comprehensive
-          Guide CSS positioning is a crucial aspect of web development,
-          providing developers with the ability to control the layout and
-          placement of elements on a webpage. In this guide, we will explore the
-          various values of the position property in CSS and how they impact the
-          positioning of HTML elements. Table of Contents Introduction Static
-          Positioning Relative Positioning Absolute Positioning Fixed
-          Positioning Sticky Positioning Conclusion Introduction CSS positioning
-          allows developers to specify how elements should be positioned within
-          the document flow or relative to other elements. The position property
-          is the key player in this process, and it can take various values.
-          Static Positioning The default value for the position property is
-          static. In this mode, elements are positioned according to the normal
-          flow of the document. The top, right, bottom, and left properties have
-          no effect when position: static; is set. cssCopy code .element {
-          position: static; } Relative Positioning When position: relative; is
-          used, elements are positioned relative to their normal position in the
-          document flow. The top, right, bottom, and left properties can then be
-          used to move the element from its normal position.
-        </p>
       </div>
       <a href="" id="comments"><span class="commnets-counts">0</span>|Comments</a>
       <div class="comment-form">
@@ -118,6 +63,8 @@
           <button class="btn-form">Submit</button>
         </form>
       </div>
+      <div class="all-comments"></div>
     </main>
+    <script src="./js/blog-details.js"></script>
   </body>
 </html>
