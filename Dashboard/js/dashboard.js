@@ -127,6 +127,7 @@ dashboardMessages.addEventListener("click", (e) => {
 signoutbtn.addEventListener("click", (e) => {
   e.preventDefault();
   sessionStorage.removeItem("currentUser");
+  localStorage.removeItem('token');
   window.location.href = "../../index.html";
 });
 addBlog.addEventListener("click", (e) => {
