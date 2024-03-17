@@ -1,4 +1,9 @@
-import { validateMail,validateName,validatePassword,confirmPassword } from "../../js/util/validation.js";
+import {
+  validateMail,
+  validateName,
+  validatePassword,
+  confirmPassword,
+} from "../../js/util/validation.js";
 
 const sections = document.querySelectorAll("section");
 const navbar = document.querySelector(".nav-bar");
@@ -15,7 +20,6 @@ const recentMessages = document.querySelector(".recent-messages");
 const addBlog = document.querySelector(".btn.btn-blog");
 const blogEdit = document.querySelector(".blog-edit");
 
-
 // create user
 const userName = document.querySelector(".add-contact #name");
 const userEmail = document.querySelector(".add-contact #email");
@@ -23,9 +27,9 @@ const userPassword = document.querySelector(".add-contact #password");
 const userConfirmPassword = document.querySelector("#password-confirm");
 const createUserForm = document.querySelector(".add-contact form");
 const errorMessages = document.querySelectorAll(".error-messages");
-const isAdminCheck=document.querySelector('#isadmin');
-const registerUserForm=document.querySelector('.add-contact form')
-console.log(userConfirmPassword)
+const isAdminCheck = document.querySelector("#isadmin");
+const registerUserForm = document.querySelector(".add-contact form");
+console.log(userConfirmPassword);
 
 let blogList = [];
 let AllUsers = [];
@@ -38,17 +42,15 @@ chevronToggler.addEventListener("click", (e) => {
   toggleNavBar();
 });
 
-// ==============Get blogs======================
-
-window.addEventListener("DOMContentLoaded", (e) => {
-let token=localStorage.getItem('token');
-const [header, payload, signature] = token.split('.');
+let token = localStorage.getItem("token");
+const [header, payload, signature] = token.split(".");
 const decodedPayload = atob(payload);
 const payloadObj = JSON.parse(decodedPayload);
-if(payloadObj){
-  currentUser.innerHTML=payloadObj.userName;
+if (payloadObj) {
+  currentUser.innerHTML = payloadObj.userName;
 }
-  fetchBlogs()
+window.addEventListener("DOMContentLoaded", (e) => {
+  fetchBlogs();
   displayBlogs(blogList);
   fetchUsers();
   fetchMessages();
@@ -66,57 +68,68 @@ if(payloadObj){
   }
   blogsList.addEventListener("click", (e) => {
     let id = e.target.closest(".fa-trash-can").getAttribute("key");
-    removeBlog(id,token);
+    removeBlog(id, token);
   });
   dashboardMessages.addEventListener("click", (e) => {
     e.preventDefault();
     let id = e.target.closest(".fa-trash-can").getAttribute("key");
-    deleteMessage(id,token);
+    deleteMessage(id, token);
   });
   displayRecentMessages(AllMessages);
 
-  registerUserForm.addEventListener('submit',(e)=>{
-    let errorName= validateName(userName, 0);
-    errorName?errorMessages[0].innerHTML=errorName.join(','):errorMessages[0].innerHTML='';
-    let errorMail=validateMail(userEmail, 1);
-    errorMail?errorMessages[1].innerHTML=errorMail.join(','):'';
-   let errorPassword= validatePassword(userPassword, 2);
-   errorPassword?errorMessages[2].innerHTML=errorPassword.join(','):'';
-   let errorConfirmPassword=confirmPassword(userPassword,userConfirmPassword,3);
-   errorConfirmPassword?errorMessages[3].innerHTML=errorPassword.join(','):'';
-   let newUser = {
-    name: userName.value.trim(),
-    email: userEmail.value.trim(),
-    password: userPassword.value.trim(),
-    confirmPassword: userConfirmPassword.value.trim(),
-    isAdmin:isAdminCheck.checked,
+  registerUserForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    let errorName = validateName(userName, 0);
+    errorName
+      ? (errorMessages[0].innerHTML = errorName.join(","))
+      : (errorMessages[0].innerHTML = "");
+    let errorMail = validateMail(userEmail, 1);
+    errorMail ? (errorMessages[1].innerHTML = errorMail.join(",")) : "";
+    let errorPassword = validatePassword(userPassword, 2);
+    errorPassword ? (errorMessages[2].innerHTML = errorPassword.join(",")) : "";
+    let errorConfirmPassword = confirmPassword(
+      userPassword,
+      userConfirmPassword,
+      3
+    );
+    errorConfirmPassword
+      ? (errorMessages[3].innerHTML = errorPassword.join(","))
+      : "";
+    let newUser = {
+      name: userName.value.trim(),
+      email: userEmail.value.trim(),
+      password: userPassword.value.trim(),
+      confirmPassword: userConfirmPassword.value.trim(),
+      isAdmin: isAdminCheck.checked,
+    };
 
-  };
-  console.log(newUser)
-  createUser(newUser)
-  })
+    createUser(newUser);
+  });
 });
 
-blogsList.addEventListener("click", (e) => {
+blogsList.addEventListener("click", async (e) => {
   let id = e.target.closest(".fa-pen").getAttribute("key");
-  console.log(id);
   blogEdit.style.display = "flex";
-  let item = AllBlogs.find((blog) => blog.id === id);
+  let item= await fetchOneBlog(id);
   if (item) {
-    let itemIndex = AllBlogs.findIndex((item) => item.id === id);
-    blogBody.value = item.body;
-    base64String = item.imgurl;
-    blogTitle.value = item.tilte;
+    blogBody.value = item.blogBody;
+    base64String = item.image;
+    console.log(base64String)
+    blogTitle.value = item.blogTitle;
     imgcontainer.style.display = "inline";
     imgcontainer.innerHTML = `
-    <img src=${item.imgurl}>  `;
-    update.addEventListener("click", (e) => {
+    <img src=${item.image}>  `;
+    update.addEventListener("click", async(e) => {
       e.preventDefault();
-      updateBlog(itemIndex, item, AllBlogs);
+      const formData= new FormData();
+      formData.append('blogTitle',blogTitle.value);
+      formData.append('blogBody',blogBody.value)
+      formData.append('image',`${inputFile.files[0]||base64String}`);
+      await updateBlog(formData,token,id);
+
     });
   }
 });
-
 
 dashboardMessages.addEventListener("click", (e) => {
   e.preventDefault();
@@ -127,7 +140,7 @@ dashboardMessages.addEventListener("click", (e) => {
 signoutbtn.addEventListener("click", (e) => {
   e.preventDefault();
   sessionStorage.removeItem("currentUser");
-  localStorage.removeItem('token');
+  localStorage.removeItem("token");
   window.location.href = "../../index.html";
 });
 addBlog.addEventListener("click", (e) => {
@@ -158,7 +171,9 @@ function displayBlogs(blogs) {
               <i class="fa-solid fa-pen" key=${blog._id}></i><span>Edit</span> 
          </div>
          <div class="dashboard-blog-description-foot-item">
-         <i class="fa-solid fa-trash-can" key=${blog._id}></i><span>delete</span>
+         <i class="fa-solid fa-trash-can" key=${
+           blog._id
+         }></i><span>delete</span>
          </div>
               </div>
               </div>
@@ -191,10 +206,14 @@ function displayMessages(messages) {
     <div class="message-title"><i class="fa fa-user-circle fa-lg"></i>
     <h4>${m.name}</h4></div>
     <p>${m.messageBody}</p>
-    <span class="messages-options"><i class="fa-solid fa-trash-can" key=${m._id}></i>
+    <span class="messages-options"><i class="fa-solid fa-trash-can" key=${
+      m._id
+    }></i>
     <i class="fa-solid fa-reply" key=${m._id}></i>
     </span>
-    <span class="dashboard-message-item-date">${m.date.substring(0,10)} ,\n\n${m.date}</span>
+    <span class="dashboard-message-item-date">${m.date.substring(0, 10)} ,\n\n${
+      m.date
+    }</span>
   </div>
     `;
   });
@@ -203,25 +222,24 @@ function displayMessages(messages) {
   });
 }
 
- async function removeBlog(id,token) {
+async function removeBlog(id, token) {
+  try {
+    const response = await fetch(`http://localhost:3008/api/blogs/${id}`, {
+      method: "DELETE",
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+      },
+    });
 
-    try {
-        const response = await fetch(`http://localhost:3008/api/blogs/${id}`, {
-            method: 'DELETE',
-            headers: {
-                'Authorization':`Bearer ${token}`,
-                'Content-Type': 'application/json'
-            }
-        });
-
-        if (!response.ok) {
-            throw new Error('Failed to delete resource');
-        }
-        const data = await response.json();
-        console.log('Resource deleted:', data);
-    } catch (error) {
-        console.error('Error deleting resource:', error);
+    if (!response.ok) {
+      throw new Error("Failed to delete resource");
     }
+    const data = await response.json();
+    console.log("Resource deleted:", data);
+  } catch (error) {
+    console.error("Error deleting resource:", error);
+  }
   displayBlogs(AllBlogs);
 }
 
@@ -257,29 +275,27 @@ function toggleNavBar() {
   }
 }
 
-async function deleteMessage(id,token){
+async function deleteMessage(id, token) {
   try {
     const response = await fetch(`http://localhost:3008/api/messages/${id}`, {
-        method: 'DELETE',
-        headers: {
-            'Authorization':`Bearer ${token}`,
-            'Content-Type': 'application/json'
-        }
+      method: "DELETE",
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+      },
     });
 
     if (!response.ok) {
-        throw new Error('Failed to delete resource');
+      throw new Error("Failed to delete resource");
     }
-    const data = await response.json();
-    console.log('Resource deleted:', data);
-} catch (error) {
-    console.error('Error deleting resource:', error);
-}
-   
+  } catch (error) {
+    console.error("Error deleting resource:", error);
+  }
+
   displayMessages(AllMessages);
 }
 function replyMessage(id) {
-  let email = AllMessages.filter((user) => user.id === id)[0].email
+  let email = AllMessages.filter((user) => user.id === id)[0].email;
   window.location.href = `mailto:${email}`;
 }
 
@@ -293,14 +309,12 @@ function displayRecentMessages(messages) {
 </div>
 `;
   });
-  recentMessages.innerHTML="";
-  for (let i = 0; i <4; i++) {
+  recentMessages.innerHTML = "";
+  for (let i = 0; i < 4; i++) {
     recentMessages.innerHTML += mappedMessages[i];
   }
 }
-
 //// blog edit
-
 const publish = document.getElementById("publish");
 const update = document.getElementById("update");
 const uploadLink = document.getElementById("upload-link");
@@ -310,7 +324,19 @@ const blogBody = document.getElementById("mytextarea");
 let base64String = "";
 let imgcontainer = document.getElementById("img-preview");
 let cancelBtn = document.querySelector(".btn-cancel");
-// let AllBlogs=[];
+
+publish.addEventListener("click", async (e) => {
+  e.preventDefault();
+  const formData = new FormData();
+  formData.append("blogTitle", blogTitle.value);
+  formData.append("blogBody", blogBody.value);
+  formData.append("image", inputFile.files[0]);
+  await writePost(formData, token);
+  inputFile.value = "";
+  blogTitle.value = "";
+  blogBody.value = "";
+  imgcontainer.style.display = "none";
+});
 
 function getURLParameter(name) {
   const urlParams = new URLSearchParams(window.location.search);
@@ -354,134 +380,164 @@ inputFile.addEventListener("change", (e) => {
   reader.readAsDataURL(fileImage);
 });
 
-function updateBlog(index, item, blogs) {
-  item = {
-    ...item,
-    body: blogBody.value,
-    tilte: blogTitle.value,
-    imgurl: base64String,
-  };
-  blogs[index] = item;
-  localStorage.setItem("AllBlogs", JSON.stringify(blogs));
-  blogBody.value = "";
-  blogTitle.value = "";
-  imgcontainer.style.display = "none";
-  AllBlogs = blogs;
-  displayBlogs(AllBlogs);
-  cancelBtn.click();
-}
+// function updateBlogs(index, item, blogs) {
+//   item = {
+//     ...item,
+//     body: blogBody.value,
+//     tilte: blogTitle.value,
+//     imgurl: base64String,
+//   };
+//   blogs[index] = item;
+//   localStorage.setItem("AllBlogs", JSON.stringify(blogs));
+//   blogBody.value = "";
+//   blogTitle.value = "";
+//   imgcontainer.style.display = "none";
+//   AllBlogs = blogs;
+//   displayBlogs(AllBlogs);
+//   cancelBtn.click();
+// }
 
-publish.addEventListener("click", (e) => {
-  e.preventDefault();
-  AllBlogs = JSON.parse(localStorage.getItem("AllBlogs")) || [];
-  let blog = {};
-  if (base64String && blogTitle.value && blogBody) {
-    blog.id = new Date();
-    blog.tilte = blogTitle.value;
-    blog.imgurl = base64String;
-    blog.body = blogBody.value;
-    blog.date = new Date();
-    blog.author = {
-      name: "Niyonkuru Jacques",
-    };
-    AllBlogs.push(blog);
-    localStorage.setItem("AllBlogs", JSON.stringify(AllBlogs));
-    inputFile.value = "";
-    blogTitle.value = "";
-    blogBody.value = "";
-    imgcontainer.style.display = "none";
-    displayBlogs(AllBlogs);
-    cancelBtn.click();
-  } else {
-    return;
-  }
-});
 cancelBtn.addEventListener("click", (e) => {
   e.preventDefault();
-  inputFile.value = "";
-  blogTitle.value = "";
-  blogBody.value = "";
-  imgcontainer.style.display = "none";
+  resetForm();
   blogEdit.style.display = "none";
 });
 
-
-
-const fetchBlogs=async function(){
+const fetchBlogs = async function () {
   try {
-   const response= await fetch('http://localhost:3008/api/blogs');
+    const response = await fetch("http://localhost:3008/api/blogs");
 
-   if(!response.ok){
-       throw new Error('failed to fetch blogs')
-   return;
-   }
-   const result=await response.json();
-  //  const authorPromises = result.data.map(blog => fetchAuthor(blog.author));
-  //  const authors = await Promise.all(authorPromises)
-
-   blogList=result.data;
-  //  blogList=blogList.map((blog,index)=>{
-  //      return{...blog,author:authors[index]}
-  //  })
-   displayBlogs(blogList);
-   
-  } catch (error) {
-     console.error('error while fetching blogs:',error)
-  }
-
-}
-const fetchUsers= async function(){
-
-try{
-  const response =await fetch('http://localhost:3008/api/users');
-  if(!response.ok){
-  throw new Error('failed to fetch users');
-  }
-  const result= await response.json();
-AllUsers=result.data;
-displayUsers(AllUsers)
-}catch(error){
-console.error('error while fetching users',error)
-
-}
-
-}
-
-const fetchMessages=async function(){
-  try {
-    const response =await fetch('http://localhost:3008/api/messages');
-    if(!response.ok){
-    throw new Error('failed to fetch messages');
+    if (!response.ok) {
+      throw new Error("failed to fetch blogs");
+      return;
     }
-    const result= await response.json();
-  AllMessages=result.data;
- displayMessages(AllMessages)
- displayRecentMessages(AllMessages)
+    const result = await response.json();
+    //  const authorPromises = result.data.map(blog => fetchAuthor(blog.author));
+    //  const authors = await Promise.all(authorPromises)
+
+    blogList = result.data;
+    //  blogList=blogList.map((blog,index)=>{
+    //      return{...blog,author:authors[index]}
+    //  })
+    displayBlogs(blogList);
   } catch (error) {
-    console.error('error while fetching users',error)
+    console.error("error while fetching blogs:", error);
   }
-}
+};
+
+// function retrieving all users
+
+const fetchUsers = async function () {
+  try {
+    const response = await fetch("http://localhost:3008/api/users");
+    if (!response.ok) {
+      throw new Error("failed to fetch users");
+    }
+    const result = await response.json();
+    AllUsers = result.data;
+    displayUsers(AllUsers);
+  } catch (error) {
+    console.error("error while fetching users", error);
+  }
+};
+
+// a function retrieving all messages
+const fetchMessages = async function () {
+  try {
+    const response = await fetch("http://localhost:3008/api/messages");
+    if (!response.ok) {
+      throw new Error("failed to fetch messages");
+    }
+    const result = await response.json();
+    AllMessages = result.data;
+    displayMessages(AllMessages);
+    displayRecentMessages(AllMessages);
+  } catch (error) {
+    console.error("error while fetching users", error);
+  }
+};
 
 // function to create a user
 
 const createUser = async (user) => {
-
   try {
-      const response = await fetch('http://localhost:3008/api/users', {
-          method: 'POST',
-          headers: {
-              'Content-Type':'application/json'
-          },
-          body: JSON.stringify(user)
-      });
+    const response = await fetch("http://localhost:3008/api/users", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(user),
+    });
 
-      if (!response.ok) {
-          throw new Error('failed to create user');
-      }
-
-      const data = await response.json();
-      console.log('User created:', data);
+    if (!response.ok) {
+      const errorData = await response.json();
+      throw new Error("failed to create user");
+    }
+    const data = await response.json();
+    console.log("User created:", data.message);
   } catch (error) {
-      console.error('Error creating user:', error);
+    console.error("Error creating user:", error);
+  }
+};
+
+// write a post function
+
+async function writePost(formData, token) {
+  try {
+    const response = await fetch("http://localhost:3008/api/blogs", {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+      body: formData,
+    });
+    if (!response.ok) {
+      const errorData = await response.json();
+      document.querySelector(".blogEditMessage").textContent =
+        errorData.message;
+      throw new Error("failed to post a blog");
+    }
+    cancelBtn.click();
+  } catch (error) {
+    console.error("error writing a blog:", error);
+  }
+}
+function resetForm() {
+  inputFile.value = "";
+  blogTitle.value = "";
+  blogBody.value = "";
+  imgcontainer.style.display = "none";
+}
+async function updateBlog(formData, token,id) {
+  try {
+    const response = await fetch(`http://localhost:3008/api/blogs/${id}`, {
+      method: "PUT",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+      body:formData,
+    });
+    if (!response.ok) {
+      const errorData= await response.json()
+      console.log(errorData)
+      // throw new Error("Failed to update the blog");
+    }
+    const result = await response.json();
+    console.log(result.data);
+  } catch (error) {}
+}
+
+const fetchOneBlog = async function (id) {
+  try {
+    const response = await fetch(`http://localhost:3008/api/blogs/${id}`);
+    if (!response.ok) {
+      throw new Error("failed to fetch blog");
+      return;
+    }
+    const result = await response.json();
+    console.log(result.data);
+     return result.data;
+  } catch (error) {
+    console.error("error while fetching blogs:", error);
   }
 };

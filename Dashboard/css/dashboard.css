@@ -419,12 +419,17 @@ z-index: 10;
 
 #section1{
   display: flex;
+  justify-content: space-around;
 
 }
 .recent-messages-list{
 border-radius: 6px;
 overflow: hidden;
 margin-top: 20px;
+justify-self: flex-end;
+width: 100%;
+max-width: 500px;
+
 }
 .recent-messages-list h3{
   background:var(--navBackground-color);
@@ -435,7 +440,6 @@ margin-top: 20px;
   padding-top:10px;
 }
 .recent-messages{
-  max-width:100%;
   background-color: #fff;
   border: 1px solid #b3b5b7;
   border-radius: 6px;
@@ -443,7 +447,8 @@ margin-top: 20px;
   flex-direction: column;
   box-shadow: 0 0 40px 4px rgba(0,0,0,0.2);
   overflow-y: scroll;
-  width: 500px;
+  width: 100%;
+
 }
 
 .recent-messages .message-title{
@@ -454,7 +459,7 @@ margin-top: 20px;
 }
 
 .recent-messages .message-item{
-  padding: 10px 20px;
+  padding: 12px 30px;
   border-bottom: 1px solid #b3b5b7;
 }
 
