@@ -1,0 +1,27 @@
+@media screen and (max-width:890px) {
+   .search-bar{
+    
+   }
+   #section1{
+    flex-direction: column;
+   }
+   .dashboard-cards{
+    width: 100%;
+   }
+   .dashboard-blog-item{
+    flex-direction: column;
+   }
+   .dashboard-blog-item .dashboard-blog-description{
+    padding:10px;
+   }
+   .edit-contacts{
+   flex-direction: column;
+   width: 100%;
+   }
+   .edit-contacts .add-contacts{
+    width: 100%;
+    
+   }
+
+
+}

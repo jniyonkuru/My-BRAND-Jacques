@@ -30,28 +30,46 @@
         </div>
 
         <ul>
-          <li><a class="active" href="./index.html">Home</a></li>
-          <li><a href="./blog.html">Blog</a></li>
-          <li><a href="#portfolio">Portfolio</a></li>
-          <li><a href="#contact">Contact Me</a></li>
+          <li><a  href="./index.html">Home</a></li>
+          <li><a class="active" href="./blog.html">Blog</a></li>
+          <li><a href="./index.html#portfolio">Portfolio</a></li>
+          <li><a href="./index.html#contact">Contact Me</a></li>
           <li id="Admin-only" style="display: none">
             <a href="./Dashboard/pages/dashboard.html">Admin-Dashboard</a>
           </li>
-          <li id="login"><a href="./login.html">Login</a></li>
           <li id="logout" style="display: none"></li>
         </ul>
       </nav>
-      <i class="fa-solid fa-bars"></i>
+
     </header>
-    
     <main class="blog-detailed">
+      <div class="login-form">
+        <h3 class="form-title">Login</h3>
+        <form action="">
+            <div class="input-control">
+            <label for="loginemail">Email</label>
+            <input id="loginemail" type="text"></div>
+            <div class="input-control">
+                <label for="loginpassword">Password</label>
+                <input id="loginpassword" type="password" autocomplete="confirm-password">
+              </div>
+              <p></p>
+                <button class="btn" type="submit">Login</button>
+        </form>
+        <div class="text-note"><a href="./signup.html">SignUp</a>, if you don't have an account .</div>
+      </div>
       <div class="blog-details">
       </div>
-      <a href="" id="comments"><span class="commnets-counts">0</span>|Comments</a>
+      <div id="comments">
+        <a id="like"><span class="likes-count">0</span><i class="fa-solid fa-heart"></i></a>
+        <a href=""><span class="commnets-counts">0</span>Comments</a>
+      </div>
+     
+      <div class="all-comments">
       <div class="comment-form">
+        <div class="commentsList"></div>
         <form action="">
           <div class="text-area-comment">
-            
             <textarea
               name=""
               id="txt-area"
@@ -63,8 +81,8 @@
           <button class="btn-form">Submit</button>
         </form>
       </div>
-      <div class="all-comments"></div>
+      </div>
     </main>
-    <script src="./js/blog-details.js"></script>
+    <script src="./js/blog-details.js" type="module"></script>
   </body>
 </html>

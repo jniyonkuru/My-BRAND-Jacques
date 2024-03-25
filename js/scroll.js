@@ -1,4 +1,4 @@
-
+ import { api_url } from "./util/apiUrl.js";
 document.querySelector('header nav .menu-burger').addEventListener('click',(e)=>{
     document.querySelector('header nav ul').classList.toggle('collapsible');
 })
@@ -149,7 +149,7 @@ let validateSubject=function(field ,serial){
 };
 
 let fetchPortfolio=async function(){
-    const response= await fetch('http://localhost:3008/api/portfolio');
+    const response= await fetch(`${api_url}/api/portfolio`);
     const result=await response.json();
     portfolio=result.data
     displayPOrtfolio(portfolio);
@@ -169,7 +169,7 @@ swiperWrapper.innerHTML=mappedPortfolio.join();
 const writeMessage=async function(message){
 
     try {
-        const response= await fetch('http://localhost:3008/api/messages',{
+        const response= await fetch(`${api_url}/api/messages`,{
         method:'POST',
         headers:{
         'content-type':'application/json'
@@ -181,15 +181,39 @@ const writeMessage=async function(message){
         const errorData= await response.json()
         throw  new Error(errorData.message||'error happened')
     }
-    showResponse('Message sent successfully')
+    showLoader();
+    setTimeout(function() {
+        hideLoader();
+        showResponse('Message sent successfully')
+    }, 3000);
+    
     } catch (error){
-        showError('Message not sent'||error.message)
+        showLoader();
+        setTimeout(function() {
+            hideLoader();
+            showError('Message not sent'||error.message)
+        }, 3000)
+        
+        
         
     }
 }
+function showLoader() {
+    var loader = document.getElementById('loader');
+    loader.style.display = 'block';
+}
+
+function hideLoader() {
+    var loader = document.getElementById('loader');
+    loader.style.display = 'none';
+}
+
 const showResponse=function(message){
 responseMessage.textContent=message;
 responseMessage.style.display='block';
+setTimeout(()=>{
+    responseMessage.style.display='none'
+},2000)
 }
  const showError=function(error){
   errorResponse.textContent=error;

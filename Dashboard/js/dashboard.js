@@ -4,6 +4,10 @@ import {
   validatePassword,
   confirmPassword,
 } from "../../js/util/validation.js";
+import { hideLoader,showLoader } from "../../js/util/loader.js";
+import { api_url } from "../../js/util/apiUrl.js";
+
+
 
 const sections = document.querySelectorAll("section");
 const navbar = document.querySelector(".nav-bar");
@@ -19,6 +23,16 @@ const signoutbtn = document.querySelector(".search-bar .search-bar-btn");
 const recentMessages = document.querySelector(".recent-messages");
 const addBlog = document.querySelector(".btn.btn-blog");
 const blogEdit = document.querySelector(".blog-edit");
+const deletePopUp=document.querySelector('.delete-confirm');
+const okBlog=document.querySelector('.ok');
+const cancelBlog=document.querySelector('.cancel');
+const okMessage=document.querySelector('.ok-message');
+const cancelMessage=document.querySelector('.cancel-message');
+const deleteMessagePopUp=document.querySelector('.delete-confirm-message');
+const notificationBadge=document.querySelector('.notification-badge');
+const likes=document.querySelector('.total-likes');
+const comments=document.querySelector('.total-comments');
+const posts=document.querySelector('.total-posts');
 
 // create user
 const userName = document.querySelector(".add-contact #name");
@@ -29,11 +43,13 @@ const createUserForm = document.querySelector(".add-contact form");
 const errorMessages = document.querySelectorAll(".error-messages");
 const isAdminCheck = document.querySelector("#isadmin");
 const registerUserForm = document.querySelector(".add-contact form");
-console.log(userConfirmPassword);
 
 let blogList = [];
 let AllUsers = [];
 let AllMessages = [];
+let totalLikes=0;
+let totalComments=0;
+let totalPosts=0;
 
 // ++++++++ update and nav bar++++++++
 
@@ -43,22 +59,32 @@ chevronToggler.addEventListener("click", (e) => {
 });
 
 let token = localStorage.getItem("token");
-const [header, payload, signature] = token.split(".");
-const decodedPayload = atob(payload);
-const payloadObj = JSON.parse(decodedPayload);
+if(token){
+  const [header, payload, signature] = token.split(".");
+  const decodedPayload = atob(payload);
+  const payloadObj = JSON.parse(decodedPayload);
+
+
 if (payloadObj) {
   currentUser.innerHTML = payloadObj.userName;
 }
+}
 window.addEventListener("DOMContentLoaded", (e) => {
+  showLoader();
   fetchBlogs();
-  displayBlogs(blogList);
   fetchUsers();
   fetchMessages();
-  displayUsers(AllUsers);
-  displayMessages(AllMessages);
-  if (loggedInUser) {
-    currentUser.innerHTML = loggedInUser.name;
-  }
+  setTimeout(()=>{
+    displayBlogs(blogList);
+    displayUsers(AllUsers);
+    displayMessages(AllMessages);
+    hideLoader();
+    if (loggedInUser) {
+      currentUser.innerHTML = loggedInUser.name;
+    }
+  },3000)
+  
+ 
   if (!navbar.classList.contains("nav-bar-small")) {
     document.querySelector(".dashboard-main-container").style.marginLeft =
       "230px";
@@ -66,18 +92,46 @@ window.addEventListener("DOMContentLoaded", (e) => {
     document.querySelector(".dashboard-main-container").style.marginLeft =
       "100px";
   }
-  blogsList.addEventListener("click", (e) => {
+  blogsList.addEventListener("click",async(e) => {
     let id = e.target.closest(".fa-trash-can").getAttribute("key");
-    removeBlog(id, token);
+    deletePopUp.style.visibility='visible';
+    okBlog.setAttribute('key',id);
+    
   });
-  dashboardMessages.addEventListener("click", (e) => {
+  okBlog.addEventListener('click',async(e)=>{
+    e.preventDefault();
+    let id= e.target.getAttribute('key');
+    deletePopUp.style.visibility='hidden';
+    await removeBlog(id, token);
+    fetchBlogs(); 
+  })
+  cancelBlog.addEventListener('click',(e)=>{
+    e.preventDefault();
+    deletePopUp.style.visibility='hidden';
+    return;
+  })
+  dashboardMessages.addEventListener("click", async(e) => {
     e.preventDefault();
     let id = e.target.closest(".fa-trash-can").getAttribute("key");
-    deleteMessage(id, token);
+    deleteMessagePopUp.style.visibility='visible';
+    okMessage.setAttribute('key',id);
+    
   });
+  okMessage.addEventListener('click',async (e)=>{
+    e.preventDefault();
+    let id= e.target.getAttribute('key');
+    await deleteMessage(id, token);
+    deleteMessagePopUp.style.visibility='hidden';
+    fetchMessages();
+  })
+  cancelMessage.addEventListener('click',(e)=>{
+    e.preventDefault();
+    deleteMessagePopUp.style.visibility='hidden';
+    return;
+  })
   displayRecentMessages(AllMessages);
 
-  registerUserForm.addEventListener("submit", (e) => {
+  registerUserForm.addEventListener("submit", async(e) => {
     e.preventDefault();
     let errorName = validateName(userName, 0);
     errorName
@@ -103,38 +157,40 @@ window.addEventListener("DOMContentLoaded", (e) => {
       isAdmin: isAdminCheck.checked,
     };
 
-    createUser(newUser);
+    await  createUser(newUser);
+    e.target.reset();
   });
 });
 
 blogsList.addEventListener("click", async (e) => {
   let id = e.target.closest(".fa-pen").getAttribute("key");
   blogEdit.style.display = "flex";
-  let item= await fetchOneBlog(id);
+  let item = await fetchOneBlog(id);
   if (item) {
     blogBody.value = item.blogBody;
     base64String = item.image;
-    console.log(base64String)
+    console.log(base64String);
     blogTitle.value = item.blogTitle;
     imgcontainer.style.display = "inline";
     imgcontainer.innerHTML = `
     <img src=${item.image}>  `;
-    update.addEventListener("click", async(e) => {
+    update.addEventListener("click", async (e) => {
       e.preventDefault();
-      const formData= new FormData();
-      formData.append('blogTitle',blogTitle.value);
-      formData.append('blogBody',blogBody.value)
-      formData.append('image',`${inputFile.files[0]||base64String}`);
-      await updateBlog(formData,token,id);
-
+      const formData = new FormData();
+      formData.append("blogTitle", blogTitle.value);
+      formData.append("blogBody", blogBody.value);
+      formData.append("image", inputFile.files[0]);
+      await updateBlog(formData, token, id);
+      fetchBlogs();
+      cancelBtn.click();
     });
   }
 });
 
 dashboardMessages.addEventListener("click", (e) => {
   e.preventDefault();
-  let id = e.target.closest(".fa-reply").getAttribute("key");
-  replyMessage(id);
+  let email = e.target.closest(".fa-reply").getAttribute("key");
+  replyMessage(email);
 });
 
 signoutbtn.addEventListener("click", (e) => {
@@ -149,6 +205,11 @@ addBlog.addEventListener("click", (e) => {
 });
 
 function displayBlogs(blogs) {
+  for(let blog of blogs){
+    totalLikes+=blog.likes;
+  }
+  posts.textContent=blogs.length;
+  likes.textContent=totalLikes;
   let mappedBlogs = blogs.map((blog) => {
     return `
         <div class="dashboard-blog-item">
@@ -164,16 +225,15 @@ function displayBlogs(blogs) {
               <i class="fa-solid fa-comment key=${blog._id}"></i>
          </div>
          <div class="dashboard-blog-description-foot-item">
-         <span>5</span></i><span>Likes</span> 
+         <span>${blog.likes}</span></i><span>Likes</span> 
 
          </div>
-         <div class="dashboard-blog-description-foot-item">
-              <i class="fa-solid fa-pen" key=${blog._id}></i><span>Edit</span> 
+         <div class="dashboard-blog-description-foot-item edit">
+           <i class="fa-solid fa-pen" key=${blog._id}></i><span>Edit</span> 
          </div>
-         <div class="dashboard-blog-description-foot-item">
+         <div class="dashboard-blog-description-foot-item delete">
          <i class="fa-solid fa-trash-can" key=${
-           blog._id
-         }></i><span>delete</span>
+           blog._id}></i><span>delete</span>
          </div>
               </div>
               </div>
@@ -182,6 +242,7 @@ function displayBlogs(blogs) {
   });
   blogsList.innerHTML = "";
   for (let blog of mappedBlogs) {
+  
     blogsList.innerHTML += blog;
   }
 }
@@ -193,10 +254,20 @@ function displayUsers(users) {
       <td>${u.email}</td>
       <td>${u.isAdmin}</td>
       <td>active</td>
+      <td><a href=''class='delete-user' key=${u._id}>delete</a></td>
       </tr>
     `;
   });
   mappedUsers.forEach((user) => (userTableBody.innerHTML += user));
+  const deleteUser=document.querySelectorAll('.delete-user');
+    deleteUser.forEach(btn=>{
+      return btn.addEventListener('click',async(e)=>{
+    e.preventDefault();
+    let id= e.target.getAttribute('key');
+    await removeUsers(id,token);
+    fetchUsers();
+      })
+    })
 }
 
 function displayMessages(messages) {
@@ -209,22 +280,24 @@ function displayMessages(messages) {
     <span class="messages-options"><i class="fa-solid fa-trash-can" key=${
       m._id
     }></i>
-    <i class="fa-solid fa-reply" key=${m._id}></i>
+    <i class="fa-solid fa-reply" key=${m.email}></i>
     </span>
     <span class="dashboard-message-item-date">${m.date.substring(0, 10)} ,\n\n${
-      m.date
+      m.date.substring(11,19)
     }</span>
   </div>
     `;
   });
+  dashboardMessages.innerHTML='';
   mappedMessages.forEach((m) => {
     dashboardMessages.innerHTML += m;
   });
+  notificationBadge.textContent=messages.length;
 }
 
 async function removeBlog(id, token) {
   try {
-    const response = await fetch(`http://localhost:3008/api/blogs/${id}`, {
+    const response = await fetch(`${api_url}/api/blogs/${id}`, {
       method: "DELETE",
       headers: {
         Authorization: `Bearer ${token}`,
@@ -236,11 +309,9 @@ async function removeBlog(id, token) {
       throw new Error("Failed to delete resource");
     }
     const data = await response.json();
-    console.log("Resource deleted:", data);
   } catch (error) {
     console.error("Error deleting resource:", error);
   }
-  displayBlogs(AllBlogs);
 }
 
 function updateNavbar() {
@@ -277,25 +348,24 @@ function toggleNavBar() {
 
 async function deleteMessage(id, token) {
   try {
-    const response = await fetch(`http://localhost:3008/api/messages/${id}`, {
+    const response = await fetch(`${api_url}/api/messages/${id}`, {
       method: "DELETE",
       headers: {
         Authorization: `Bearer ${token}`,
         "Content-Type": "application/json",
       },
     });
-
     if (!response.ok) {
       throw new Error("Failed to delete resource");
     }
+    displayMessages(AllMessages);
   } catch (error) {
     console.error("Error deleting resource:", error);
   }
-
-  displayMessages(AllMessages);
+ 
 }
-function replyMessage(id) {
-  let email = AllMessages.filter((user) => user.id === id)[0].email;
+function replyMessage(email) {
+  
   window.location.href = `mailto:${email}`;
 }
 
@@ -311,6 +381,7 @@ function displayRecentMessages(messages) {
   });
   recentMessages.innerHTML = "";
   for (let i = 0; i < 4; i++) {
+    if(mappedMessages[i])
     recentMessages.innerHTML += mappedMessages[i];
   }
 }
@@ -336,6 +407,7 @@ publish.addEventListener("click", async (e) => {
   blogTitle.value = "";
   blogBody.value = "";
   imgcontainer.style.display = "none";
+  fetchBlogs();
 });
 
 function getURLParameter(name) {
@@ -405,7 +477,7 @@ cancelBtn.addEventListener("click", (e) => {
 
 const fetchBlogs = async function () {
   try {
-    const response = await fetch("http://localhost:3008/api/blogs");
+    const response = await fetch(`${api_url}/api/blogs`);
 
     if (!response.ok) {
       throw new Error("failed to fetch blogs");
@@ -429,13 +501,13 @@ const fetchBlogs = async function () {
 
 const fetchUsers = async function () {
   try {
-    const response = await fetch("http://localhost:3008/api/users");
+    const response = await fetch(`${api_url}/api/users`);
     if (!response.ok) {
       throw new Error("failed to fetch users");
     }
     const result = await response.json();
     AllUsers = result.data;
-    displayUsers(AllUsers);
+    // displayUsers(AllUsers);
   } catch (error) {
     console.error("error while fetching users", error);
   }
@@ -444,7 +516,7 @@ const fetchUsers = async function () {
 // a function retrieving all messages
 const fetchMessages = async function () {
   try {
-    const response = await fetch("http://localhost:3008/api/messages");
+    const response = await fetch(`${api_url}/api/messages`);
     if (!response.ok) {
       throw new Error("failed to fetch messages");
     }
@@ -459,22 +531,29 @@ const fetchMessages = async function () {
 
 // function to create a user
 
-const createUser = async (user) => {
+  const createUser = async (user) => {
   try {
-    const response = await fetch("http://localhost:3008/api/users", {
+    const response = await fetch(`${api_url}/api/users`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(user),
+      body: JSON.stringify(user)
     });
 
     if (!response.ok) {
       const errorData = await response.json();
+      console.log(errorData.message)
       throw new Error("failed to create user");
     }
     const data = await response.json();
-    console.log("User created:", data.message);
+    
+    document.querySelector('.createUserMessage').textContent="user created successfully"
+    document.querySelector('.createUserMessage').style.visibility='visible';
+    setTimeout(()=>{
+      document.querySelector('.createUserMessage').style.visibility='hidden';
+    },2000);
+    fetchUsers();
   } catch (error) {
     console.error("Error creating user:", error);
   }
@@ -484,7 +563,7 @@ const createUser = async (user) => {
 
 async function writePost(formData, token) {
   try {
-    const response = await fetch("http://localhost:3008/api/blogs", {
+    const response = await fetch(`${api_url}/api/blogs`, {
       method: "POST",
       headers: {
         Authorization: `Bearer ${token}`,
@@ -508,18 +587,18 @@ function resetForm() {
   blogBody.value = "";
   imgcontainer.style.display = "none";
 }
-async function updateBlog(formData, token,id) {
+async function updateBlog(formData, token, id) {
   try {
-    const response = await fetch(`http://localhost:3008/api/blogs/${id}`, {
+    const response = await fetch(`${api_url}/api/blogs/${id}`, {
       method: "PUT",
       headers: {
         Authorization: `Bearer ${token}`,
       },
-      body:formData,
+      body: formData,
     });
     if (!response.ok) {
-      const errorData= await response.json()
-      console.log(errorData)
+      const errorData = await response.json();
+      console.log(errorData);
       // throw new Error("Failed to update the blog");
     }
     const result = await response.json();
@@ -529,15 +608,33 @@ async function updateBlog(formData, token,id) {
 
 const fetchOneBlog = async function (id) {
   try {
-    const response = await fetch(`http://localhost:3008/api/blogs/${id}`);
+    const response = await fetch(`${api_url}/api/blogs/${id}`);
     if (!response.ok) {
       throw new Error("failed to fetch blog");
       return;
     }
     const result = await response.json();
     console.log(result.data);
-     return result.data;
+    return result.data;
   } catch (error) {
     console.error("error while fetching blogs:", error);
   }
 };
+const removeUsers=async function(id,token){
+  try {
+    const response= await fetch(`${api_url}/api/users/${id}`,{
+      method:'DELETE',
+      headers:{
+        'Authorization':`Bearer ${token}`
+      }
+    })
+    if(!response.ok){
+      throw new Error('failed to delete user');
+      const errorData= await response.json()
+      console.log(errorData.message)
+    }
+  } catch (error) {
+    console.error('failed to delete user',error)
+  }
+}
+

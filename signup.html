@@ -21,23 +21,30 @@
 <body>
   <header>
     <nav>
-      <div class="logo">
-        <img src="./Icons_my_brand/log2.svg" alt="" />
-      </div>
+      <a href="#">
+        <div class="logo">
+          <img src="./Icons_my_brand/log2.svg" alt="" />
+        </div>
+      </a>
       <div class="menu-burger">
-        <img src="./Icons_my_brand/icons8-menu.svg" alt="">
+        <img src="./Icons_my_brand/icons8-menu.svg" alt="" />
       </div>
+
       <ul>
         <li><a href="./index.html">Home</a></li>
         <li><a href="./blog.html">Blog</a></li>
-        <li><a href="./index.html#portfolio">Portfolio</a></li>
-        <li><a href="./index.html#contact">Contact Me</a></li>
-        <li id="Admin-only"><a href="./Dashboard/pages/dashboard.html">Admin-Dashboard</a></li>
-        <li><a href="./login.html" class="active">Login</a></li>
+        <li><a href="#portfolio">Portfolio</a></li>
+        <li><a href="#contact">Contact Me</a></li>
+        <li id="Admin-only" style="display: none">
+          <a href="./Dashboard/pages/dashboard.html">Admin-Dashboard</a>
+        </li>
+        <li id="login"><a href="./login.html">Login</a></li>
+        <li id="logout" style="display: none"></li>
       </ul>
     </nav>
   </header>
     <main class="signup">
+      
       <div class="signup-note">
         <h3>How to Join?</h3>
         <div>
@@ -45,8 +52,10 @@
         </div>
       </div>
       <div class="signup-form">
+        <div id="loader"></div>
         <h3 class="form-title">Sign Up</h3>
         <form action="">
+          <div class="createUserMessage"></div>
             <div class="input-control">
             <label for="name">Name</label>
             <input id="name" type="text"></div>
@@ -70,7 +79,7 @@
         <div class="text-note"><a href="./login.html">Login</a>,if you don't have an account.</div>
       </div>
     </main>
-    <script src="./js/blog.js"></script>
+    <!-- <script src="./js/blog.js" type="module"></script> -->
     <script src="./js/forms.js" type="module"></script>
 </body>
 </html>

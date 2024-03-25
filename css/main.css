@@ -83,6 +83,12 @@
         grid-template-columns: 1fr;
         grid-template-rows: 1fr;
        }
+  .blog-detailed{
+    padding:10px 20px;
+  }
+  .blog-details-img{
+    width: 300px;
+  }
       
     
 }

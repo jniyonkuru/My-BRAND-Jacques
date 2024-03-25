@@ -4,6 +4,11 @@
     box-sizing: border-box;
     outline:none;
 }
+a{
+  color:#000;
+  text-decoration: none;
+  cursor: pointer;
+}
 img{
   vertical-align: center;
   width: 100%;
@@ -15,8 +20,12 @@ img{
     --nav-color:#F5F5F5;
     --border-radius-size:5px;
 }
+html{
+  font-size: 18px;
+}
 body{
      font-family:'inria Sans',sans-serif;
+     
    
 }
  h2 {
@@ -383,6 +392,7 @@ main{
   font-size:12px;
   color:red;
   margin-top:5px;
+  margin:auto;
  }
  .contact-page .contact-form .success-message{
   width:fit-content;
@@ -391,6 +401,7 @@ main{
   color: #ffff;
   display: none;
   border-radius: 5px;
+  margin:auto;
  }
  .contact-page .contact-form .fail-message{
   width:fit-content;
@@ -440,7 +451,6 @@ footer div{
   
   }
   .blogs-container .auth i{
-    
   font-size:20px;
   }
   .blogs-container .date,.auth-name{
@@ -508,6 +518,15 @@ footer div{
     flex-direction: column;
     padding:70px 180px;
     line-height: 1.5;
+    position: relative;
+  }
+  .blog-detailed .login-form{
+     position: absolute;
+     width: 300px;
+     box-shadow:0 0 2px 1300px rgba(0,0,0,0.8);
+     /* z-index: -1000; */
+     bottom:50px;
+     visibility: hidden;
   }
   
   .blog-detailed  textarea{
@@ -518,7 +537,7 @@ footer div{
     width: 50%;
     height:120px;
   }
- 
+
   .blog-detailed .comment-form button{
     height: 40px;
     margin-top: 10px;
@@ -531,11 +550,42 @@ footer div{
     border-radius:var(--border-radius-size);
     cursor: pointer;
   }
-  #comments{
-    color: var(--primary-color);
+  #comments{ 
     margin-top: 30px;
     margin-bottom: 10px;
+    display: flex;
+     justify-content: space-between;
+     padding-right: 200px;
+     padding-left: 20px;
+
   }
+  #comments a{
+    display:flex;
+    align-items: center;
+    gap:5px;
+    color: var(--primary-color);
+  
+  }
+  #comments i:hover{
+    transform: scale(1.1);
+
+  }
+  .comment-title{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  .comment-title i{
+    margin-right: 5px;
+
+  }
+  .comment-author{
+    display: flex;
+    align-items: center;
+  }
+
   .blog-detailed .auth-card i{
     font-size: 40px;
     margin-right: 5px;
@@ -549,6 +599,21 @@ footer div{
   color: #9d9e9d;
   font-size: 1rem;
 }
+
+.all-comments .commentsList{
+  margin-bottom: 10px;
+  width:80%;
+  padding: 10px;
+  border-radius: 6px;
+  overflow-y: scroll;
+}
+.all-comments .comment-item{
+  padding:10px;
+  border: 1px solid #d9d9d9;
+  margin-bottom: 10px;
+  border-radius: inherit;
+}
+
 
   /* portfolio */
   .portfolio-details{
@@ -663,6 +728,12 @@ a{
 .signup{
   display:grid;
   grid-template-columns: 1fr 2fr;
+  position: relative;
+}
+.signup .login-form{
+  position:absolute;
+  z-index: 100;
+  width: 400px;
 }
 .signup-form{
   width: 60%;
@@ -729,6 +800,7 @@ a{
 /* Search-bar */
 .search-bar{
   margin-top: 80px;
+  margin-bottom: 30px;
   width: 100%;
   display:flex;
   padding-inline:30px;
@@ -777,5 +849,32 @@ gap: 10px;
 }
 
 
+/* style loader */
+
+#loader {
+  display: none;
+  width:2rem;
+  height: 2rem;
+  margin-top: 30px;
+  border: 5px solid #f3f3f3;
+  border-top: 6px solid var(--primary-color);
+  border-radius: 100%;
+  margin: auto;
+  animation: spin 1s infinite linear;
+}
+
+@keyframes spin {
+  from{
+    transform: rotate(0deg);
+  }
+  to {
+    transform:rotate(360deg);
+  }
+}
 
 
+.createUserMessage{
+  width: fit-content;
+  padding: 5px 6px;
+  margin: auto;
+}

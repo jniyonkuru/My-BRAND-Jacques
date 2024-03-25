@@ -1,7 +1,12 @@
+import { hideLoader,showLoader } from "./util/loader.js";
+import {api_url} from './util/apiUrl.js'
+console.log(api_url)
 
 document.querySelector('header nav .menu-burger').addEventListener('click',(e)=>{
     document.querySelector('header nav ul').classList.toggle('collapsible');
 })
+const searchInput=document.querySelector('.search-bar input');
+
 const isAdmin=document.querySelector('#Admin-only');
 const blogsContainer= document.querySelector('.blogs-container');
 let readMoreBtns=[];
@@ -10,7 +15,7 @@ let author='';
 
 window.addEventListener('DOMContentLoaded',(e)=>{
     let token=localStorage.getItem('token');
-
+    showLoader();
     
        if(token){
         const [header, payload, signature] = token.split('.');
@@ -42,7 +47,14 @@ window.addEventListener('DOMContentLoaded',(e)=>{
         }
      }
 
+searchInput.addEventListener('input',(e)=>{
+e.preventDefault();
+let query=searchInput.value;
+console.log(searchInput)
+searchBlog(query)
 
+   
+})
 
     fetchBlogs()
 })
@@ -50,11 +62,10 @@ window.addEventListener('DOMContentLoaded',(e)=>{
 
 const fetchBlogs=async function(){
    try {
-    const response= await fetch('http://localhost:3008/api/blogs');
+    const response= await fetch(`${api_url}/api/blogs`);
 
     if(!response.ok){
         throw new Error('failed to fetch blogs')
-    return;
     }
     const result=await response.json();
     const authorPromises = result.data.map(blog => fetchAuthor(blog.author));
@@ -64,11 +75,17 @@ const fetchBlogs=async function(){
     blogList=blogList.map((blog,index)=>{
         return{...blog,author:authors[index]}
     })
-    displayBlogs(blogList);
-    addEventListenerToBtns();
+    
+    setTimeout(async ()=>{
+     hideLoader();
+     displayBlogs(blogList);
+     addEventListenerToBtns();
+    },3000)
+    
+    
     
    } catch (error) {
-      console.error('error while fetching bookmarks:',error)
+      console.error('error while fetching blogs:',error)
    }
 
 }
@@ -119,7 +136,7 @@ const navigateTo=function(id){
 
  const fetchAuthor=async function(id){
   try {
-    const response= await fetch(`http://localhost:3008/api/users/${id}`);
+    const response= await fetch(`${api_url}/api/users/${id}`);
     if(!response.ok){
         throw new Error('can not find the author');
         return;
@@ -134,3 +151,17 @@ const navigateTo=function(id){
   }
 
  }
+ const searchBlog = async function(query) {
+    console.log(query)
+    try {
+        const response = await fetch(`${api_url}/api/blogs/searchByQuery?query=${query}`);
+        if (!response.ok) {
+            throw new Error('Failed to fetch blog');
+        }
+        const blogs = await response.json();
+        console.log(blogs)
+        displayBlogs(blogs);
+    } catch (error) {
+        console.error('Error while searching the blog', error);
+    }
+};
