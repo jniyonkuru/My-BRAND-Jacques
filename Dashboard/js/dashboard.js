@@ -69,11 +69,11 @@ if (payloadObj) {
   currentUser.innerHTML = payloadObj.userName;
 }
 }
-window.addEventListener("DOMContentLoaded", (e) => {
+window.addEventListener("DOMContentLoaded", async (e) => {
   showLoader();
-  fetchBlogs();
-  fetchUsers();
-  fetchMessages();
+   await fetchBlogs();
+   await fetchUsers();
+   await fetchMessages();
   setTimeout(()=>{
     displayBlogs(blogList);
     displayUsers(AllUsers);
@@ -158,8 +158,11 @@ window.addEventListener("DOMContentLoaded", (e) => {
     };
 
     await  createUser(newUser);
+    await fetchUsers()
+    displayUsers(AllUsers);
     e.target.reset();
   });
+  
 });
 
 blogsList.addEventListener("click", async (e) => {
@@ -258,14 +261,18 @@ function displayUsers(users) {
       </tr>
     `;
   });
+  userTableBody.innerHTML='';
   mappedUsers.forEach((user) => (userTableBody.innerHTML += user));
   const deleteUser=document.querySelectorAll('.delete-user');
+  console.log(deleteUser)
     deleteUser.forEach(btn=>{
       return btn.addEventListener('click',async(e)=>{
     e.preventDefault();
     let id= e.target.getAttribute('key');
     await removeUsers(id,token);
-    fetchUsers();
+    await fetchUsers();
+    console.log(AllUsers)
+    displayUsers(AllUsers)
       })
     })
 }
