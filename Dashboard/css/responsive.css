@@ -22,6 +22,97 @@
     width: 100%;
     
    }
+   .blog-edit{
+      width: 100%;
+      margin: 0;
+      padding: 10px 30px;
+      
+   }
+   table.users-table{
+      font-size: 14px;
+    }
+    .users-table td, .users-table thead th{
+      padding: 6px 8px;
+    }
+    .edit-contacts form{
+      padding: 20px 40px;
+      width: 100%;
+    }
+    .add-contact{
+      width:50%;
+    }
+    
 
+}
+@media screen  and (max-width:550px){
+   .blog-edit{
+      width: 100%;
+      margin: 0;
+      padding: 5px 20px;
+      
+   }
+   .up-btns{
+      display: flex;
+      flex-direction: column;
+      gap:10px;
+   }
+  header .search-bar .search-bar-input{
+   display: block;
+   width: 100%;
+  }
+  header .search-bar{
+   flex-wrap:wrap-reverse;
+  }
+  .dashboard-main-container{
+   margin:10px 10px 0 10px;
+ }
+ .dashboard-messages .dashboard-message-item{
+   padding:5px 10px;
 
+ }
+ .dashboard-messages .dashboard-message-item .dashboard-message-item-date{
+   top:5px;
+   right: 5px;
+   font-size: 12px;
+ }
+ .dashboard-messages .dashboard-message-item .message-title i{
+   font-size:20px;
+ }
+ .dashboard-messages .dashboard-message-item h4{
+   font-size:18px;
+ }
+ .dashboard-messages .dashboard-message-item .messages-options{
+   right: 5px;
+   bottom:5px;
+
+ }
+ .dashboard-messages .dashboard-message-item .messages-options i{
+   margin-right: 5px;
+ }
+ .dashboard-cards{
+   width: 100%;
+   gap:5px;
+   justify-content: center;
+ }
+ .dashboard-cards .dashboard-card{
+   width:100px;
+   height: 75px;
+   padding: 3px 5px;
+ }
+ .dashboard-cards .dashboard-card .dashboard-card-title{
+   font-size: 16px;
+ }
+ .dashboard-cards .dashboard-card .dashboard-card-subtitle{
+   font-size: 16px;
+ }
+ table.users-table{
+   font-size: 10px;
+ }
+ .users-table td, .users-table thead th{
+   padding: 4px 6px;
+ }
+ .add-contact{
+   width:80%;
+ }
+ 
 }

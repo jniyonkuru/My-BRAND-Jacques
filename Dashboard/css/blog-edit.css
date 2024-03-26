@@ -9,7 +9,7 @@
 }
 .blog-edit {
   flex-direction: column;
-  width: 70%;
+  width:80%;
   height: 600px;
   max-height: 100vh;
   justify-content: center;
@@ -24,6 +24,9 @@
   border-radius: 12px;
   display: none;
 }
+.dashboard-blogList{
+  width: 90%;
+}
 
 .blog-edit input {
   width:100%;
@@ -36,7 +39,6 @@
 }
 .blog-edit textarea {
   width: 100%;
-  max-width:600px;
   border-radius: 8px;
   border: 2px solid #9d9e9d;
   padding:10px 20px;

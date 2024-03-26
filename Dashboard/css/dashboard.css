@@ -18,6 +18,8 @@ body{
     font-size:16px;
     background:#eff5f7;
 }
+header{
+}
 
 .logo{
 width: 100px;
@@ -140,9 +142,11 @@ position: relative;
     align-items: center;
     padding-left:20px;
     width:100%;
+
   }
   header .search-bar .search-bar-input{
     width: 50%;
+  
   }
 
   header .search-bar .current-user{
@@ -208,7 +212,6 @@ position: relative;
     color:#ffff;
     font-weight: bold;
     font-size:26px;
-    line-height: 70px;
     height: 100%;
   }
   .dashboard-cards{
@@ -299,19 +302,19 @@ position: relative;
   color:#3D3F3C;
 }
 .dashboard-main-container{
-  margin:10px 80px 0 80px;
+  margin:10px 10px 0 100px;
 }
 
 /* Users */
 
-.users-table{
-  width:100%;
+table.users-table{
+  width:90%;
   margin-top:40px;
   padding-inline:20px;
   border:1px solid #d9d9d9;
   border-radius:5px;
   border-collapse:collapse;
-  overflow:hidden;
+  overflow:scroll;
   
 }
 .users-table thead{
@@ -343,7 +346,7 @@ position: relative;
  /* messages */
 
 .dashboard-messages{
-  width:100%;
+  width:90%;
 }
 
 #section4 h3 ,#section5 h3{
@@ -454,6 +457,7 @@ z-index: 10;
 #section1{
   display: flex;
   justify-content: space-around;
+  width: 90%;
 
 }
 .recent-messages-list{
@@ -500,9 +504,9 @@ max-width: 500px;
 .edit-contacts{
   display:flex;
   width: 100%;
+  justify-content: center;
 }
 .edit-contacts form{
-  margin-left:20px;
   place-self: center;
   padding: 20px 80px;
   border-radius:12px;
@@ -510,6 +514,9 @@ max-width: 500px;
   background: #dedfe0;
   box-shadow: 0 0 5px 5px rgba(0,0,0,0.2);
   
+}
+.add-contact{
+  width: 40%;
 }
 
 .add-contact form label{
